@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile| BOPDOP</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<style>
+    body{
+        background:#f7f7f7;
+    }
+    nav{
+        background: #fff;
+    }
+</style>
+<body>
+    <nav>
+        <label for="check" class="checkBtn"><i class="fas fa-bars"></i></label>
+        <input type="checkbox" id="check">
+        <label class="logo" onclick="location.href='index.html'">BOPDOP</label>
+        <ul>
+            <li>
+                <span href="#" class="notification">
+                    <i class="fas fa-bell" style="color: #777;font-size: 17px;"></i>
+                    <span class="badge">3</span>
+                    <div class="triangle"></div>
+                    <div class="box">
+                        <div class="message">
+                            <img src="assets/img/message.png" style="border-radius:50%;">
+                            <span class="mesText">Hey amit, raman send you registration request please confirm it.</span>
+                            <span>20 Nov</span>
+                        </div>
+                        <div class="message">
+                            <img src="assets/img/message.png" style="border-radius:50%;">
+                            <span class="mesText">Hey amit, rohit send you registration request please confirm it.</span>
+                            <span>15 Nov</span>
+                        </div>
+                        <div class="message">
+                            <img src="assets/img/message.png" style="border-radius:50%;">
+                            <span class="mesText">Hey amit, rahul send you registration request please confirm it.</span>
+                            <span>10 Nov</span>
+                        </div>
+                        <div class="viewmore">
+                            <span><a href="messagePortal.html">view more.....</a></span>
+                        </div>
+                      </div>
+                    </div>
+                </span>
+               
+            </li>
+            <li style="border-left: 1px solid #eee;">
+                <span id="userMenu"><img src="assets/img/user.png"><span style="position: relative;">Ankit</span><i class="fas fa-angle-down ml-2"></i></span>
+                <div class="triangle2"></div>
+                    <div class="userMenu">
+                        <div class="option">
+                            Profile    
+                        </div>
+                        <div class="option colorTheme">
+                            Color Theme
+                        </div>
+                        <div class="colorOption py-2">
+                            <div id="color2" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color3" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color4" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color1" class="color" onclick="changeColor(this)"></div> 
+                        </div>
+                        <div class="option" style="padding-bottom:5px; border-top: 1px solid #eee;">
+                            Logout
+                        </div>
+                      </div>
+                </div>
+            </li> 
+        </ul>
+        <div class="adminBox">
+            
+        </div>
+    </nav>
+    <div class="container-fluid my-4">
+        <div class="row mb-2 flexSeparate pr-4">
+            <h4 style="margin-left:50px ;" class="text-shadow">User Profile</h4>
+            <h5>   
+                <span id="todayDate"></span>
+            </h5> 
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card shadow-sm mb-3" >
+                    <div class="card-body py-5" style="height: auto;background-color: #fff;text-align: center;">
+                            <img src="assets/img/user.png" height="180px" style="border: 1px solid #eee;border-radius: 10px;">
+                            <h6 class="my-3">Mark Otto</h6>
+                            <span style="background-color: var(--primary);color: #fff;font-size: 12px; padding: 10px; border-radius: 20px;">Patient</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+            <div class="card shadow-sm" >
+                <div class="card-header" style="border:0;border-bottom: 1px solid #eee;background-color: #fff;">
+                  Account Details
+                  <i class="fas fa-edit float-right" onclick="editProfile()"></i>
+                </div>
+                <div class="card-body" style="height: auto;">
+                    <form class="needs-validation" id="profile" novalidate>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom01">First name</label>
+                                <input type="text" class="form-control" id="name1" placeholder="First name" value="" required disabled>
+                                <div class="valid-feedback">
+                                Looks good!
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom02">Last name</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="Last name" value="" required disabled>
+                                <div class="valid-feedback">
+                                Looks good!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom05">Phone Number</label>
+                                <input type="number" class="form-control" id="validationCustom05" placeholder="Phone Number" value="" required disabled>
+                                <div class="invalid-feedback">
+                                Please provide a valid Phone number.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustomUsername">Email</label>
+                                <div class="input-group">
+                                    <input type="email" class="form-control" id="validationCustomUsername" placeholder="Email" value="" aria-describedby="inputGroupPrepend" required disabled>
+                                    <div class="invalid-feedback">
+                                        Please choose a email.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="validationCustom05">Registration Number</label>
+                                <input type="number" class="form-control" id="validationCustom05" placeholder="Registration Number" value="" required disabled>
+                                <div class="invalid-feedback">
+                                Please provide a valid Registration number.
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="form-row">
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom03">City</label>
+                                <input type="text" class="form-control" id="validationCustom03" placeholder="City" value="" required disabled>
+                                <div class="invalid-feedback">
+                                Please provide a valid city.
+                                </div>
+                            </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="validationCustom04">State</label>
+                            <input type="text" class="form-control" id="validationCustom04" placeholder="State" value="" required disabled>
+                            <div class="invalid-feedback">
+                            Please provide a valid state.
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="validationCustom05">Zip</label>
+                            <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" value="" required disabled>
+                            <div class="invalid-feedback">
+                            Please provide a valid zip.
+                            </div>
+                        </div>
+                        </div>
+                        <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <label class="form-check-label" for="invalidCheck">
+                            Agree to terms and conditions
+                            </label>
+                            <div class="invalid-feedback">
+                            You must agree before submitting.
+                            </div>
+                        </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Update Account</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="js/changecolor.js"></script>
+<script src="js/dash.js"></script>
+ 
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+</script>
+<script src="../js/editProfile.js"></script>
+</html>

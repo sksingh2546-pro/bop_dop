@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="css/appointment.css">
+</head>
+
+<body>
+    <div class="container py-4 appointment">
+        <div class="row py-2">
+            <div class="col-12">
+                <div style="font-size: 12px;font-weight: 500;color: #aaa;">SELECT TIME</div>
+                <div>
+                    <span class="cName">Arjun Clinic</span>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="doctorENTITY">
+                    <div class="docIMG">
+                        <img src="../assets/img/user.png" />
+                    </div>
+                    <div class="doc_details">
+                        <div class="doc_name">
+                            Rahul Kumar
+                        </div>
+                        <div class="docSpecs">
+                            Dentist
+                        </div>
+                    </div>
+                    <div class="pl-4">
+                        <span><a href="search.html">Want to change?</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row py-2 pt-3">
+            <div class="col-sm-6">
+                <div class="py-2">
+                    <span style="font-size: 12px;font-weight: 500;color: #aaa;">
+                        SELECT DATE
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="py-2 text-right">
+                    <span class="Showmonth shadow-sm">Today - 21 December 2020</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="appointDate">
+                    <div class="d-flex justify-content-right align-items-center arrows">
+                        <i class="fas fa-chevron-left" style="color: dodgerblue;"></i>
+                    </div>
+                    <div class="pick">
+                        <span class="week"></span><br>
+                        <span class="day"></span>
+                        <input type="hidden" class="apdate" value="">
+                    </div>
+                    <div class="pick">
+                        <span class="week"></span><br>
+                        <span class="day"></span>
+                        <input type="hidden" class="apdate" value="">
+                    </div>
+                    <div class="pick">
+                        <span class="week"></span><br>
+                        <span class="day"></span>
+                        <input type="hidden" class="apdate" value="">
+                    </div>
+                    <div class="pick">
+                        <span class="week"></span><br>
+                        <span class="day"></span>
+                        <input type="hidden" class="apdate" value="">
+                    </div>
+                    <div class="pick">
+                        <span class="week"></span><br>
+                        <span class="day"></span>
+                        <input type="hidden" class="apdate" value="">
+                    </div>
+                    <div class="pick">
+                        <span class="week"></span><br>
+                        <span class="day"></span>
+                        <input type="hidden" class="apdate" value="">
+                    </div>
+                    <div class="pick">
+                        <span class="week"></span><br>
+                        <span class="day"></span>
+                        <input type="hidden" class="apdate" value="">
+                    </div>
+                    <div class="d-flex justify-content-left align-items-center arrows">
+                        <i class="fas fa-chevron-right" style="color: dodgerblue;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="timeSlot">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="slotBox p-3">
+                                <div class="slotTimeHead rounded">
+                                    <img src="../assets/svg/sunrise.svg" class="mr-2" height="20px">
+                                    <span>Morning</span>
+                                </div>
+                                <div class="grid slotTime mt-3 ">
+                                    <div class="slot mx-1"><input type="hidden" value="">
+                                        <i class="fa-check-circle mr-2"></i><span class="singleSlot">10:00am</span>
+                                    </div>
+                                    <div class="slot mx-1"><input type="hidden" value="">
+                                        <i class="fa-check-circle mr-2"></i><span class="singleSlot">10:30am</span>
+                                    </div>
+                                    <div class="slot mx-1"><input type="hidden" value="">
+                                        <i class="fa-check-circle mr-2"></i><span class="singleSlot">11:00am</span>
+                                    </div>
+                                    <div class="slot mx-1"><input type="hidden" value="">
+                                        <i class="fa-check-circle mr-2"></i><span class="singleSlot">11:30am</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="slotBox p-3">
+                                <div class="slotTimeHead rounded">
+                                    <img src="../assets/svg/sun.svg" class="mr-2" height="20px">
+                                    <span style="padding-top:11px ;">Afternoon</span>
+                                </div>
+                                <div class="grid slotTime mt-3">
+                                    <div class="slot mx-1"><input type="hidden" value="">
+                                        <i class="fa-check-circle mr-2"></i><span class="singleSlot">12:00pm</span>
+                                    </div>
+                                    <div class="slot mx-1"><input type="hidden" value="">
+                                        <i class="fa-check-circle mr-2"></i><span class="singleSlot">12:30pm</span>
+                                    </div>
+                                    <div class="slot mx-1"><input type="hidden" value="">
+                                        <i class="fa-check-circle mr-2"></i><span class="singleSlot">01:00pm</span>
+                                    </div>
+                                    <div class="slot mx-1"><input type="hidden" value="">
+                                        <i class="fa-check-circle mr-2"></i><span class="singleSlot">01:30pm</span>
+                                    </div>
+                                    <div class="slot mx-1"><input type="hidden" value="">
+                                        <i class="fa-check-circle mr-2"></i><span class="singleSlot">02:00pm</span>
+                                    </div>
+                                    <div class="slot mx-1"><input type="hidden" value="">
+                                        <i class="fa-check-circle mr-2"></i><span class="singleSlot">02:30pm</span>
+                                    </div>
+                                    <div class="slot mx-1"><input type="hidden" value="">
+                                        <i class="fa-check-circle mr-2"></i><span class="singleSlot">03:00pm</span>
+                                    </div>
+                                    <div class="slot mx-1"><input type="hidden" value="">
+                                        <i class="fa-check-circle mr-2"></i><span class="singleSlot">03:30pm</span>
+                                    </div>
+                                    <div class="slot mx-1"><input type="hidden" value="">
+                                        <i class="fa-check-circle mr-2"></i><span class="singleSlot">04:00pm</span>
+                                    </div>
+                                    <div class="slot mx-1"><input type="hidden" value="">
+                                        <i class="fa-check-circle mr-2"></i><span class="singleSlot">04:30pm</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="slotBox p-3">
+                                <div class="slotTimeHead rounded">
+                                    <img src="../assets/svg/sunset.svg" class="mr-2" height="20px">
+                                    <span>Evening</span>
+                                </div>
+                                <div class="grid slotTime mt-3">
+                                    <div class="slot mx-1"><input type="hidden" value="">
+                                        <i class="fa-check-circle mr-2" style="display: none;"></i><span
+                                            class="singleSlot">05:00pm</span>
+                                    </div>
+                                    <div class="slot mx-1"><input type="hidden" value="">
+                                        <i class="fa-check-circle mr-2" style="display: none;"></i><span
+                                            class="singleSlot">05:30pm</span>
+                                    </div>
+                                    <div class="slot mx-1"><input type="hidden" value="">
+                                        <i class="fa-check-circle mr-2" style="display: none;"></i><span
+                                            class="singleSlot">06:00pm</span>
+                                    </div>
+                                    <div class="slot mx-1"><input type="hidden" value="">
+                                        <i class="fa-check-circle mr-2" style="display: none;"></i><span
+                                            class="singleSlot">06:30pm</span>
+                                    </div>
+                                    <div class="slot mx-1"><input type="hidden" value="">
+                                        <i class="fa-check-circle mr-2" style="display: none;"></i><span
+                                            class="singleSlot">07:00pm</span>
+                                    </div>
+                                    <div class="slot mx-1"><input type="hidden" value="">
+                                        <i class="fa-check-circle mr-2" style="display: none;"></i><span
+                                            class="singleSlot">07:30pm</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button class="btn btn-primary float-right" id="nextBtn">Take Appointment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        // var ip = "http://3.231.60.138:8080/Bop_Dop-0.0.1-SNAPSHOT";
+        var ip = "http://192.168.0.127:8811";
+
+        var d = new Date();
+        // d.setDate(30);
+        // d.setMonth(11);
+        var next = new Date();
+
+        function isLeapYear(Year) {
+            if (((Year % 4) === 0) && ((Year % 100) !== 0)
+                || ((Year % 400) === 0)) {
+                return (true);
+            } else {
+                return (false);
+            }
+        }
+
+        var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        var dayPerMonth = [31, isLeapYear(d.getFullYear) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+        var week = document.getElementsByClassName("week");
+        var day = document.getElementsByClassName("day");
+        var apdate = document.getElementsByClassName("apdate");
+        var j = d.getDay();
+        var k = d.getDate();
+
+        for (var i = 0; i < week.length; i++) {
+
+            if (j > 6) {
+                j = 0;
+            }
+            week[i].innerHTML = days[j];
+            if (k > dayPerMonth[d.getMonth()]) {
+                k = 1;
+                d.setMonth(d.getMonth() + 1);
+                d.setDate(1);
+            }
+            day[i].innerHTML = k;
+            apdate[i].value = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + k;
+            console.log(apdate[i]);
+            j++;
+            k++;
+        }
+        var checks = document.getElementsByClassName("slot");
+        for (var i = 0; i < checks.length; i++) {
+            checks[i].addEventListener("click", (event) => {
+                for (var m = 0; m < checks.length; m++) {
+                    checks[m].getElementsByTagName("i")[0].classList.remove("fas");
+                    checks[m].getElementsByTagName("i")[0].style.display = "none";
+                    checks[m].getElementsByTagName("i")[0].style.color = "grey";
+                    checks[m].style.border = "1px solid #eee";
+                    checks[m].classList.remove("pickedTime");
+                }
+
+                if (event.target.className == "singleSlot") {
+                    event.path[1].getElementsByTagName("i")[0].classList.add("fas");
+                    event.path[1].getElementsByTagName("i")[0].style.display = "inline";
+                    event.path[1].getElementsByTagName("i")[0].style.color = "var(--secondary)";
+                    event.path[1].style.border = "1px solid var(--secondary)";
+                    event.path[1].classList.add("pickedTime");
+                } else {
+                    event.target.getElementsByTagName("i")[0].classList.add("fas");
+                    event.target.getElementsByTagName("i")[0].style.color = "var(--secondary)";
+                    event.target.getElementsByTagName("i")[0].style.display = "inline";
+                    event.target.style.border = "1px solid var(--secondary)";
+                    event.target.classList.add("pickedTime");
+                }
+            });
+        }
+        var pick = document.getElementsByClassName("pick");
+        for (var i = 0; i < pick.length; i++) {
+            pick[i].addEventListener('click', (event) => {
+                for (var n = 0; n < pick.length; n++) {
+                    pick[n].classList.remove("picked");
+                    pick[n].childNodes[2].classList.remove("picked");
+                    pick[n].childNodes[4].classList.remove("picked");
+                }
+                if (event.target.className == "day") { event.path[1].classList.add("picked"); }
+                else if (event.target.className == "week") { event.path[1].classList.add("picked"); }
+                else { event.target.classList.add("picked"); }
+            })
+        }
+
+        /*********************** checkout data *************************/
+        document.getElementById("nextBtn").addEventListener('click', () => {
+            console.log(document.getElementsByClassName("picked").length);
+            var status = "";
+            if (document.getElementsByClassName("picked").length <= 0) {
+                Toastify({
+                    text: "ERROR: Select Appointment Date !! ",
+                    duration: 2000,
+                    newWindow: true,
+                    close: true,
+                    backgroundColor: "rgb(240, 98, 98)",
+                    gravity: "top", // `top` or `bottom`
+                    position: 'right', // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                }).showToast();
+            }
+            else if (document.getElementsByClassName("pickedTime").length <= 0) {
+                Toastify({
+                    text: "ERROR: Select Appointment Slot !! ",
+                    duration: 2000,
+                    newWindow: true,
+                    close: true,
+                    backgroundColor: "rgb(240, 98, 98)",
+                    gravity: "top", // `top` or `bottom`
+                    position: 'right', // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                }).showToast();
+            }
+            else {
+                try {
+                    console.log();
+                    var ap_date = document.getElementsByClassName("picked")[0].getElementsByTagName("input")[0].value;
+                    var ap_time = document.getElementsByClassName("pickedTime")[0].getElementsByClassName("singleSlot")[0].innerHTML.trim();
+                    var temp = document.getElementsByClassName("picked")[0].getElementsByTagName("span");
+                    var date = temp[0].innerHTML + " " + temp[1].innerHTML + " " + d.getFullYear();
+                    // console.log(document.getElementsByClassName("pickedTime")[0].getElementsByClassName("singleSlot")[0].innerHTML);
+                    // takeAppointment(ap_date, ap_time);
+                }
+                catch (err) {
+                    console.log(err.message);
+                }
+
+            }
+        });
+
+    </script>
+</body>
+
+</html>

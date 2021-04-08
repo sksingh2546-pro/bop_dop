@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav>
+        <label for="check" class="checkBtn"><i class="fas fa-bars"></i></label>
+        <input type="checkbox" id="check">
+        <label class="logo" onclick="location.href='index.html'">BOPDOP</label>
+        <ul>
+            <li>
+                <a href="#" class="notification">
+                    <i class="fas fa-bell" style="color: #777;font-size: 17px;"></i>
+                    <span class="badge">3</span>
+                </a>
+               
+            </li>
+            <li style="border-left: 1px solid #eee;"><img src="assets/img/user.png"><span>Ankit</span><i class="fas fa-angle-down ml-2"></i></li> 
+        </ul>
+    </nav>
+    <div class="sidenav">
+        <ul>
+            <li>
+                <a href="#" class="active">
+                    <div class="sideOption flexBox">
+                        <i class="fas fa-tachometer-alt" ></i>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="sideOption flexBox">
+                        <i class="fas fa-clinic-medical"></i>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="sideOption flexBox">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="sideOption flexBox">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <section >
+            <div class="row mb-4">
+                <h4 style="margin-left:50px ;" class="text-shadow">Welcome Admin</h4>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <div class="adminOption boxShadow mb-2">
+                        <i class="fas fa-clinic-medical"></i><br>
+                        <span>Add Clinic</span>
+                    </div>
+            
+                </div>
+                <div class="col-md-1">
+                    <div class="adminOption boxShadow mb-2">
+                        <i class="fas fa-user-md"></i><br>
+                        <span>Add Doctor</span>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="adminOption boxShadow mb-2">
+                        <i class="fas fa-user-cog"></i><br>
+                        <span style="line-height: 1;">Add Clinic <br>Admin</span>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="adminOption boxShadow mb-2">
+                        <i class="fas fa-user-nurse"></i><br>
+                        <span>Add Nurse</span>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="adminOption boxShadow mb-2">
+                        <i class="fas fa-user"></i><br>
+                        <span>Add User</span>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                
+                    <div class="summary boxShadow">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="sumHeader">
+                                    <span>Total Counts</span>
+                                </div>
+                                <div class="sumBody">
+                                    <div class="countBox">
+                                        <i class="fas fa-user-md"></i><br>
+                                        <span class="span">100</span><br>
+                                        <span><small>Total Doctors</small></span>
+                                    </div>
+                                    <div class="countBox">
+                                        <i class="fas fa-user-nurse" style="color: darkorange;"></i><br>
+                                        <span class="span">150</span><br>
+                                        <span><small>Total Nurses</small></span>
+                                    </div>
+                                    <div class="countBox">
+                                        <i class="fas fa-clinic-medical" style="color: tomato;"></i><br>
+                                        <span class="span">5</span><br>
+                                        <span><small>Total Clinic</small></span>
+                                    </div>
+                                    <div class="countBox">
+                                        <i class="fas fa-user" style="color: dodgerblue;"></i><br>
+                                        <span class="span">110</span><br>
+                                        <span><small>Total Users</small></span>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="col-md-8">
+                                <div class="chart">
+                                    <canvas id="myChart" width="400" height="300"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="demo">
+                        <div style="width:100%;background-color: #f9f9f9;padding: 15px;padding-left: 20px;">
+                        <span style="font-weight: 600;">Recently added doctors</span></div>
+                        <div class="table-responsive" style="padding:10px;font-size: 13px;">
+                            <table class="table table-borderless">
+                                <tr style="color: #999;">
+                                    <td>Name</td>
+                                    <td>Gender</td>
+                                    <td>Age</td>
+                            
+                                    <td>Degree</td>
+                                    <td>Added Date</td>
+                                </tr>
+                                <tr>
+                                    <td>Amitabh</td>
+                                    <td>Male</td>
+                                    <td>40</td>
+                            
+                                    <td>MBBS</td>
+                                    <td>20 Oct</td>
+                                </tr>
+                                <tr>
+                                    <td>Rohit</td>
+                                    <td>Male</td>
+                                    <td>42</td>
+                            
+                                    <td>BHMS</td>
+                                    <td>18 Jul</td>
+                                </tr>
+                                <tr>
+                                    <td>Aman</td>
+                                    <td>Male</td>
+                                    <td>40</td>
+                            
+                                    <td>MBBS</td>
+                                    <td>16 Oct</td>
+                                </tr>
+                                <tr>
+                                    <td>Rahul</td>
+                                    <td>Male</td>
+                                    <td>39</td>
+                            
+                                    <td>BDS</td>
+                            
+                                    <td>10 Nov</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+</body>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+	// The type of chart we want to create
+	type: 'line', // also try bar or other graph types
+
+	// The data for our dataset
+	data: {
+		labels: ["Jun 2020", "Jul 2020", "Aug 2020", "Sep 2020", "Oct 2020", "Nov 2020", "Dec 2020", "Jan 2020", "Feb 2020", "Mar 2020", "Apr 2020", "May 2020"],
+		// Information about the dataset
+    datasets: [{
+			label: "Doctors",
+			backgroundColor: '#fe40663f',
+			borderColor: '#fe4066',
+			data: [20, 39, 66, 66, 40, 55, 77, 69, 57, 76, 110, 142],
+		}]
+	},
+
+	// Configuration options
+	options: {
+    layout: {
+      padding: 10,
+    },
+		legend: {
+			position: 'bottom',
+		},
+		scales: {
+			yAxes: [{
+				scaleLabel: {
+					display: true,
+					labelString: 'No. of Doctors'
+				}
+			}],
+			xAxes: [{
+				scaleLabel: {
+					display: true,
+					labelString: 'Month of the Year'
+				}
+			}]
+		}
+	}
+});
+</script>
+</html>

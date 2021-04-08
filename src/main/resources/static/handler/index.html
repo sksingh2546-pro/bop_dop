@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live OPD | BOPDOP</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" href="../css/mainCss.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: auto;
+            margin: 0;
+        }
+    
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: auto;
+        }
+    </style>
+</head>
+<script src="../js/auth/handlerAuth.js"></script>
+
+<body style="background-color: #f1f1f1;" onload="awaitingList(),getLive_opd_handler(),seeDoctor()">
+    <nav class="homenav shadow-none">
+        <label for="check" class="checkBtn"><i class="fas fa-bars"></i></label>
+        <input type="checkbox" id="check">
+        <label class="logo">B<span style="color: var(--danger);">OPD</span>OP</label>
+    </nav>
+    <div class="sideNavbar">
+        <ul>
+            <li class="sideActive">
+                <a href="index.html">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span>Live OPD</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="appointed-patients.html">
+                    <i class="fas fa-tachometer-alt mr-2"></i>
+                    <span>Appointed Patients</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="manage-slots.html">
+                    <i class="fas fa-calendar-alt mr-2"></i>
+                    <span>Manage Slots</span>
+                </a>
+            </li>
+            <li class>
+                <a href="total-visited-patients.html" id="visited">
+                    <i class="fas fa-hospital-user mr-2"></i>
+                    <span>Total Patients visited</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="handlerlogout()">
+                    <i class="fas fa-sign-out-alt mr-2"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="sideContent">
+         
+        <div class="row mb-3 align-items-center">
+            <div class="col-md-2">
+                <h4 for="liveOPD">LIVE OPD -> </h4>
+            </div>
+            <div class="col-md-2" style="width:100%;text-align: left;">
+                
+                <input type="number" class="form-control" id="liveOPD" min="0" >
+               
+            </div>
+            <div class="col-md-2">
+                <input type="button" class="btn btn-outline-success" onclick="addOPD()" value=" + ">
+                <input type="button" class="btn btn-outline-danger" style="margin:5px"; onclick="minusOPD()" value="  -  ">
+            </div>
+            <div class="col-md-6" style="width:100%;text-align: right;">
+                Doctor <input type="text" id="doctor_name" class="ml-3 border" style="padding:3px 10px;outline: none;"
+                    readonly>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <!-- <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-header border-0 bg-success text-light">
+                        Active Token Number
+                    </div>
+                    <div class="card-body" style="height: auto;">
+                        <h1 class="text-center">45</h1>
+                    </div>
+                </div>
+            </div> -->
+            <div class="col-lg-12 py-4 px-5" style="background-color: #fff;">
+                <h2 class="mb-4 font-weight-bold">Appointment Requests</h2>
+                <div class="table-responsive animate__animated animate__fadeIn">
+                    <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Patient Name</th>
+                                <th>Gender</th>
+                                <th>Age</th>
+                                <th>Contact</th>
+                                <th>Appointment Date</th>
+                                <th>Slot</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="requestedTable">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="acceptModal" tabindex="-1" role="dialog" aria-labelledby="actionModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-theme text-light">
+                    <h5 class="modal-title" id="actionModalLabel">Give Token Number</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3 px-3">
+                            <label for="validationCustom01">Token Number</label>
+                            <input type="number" class="form-control" id="tokenNumber" placeholder="Token Number"
+                                required>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="approveBtn">Save</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="rejectModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-theme text-light">
+                    <h5 class="modal-title" id="rejectModalLabel">Reason</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3 px-3">
+                            <label for="validationCustom01">Give Reason</label>
+                            <input type="text" class="form-control" id="reason" placeholder="Reason" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="cancelBtn">Save</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="../js/variable.js"></script>
+<script src="../js/dash.js"></script>
+
+<script>
+    document.getElementsByClassName("checkBtn")[0].addEventListener("click", () => {
+        if (document.getElementById("check").checked == true) {
+            document.getElementsByClassName("sideNavbar")[0].style.left = "-100%"
+        }
+        else if (document.getElementById("check").checked == false) {
+            document.getElementsByClassName("sideNavbar")[0].style.left = "0px"
+        }
+    });
+</script>
+<script src="../js/apis/appointed.js"></script>
+<script src="../js/apis/logout.js"></script>
+<script src="../js/appointment/handler.js"></script>
+
+</html>

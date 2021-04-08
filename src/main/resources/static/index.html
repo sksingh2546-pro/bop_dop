@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | BOPDOP</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+</head>
+<style>
+    main {
+        margin-top: 60px;
+    }
+</style>
+
+<body>
+    <div id="main-loader">
+        <h1 class="logo">B<span style="color: var(--danger);">OPD</span>OP</h1>
+        <img src="assets/loader/mainLoader.svg">
+    </div>
+    <nav class="homenav shadow-none main-content">
+        <label for="check" class="checkBtn"><i class="fas fa-bars"></i></label>
+        <input type="checkbox" id="check">
+        <label class="logo" onclick="location.href='index.html'">B<span
+                style="color: var(--danger);">OPD</span>OP</label>
+        <ul id="mainmenu">
+            <li>
+                <a href="index.html" style="color: var(--secondary);">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="search.html">
+                    Book an appointment
+                </a>
+            </li>
+            <li>
+                <a href="consultant.html">
+                    Consult with doctor
+                </a>
+            </li>
+            <li class="mobileoption">
+                <a href="patient-dashboard.html">
+                    Dashboard
+                </a>
+            </li>
+            <li class="mobileoption">
+                <a href="javascript:userlogout()">
+                    Logout
+                </a>
+            </li>
+            <li class="loginLI li1">
+                <a href="authentication/login.html">
+                    <button class="homeBtns loginBtn">Login</button>
+                </a>
+            </li>
+            <li class="loginLI li2">
+                <a href="authentication/patient-signup.html">
+                    <button class="homeBtns registerBtn">Sign up</button>
+                </a>
+            </li>
+            <!-- <li class="logined">
+                <a href="javascript:userlogout()">
+                    <button class="homeBtns loginBtn" onclick="userlogout()">Logout</button>
+                </a>
+            </li> -->
+            <li style="border-left: 1px solid #eee;" class="logined righticon">
+                <span id="userMenu"><img src="assets/img/user.png"><span class="pName"
+                        style="position: relative;"></span><i class="fas fa-angle-down ml-2"></i></span>
+                <div class="triangle2"></div>
+                <div class="userMenu">
+                    <!-- <div class="option">
+                            Profile
+                        </div> -->
+                    <!-- <div class="option colorTheme">
+                            Color Theme
+                        </div>
+                        <div class="colorOption py-2">
+                            <div id="color2" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color3" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color4" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color1" class="color" onclick="changeColor(this)"></div> 
+                        </div> -->
+                    <div class="option" onclick="location.href='patient-dashboard.html'">
+                        Dashboard
+                    </div>
+                    <div class="option" onclick="location.href='user-profile.html'">
+                        Profile
+                    </div>
+                    <div class="option" style="padding-bottom:5px; border-top: 1px solid #eee;" onclick="userlogout()">
+                        Logout
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div class="homewrapper main-content">
+        <div class="container-fluid px-0">
+            <div class="backImg">
+                <div class="backOver">
+                    <center>
+                        <div class="searchHead px-4 py-5">
+                            <h2 class="font-weight-bold text-light">Stay at Home. Now your home is your clinic. <br />
+                                Consult Doctors Online</h2>
+                        </div>
+                        <div class="searchBox pb-5 d-flex">
+
+                            <div class="position-relative searchstyle">
+                                <input type="search" placeholder="Search location" class="searchFields"
+                                    id="searchLocation" name="location" value="Getting location..."
+                                    onfocus="openLocationSuggestion()" oninput="filterFunction()" autocomplete="false" required>
+                                <img src="assets/svg/globe.svg" class="fonticon" />
+                                <div class="suggestions">
+
+                                </div>
+                            </div>
+                            <div class="position-relative searchstyle">
+                                <select name="type" id="searchType" class="selectType" onchange="searchType()">
+                                    <option value="speciality">Speciality</option>
+                                    <option value="name">Doctor Name</option>
+                                    <option value="hospital">Hospital Name</option>
+                                </select>
+                            </div>
+                            <div class="position-relative searchstyle" style="margin-left: 4px">
+                                <input type="search" placeholder="Search by Speciality" class="searchFields"
+                                    id="searchDoctor" onfocus="openDoctorSuggestion(getSpecialityList)" autocomplete="false"
+                                    oninput="filterDoctor()" name="doctor" required>
+                                <img src="assets/svg/darksearch.svg" class="fonticon" />
+                                <div class="suggestions">
+
+                                </div>
+                            </div>
+                            <div class="position-relative searchstyle ml-2">
+                                <button class="searchBtn" onclick="getAllDoctors('search_city_only')">Search </button>
+                            </div>
+                        </div>
+                    </center>
+                </div>
+            </div>
+        </div>
+        <div class="searchResult p-4" id="results">
+
+        </div>
+        <div class="sitedetails container">
+            <!-- <h1 class="text-center mb-5">Make your life easy with BOPDOP</h1> -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="sideDetails px-5">
+                        <h1 class="font-weight-bold">Consult With Doctor Online</h1>
+                        <div class="py-5">
+                            <p class="sideText">
+                                Whether it is a second opinion or a follow up question,
+                                why visit the doctor, when you can check with them online?
+                            </p>
+                            <a class="sideLink" href="search.html">Consult now -></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="sideimage shadow-lg rounded">
+                        <img src="assets/mainsvg/consult.svg" class="responsive">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <img src="assets/svg/wavelight.svg">
+        <div class="sitedetails container-fluid pb-3" style="background-color: #f1f1f1;">
+            <!-- <h1 class="text-center mb-5">Make your life easy with BOPDOP</h1> -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="sideimage shadow-lg rounded">
+                        <img src="assets/mainsvg/personPhone.svg" class="responsive">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="sideDetails px-5">
+                        <h1 class="font-weight-bold">Book Appointment With Doctors Easily</h1>
+                        <div class="py-5">
+                            <p class="sideText">
+                                BOPDOP enables patients to search for top doctors in the locality and book confirmed
+                                appointments.
+                            </p>
+                            <a class="sideLink" href="search.html">Book Now -> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="background-color: #ffffff;transform: rotate(180deg);position: relative; z-index: -1;">
+            <img src="assets/svg/wavelight.svg" alt="" srcset="">
+        </div>
+        <div class="sitedetails container">
+            <!-- <h1 class="text-center mb-5">Make your life easy with BOPDOP</h1> -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="sideDetails px-5">
+                        <h1 class="font-weight-bold">Get live OPD info of your Doctor</h1>
+                        <div class="py-5">
+                            <p class="sideText">
+                                Will get update of current OPD/Token number,
+                                after tanking appointment with any doctor.
+                            </p>
+                            <a class="sideLink" href="search.html">Book Now -> </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="sideimage shadow-lg rounded">
+                        <img src="assets/mainsvg/consult.svg" class="responsive">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="assets/svg/wavelight.svg">
+        <div class="sitedetails container-fluid pb-3" style="background-color: #f1f1f1;">
+            <!-- <h1 class="text-center mb-5">Make your life easy with BOPDOP</h1> -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="sideimage shadow-lg rounded">
+                        <img src="assets/mainsvg/delivery.svg" class="responsive">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="sideDetails px-5">
+                        <h1 class="font-weight-bold">Home Delivery Medicines</h1>
+                        <div class="py-5">
+                            <p class="sideText">
+                                BOPDOP enables patients to search for Medicines and get delivery at Home.
+                            </p>
+                            <a class="sideLink" href="#">Under Construction Now -> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="background-color: #ffffff;transform: rotate(180deg);position: relative; z-index: -1;">
+            <img src="assets/svg/wavelight.svg" alt="" srcset="">
+        </div>
+        <div class="container category px-5 pt-5 mt-5">
+            <h1>TOP CATEGORIES</h1>
+            <div class="categoryBox">
+                <div class="catBox shadow-sm">
+                    <h4>Dentist</h4>
+                </div>
+                <div class="catBox shadow-sm">
+                    <h4>Physiotherapy</h4>
+                </div>
+                <div class="catBox shadow-sm">
+                    <h4>Orthopaedics</h4>
+                </div>
+                <div class="catBox shadow-sm">
+                    <h4>Neurosurgery</h4>
+                </div>
+                <div class="catBox shadow-sm">
+                    <h4>Joint Replacement</h4>
+                </div>
+                <div class="catBox shadow-sm">
+                    <h4>Health Check</h4>
+                </div>
+                <div class="catBox shadow-sm">
+                    <h4>Cardiology</h4>
+                </div>
+                <div class="catBox shadow-sm">
+                    <h4>Anaesthesia</h4>
+                </div>
+                <div class="catBox shadow-sm">
+                    <h4>Allergy And Immunology</h4>
+                </div>
+            </div>
+        </div>
+        <div style="background-color: #fff;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#0747a6" fill-opacity="1" d="M0,320L1440,96L1440,320L0,320Z"></path>
+            </svg>
+        </div>
+
+        <div class="footer text-center text-light">
+            <h1 class="font-weight-bold">BOPDOP</h1>
+            <p>Copyright © 2020, BOPDOP. All rights reserved.</p>
+        </div>
+    </div>
+    <div class="enquiry main-content">
+        <div>
+            <img class="enquiry-logo float-right"
+            src="assets/svg/question.svg" alt="enquiry" onclick="openEnquiry()">
+        </div>
+        <div class="card">
+            <div class="card-header">
+                Enquiry
+            </div>
+            <div class="card-body" style="height: auto;">
+                <div class="form-group">
+                    <label for="enqName">Name</label>
+                    <input type="text" class="form-control" id="enqName" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="enqMobile">Mobile</label>
+                    <input type="number" class="form-control" id="enqMobile" placeholder="Mobile Number">
+                </div>
+                <div class="form-group">
+                    <label for="enqMessage">Message</label>
+                    <textarea class="form-control" id="enqMessage" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn" style="background-color: #25b7d3;
+                        border: 1px solid #25b7d3;
+                        color: #fff;" onclick="enquiry(this)">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="js/mytoast.js"></script>
+<script src="js/variable.js"></script>
+<script src="js/auth/userauth.js"></script>
+<script src="js/dash.js"></script>
+<script src="js/search/search.js"></script>
+<script src="js/home.js"></script>
+<script src="js/apis/logout.js"></script>
+<script src="js/geolocation.js"></script>
+<script>
+    $(window).on("load", function () {
+        setTimeout(function () {
+            $('#main-loader').fadeOut();
+            $('.main-content').fadeIn();
+            getlocation();
+            getPName();
+        }, 10)
+    });
+
+    $(document).on('click', function (event) {
+        if (!$(event.target).closest('.searchstyle').length) {
+            // ... clicked on the 'body', but not inside of #menutop
+            closeSuggestion();
+        }
+    });
+</script>
+
+</html>

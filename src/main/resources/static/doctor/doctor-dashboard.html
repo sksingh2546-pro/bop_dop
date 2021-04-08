@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Dashboard | BOPDOP</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="../css/mainCss.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/loader.css">
+</head>
+<script src="../js/auth/auth.js"></script>
+
+<body style="background-color: #f1f1f1;" onload="getDoc(),getCount()">
+    
+    <nav class="homenav shadow-none">
+        <label for="check" class="checkBtn"><i class="fas fa-bars"></i></label>
+        <input type="checkbox" id="check">
+        <label class="logo" onclick="location.href='doctor-dashboard.html'">B<span style="color: var(--danger);">OPD</span>OP</label>
+        <ul>
+            <li style="border-left: 1px solid #eee;">
+                <span id="userMenu"><img src="../assets/img/user.png"><span style="position: relative;"
+                        class="docName"></span><i class="fas fa-angle-down ml-2"></i></span>
+                <div class="triangle2"></div>
+                <div class="userMenu">
+                    <div class="option" onclick="location.href='profile.html'">
+                        Profile
+                    </div>
+                    <!-- <div class="option colorTheme">
+                            Color Theme
+                        </div>
+                        <div class="colorOption py-2">
+                            <div id="color2" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color3" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color4" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color1" class="color" onclick="changeColor(this)"></div> 
+                        </div> -->
+                    <div class="option" style="padding-bottom:5px; border-top: 1px solid #eee;" 
+                    onclick="logout()">
+                        Logout
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div class="sideNavbar">
+        <ul>
+            <li class="sideActive">
+                <a href="doctor-dashboard.html">
+                    <i class="fas fa-tachometer-alt mr-2"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="manage-slots.html">
+                    <i class="fas fa-calendar-alt mr-2"></i>
+                    <span>Manage Slots</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="appointed-patients.html">
+                    <i class="fas fa-user-injured mr-2"></i>
+                    <span>Appointed Patients</span>
+                </a>
+            </li>
+            <li class>
+                <a href="appoitment-request.html">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span>Appointment Requests</span>
+                </a>
+            </li>
+            <li >
+                <a href="today-visits.html">
+                    <i class="fas fa-calendar-check mr-2"></i>
+                    <span>Today Visits</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="consultation.html">
+                    <i class="fas fa-comment-medical mr-2"></i>
+                    <span>Consultation</span>
+                </a>
+            </li>
+            <li class>
+                <a href="total-visited-patient.html" id="visited">
+                    <i class="fas fa-hospital-user mr-2"></i>
+                    <span>Total Visits</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="consulted-patient.html" id="consulted">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span>Consulted Patient</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="add-handlers.html">
+                    <i class="fas fa-user-cog mr-2"></i>
+                    <span>Add Handlers</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="profile.html">
+                    <i class="fas fa-user mr-2"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:logout()">
+                    <i class="fas fa-sign-out-alt mr-2"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+    <div class="sideContent">
+        <div class="container-fluid">
+            <div class="row mb-4 flexSeparate pr-4">
+                <h4 class="text-shadow">Welcome <span class="docName"></span><span id="wish"></span></h4>
+                <h5>
+                    <span id="todayDate"></span>
+                </h5>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="sumBox shadow-sm rounded" onclick="location.href = 'today-visits.html'" >
+                        <div>
+                            <i class="fas fa-user-injured"></i>
+                        </div>
+                        <div class="mx-4">
+                            <span class="span" id="todayTotalPatient"></span><br />
+                            <span><small>Today Patient</small></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="sumBox shadow-sm rounded" onclick="location.href = 'add-handlers.html'" >
+                        <i class="fas fa-users-cog" style="color: rgb(91, 218, 91);"></i>
+                        <div class="mx-4">
+                            <span class="span" id="todayCompletedPatient"></span><br>
+                            <span><small>Active Handlers</small></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="sumBox shadow-sm rounded" onclick="location.href = 'appointed-patients.html'">
+                        <i class="fas fa-exclamation-circle" style="color: rgb(253, 186, 2);"></i>
+                        <div class="mx-4">
+                            <span class="span" id="todayNotCompletedPatient"></span><br>
+                            <span><small>Unattended Patient</small></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="sumBox shadow-sm rounded" onclick="location.href = 'total-visited-patient.html'">
+                        <i class="fas fa-hospital-user" style="color: royalblue;"></i>
+                        <div class="mx-4">
+                            <span class="span" id="todayRegisteredPatient"></span><br>
+                            <span><small>Registered Patient</small></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-2 animate__animated animate__bounceInUp">
+                        <div class="card-header flexSeparate pr-4 bg-theme text-light">
+                            Appointed Patients
+                            <span>
+                                Slot
+                                <input type="text" id="slotTime" class="mx-2 pl-2 rounded" value="10 : 30">
+                            </span>
+                        </div>
+                        <div class="card-body" style="height: auto;">
+                            <p class="text-muted text-left">Click on patient for checkup</p>
+                            <table class="patientTable table-striped table-hover">
+                                <thead>
+                                    <th>Name</th>
+                                    <th>Age</th>
+                                    <th>Disease</th>
+                                    <th>Contact Number</th>
+                                </thead>
+                                <tbody id="appointedPatients">
+                                    <tr>
+                                        <td>Rahul</td>
+                                        <td>26</td>
+                                        <td>Fever</td>
+                                        <td>9856231245</td>
+                                        <div class="hover"></div>
+                                    </tr>
+                                    <tr>
+                                        <td>Rohit</td>
+                                        <td>24</td>
+                                        <td>Cold</td>
+                                        <td>8956451223</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Amit</td>
+                                        <td>23</td>
+                                        <td>Jaundice</td>
+                                        <td>7001294523</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rohan</td>
+                                        <td>18</td>
+                                        <td>Cancer</td>
+                                        <td>9856231245</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card text-center animate__animated animate__bounceInDown">
+                        <div class="card-header bg-theme text-light">
+                            Summary
+                        </div>
+                        <div class="card-body" style="height: 400px;">
+                            <div class="text-center">
+                                <div class="summaryTab">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="sumBox shadow-sm rounded"
+                                                onclick="location.href = 'appointedPatients.html'">
+                                                <i class="fas fa-user-injured"></i><br>
+                                                <span class="span">100</span><br>
+                                                <span><small>Today Patient</small></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="sumBox rounded"
+                                                onclick="location.href = 'appointedPatients.html'">
+                                                <i class="fas fa-check-circle" style="color: rgb(91, 218, 91);"></i><br>
+                                                <span class="span">50</span><br>
+                                                <span><small>Completed Patient</small></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row my-2">
+                                        <div class="col-sm-6">
+                                            <div class="sumBox rounded"
+                                                onclick="location.href = 'appointedPatients.html'">
+                                                <i class="fas fa-exclamation-circle"
+                                                    style="color: rgb(253, 186, 2);"></i><br>
+                                                <span class="span">50</span><br>
+                                                <span><small>Unattended Patient</small></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="sumBox rounded"
+                                                onclick="location.href = 'totalPatient.html'">
+                                                <i class="fas fa-hospital-user" style="color: royalblue;"></i><br>
+                                                <span class="span">150</span><br>
+                                                <span><small>Registered Patient</small></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <!-- <div class="patientCheckupModal animate__animated" id="patientCheckupModal">
+        <div class="popupHeader">
+            <span>Checking Patient : Rahul</span>
+            <i class="fas fa-times-circle"></i>
+        </div>
+        <div class="popupBody">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="basicInfo p-3">
+                        <div class="card text-center animate__animated animate__bounceInUp">
+                            <div class="card-header bg-theme text-light">
+                              Profile
+                            </div>
+                            <div class="card-body">
+                                <center>
+                                    <div class="profileImg">
+        
+                                    </div>
+                                    <div class="profileDetails mt-2" style="font-size: 15px;">
+                                        <span>Rahul</span><br>
+                                        <span style="color: #777;font-size: 11px;">21yrs  Male</span>
+                                        <hr>
+                                    </div>
+                                </center>
+                                <div class="contact">
+                                    <div class="key text-left">
+                                        <span style="font-weight: 500;">Contact</span><br>
+                                        <span style="font-weight: 500;">Email</span>
+                                    </div>
+                                    <div class="value text-left">
+                                        <span>9685741223</span><br>
+                                        <span>rahul@mail.com</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="basicInfo p-3">
+                        <div class="card text-center animate__animated animate__bounceInUp">
+                            <div class="card-header bg-theme text-light">
+                                <h5>Medication</h5>
+                            </div>
+                            <div class="card-body">
+                                <input type="text" id="medicine" class="inputField my-3 p-3" placeholder="Medicine Name"><br>
+                                <input type="text" id="quantity" class="inputField my-3 p-3" placeholder="Amount"><br>
+                                <input type="button" id="add" onclick="addMedicine()" class="inputField bg-theme text-light my-3 p-3" value="Add">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="basicInfo p-3">
+                        <div class="card text-center animate__animated animate__bounceInUp">
+                            <div class="card-header bg-theme text-light">
+                                <h5>Prescription</h5>
+                            </div>
+                            <div class="card-body">
+                                <table>
+                                    <thead></thead>
+                                    <tbody id="medTable">
+                                        
+                                    </tbody>
+                                </table>
+                                <div class="row special">
+                                    <div class="col-sm-8">
+                                        <input type="text" class="inputField my-3 p-3" placeholder="Special Instruction">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input type="button" id="finalSubmit" class="inputField my-3 py-3 px-1" style="font-size: 12px;" value="submit">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="backBlack"></div> -->
+    <div class="text-center my-5 py-5" id="loading"style="display:block;background-color: #f1f1f1;
+                position: absolute;top:0;left:0;width: 100%;height: 91vh;">
+        <img src="../assets/img/loader3.gif" style="height: 70px;margin-top: 150px;"/>
+        <h5 class="mt-3">Loading...</h5>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="../js/variable.js"></script>
+<script src="../js/dash.js"></script>
+<script src="../js/apis/login.js"></script>
+<script src="../js/dash/doctorDash.js"></script>
+<script>
+    document.getElementsByClassName("checkBtn")[0].addEventListener("click", () => {
+        if (document.getElementById("check").checked == true) {
+            document.getElementsByClassName("sideNavbar")[0].style.left = "-100%"
+        }
+        else if (document.getElementById("check").checked == false) {
+            document.getElementsByClassName("sideNavbar")[0].style.left = "0px"
+        }
+    });
+    
+</script>
+<script src="../js/apis/logout.js"></script>
+</html>

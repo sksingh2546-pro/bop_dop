@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Slots | BOPDOP</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="../css/mainCss.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/manageslots.css">
+</head>
+<style>
+    .card-header {
+        border: none;
+        border-bottom: 1px solid #ddd;
+        background: #fff;
+    }
+</style>
+<script src="../js/auth/handlerAuth.js"></script>
+
+<body style="background-color: #fff;" onload="getDateSlot()">
+    <nav class="homenav shadow-none">
+        <label for="check" class="checkBtn"><i class="fas fa-bars"></i></label>
+        <input type="checkbox" id="check">
+        <label class="logo" onclick="location.href='doctor-dashboard.html'">B<span style="color: var(--danger);">OPD</span>OP</label>
+        <!--
+        <div class="row mb-3 align-items-center">
+            <div style="width:100%;text-align: right;">
+                Doctor <input type="text" id="doctor_name" class="ml-3 border" style="padding:3px 10px;outline: none;"
+                    readonly>
+            </div>
+            -->
+        <!--
+        <ul>
+            <li style="border-left: 1px solid #eee;">
+             
+                <span id="userMenu"><img src="../assets/img/user.png"><span style="position: relative;"
+                        class="docName"></span><i class="fas fa-angle-down ml-2"></i></span>
+                <div class="triangle2"></div>
+
+                
+                </div>
+                <div class="userMenu">
+                    <div class="option" onclick="location.href='profile.html'">
+                        Profile
+                    </div>
+                    
+                    <div class="option" style="padding-bottom:5px; border-top: 1px solid #eee;" 
+                    onclick="logout()">
+                        Logout
+                    </div>
+                </div> 
+            </li>
+        </ul> -->
+    </nav>
+    <div class="sideNavbar">
+        <ul>
+            <li>
+                <a href="index.html">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span>Live OPD</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="appointed-patients.html">
+                    <i class="fas fa-tachometer-alt mr-2"></i>
+                    <span>Appointed Patients</span>
+                </a>
+            </li>
+            <li class="sideActive">
+                <a href="manage-slots.html">
+                    <i class="fas fa-calendar-alt mr-2"></i>
+                    <span>Manage Slots</span>
+                </a>
+            </li>
+            <li class>
+                <a href="total-visited-patients.html" id="visited">
+                    <i class="fas fa-hospital-user mr-2"></i>
+                    <span>Total Patients visited</span>
+                </a>
+            </li>
+            <li >
+                <a href="#" onclick="handlerlogout()">
+                    <i class="fas fa-sign-out-alt mr-2"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+            
+    </div>
+    <div class="sideContent">
+        <div class="container-fluid py-2 appointment">
+            <div class="row">
+                <div class="col-11">
+                    <div class="py-2">
+                        <h3 class="font-weight-bold">MANAGE SLOTS</h3>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <div class="py-2">
+                        <i class="fas fa-question-circle" id="slothelp" data-toggle="popover"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="appointDate">
+                        <div class="d-flex justify-content-right align-items-center arrows">
+                            <i class="fas fa-chevron-left" style="color: dodgerblue;"></i>
+                        </div>
+                        <div class="pick">
+                            <i class="fas fa-unlock daylock" onclick="dateToggle(this)"></i>
+                            <div class="">
+                                <span class="week"></span><br>
+                                <span class="day"></span>
+                            </div>
+                            <input type="checkbox" class="apdate" value="" checked>
+                        </div>
+                        <div class="pick">
+                            <i class="fas fa-unlock daylock" onclick="dateToggle(this)"></i>
+                            <div class="">
+                                <span class="week"></span><br>
+                                <span class="day"></span>
+                            </div>
+                            <input type="checkbox" class="apdate" value="" checked>
+                        </div>
+                        <div class="pick">
+                            <i class="fas fa-unlock daylock" onclick="dateToggle(this)"></i>
+                            <div class="">
+                                <span class="week"></span><br>
+                                <span class="day"></span>
+                            </div>
+                            <input type="checkbox" class="apdate" value="" checked>
+                        </div>
+                        <div class="pick">
+                            <i class="fas fa-unlock daylock" onclick="dateToggle(this)"></i>
+                            <div class="">
+                                <span class="week"></span><br>
+                                <span class="day"></span>
+                            </div>
+                            <input type="checkbox" class="apdate" value="" checked>
+                        </div>
+                        <div class="pick">
+                            <i class="fas fa-unlock daylock" onclick="dateToggle(this)"></i>
+                            <div class="">
+                                <span class="week"></span><br>
+                                <span class="day"></span>
+                            </div>
+                            <input type="checkbox" class="apdate" value="" checked>
+                        </div>
+                        <div class="pick">
+                            <i class="fas fa-unlock daylock" onclick="dateToggle(this)"></i>
+                            <div class="">
+                                <span class="week"></span><br>
+                                <span class="day"></span>
+                            </div>
+                            <input type="checkbox" class="apdate" value="" checked>
+                        </div>
+                        <div class="pick">
+                            <i class="fas fa-unlock daylock" onclick="dateToggle(this)"></i>
+                            <div class="">
+                                <span class="week"></span><br>
+                                <span class="day"></span>
+                            </div>
+                            <input type="checkbox" class="apdate" value="" checked>
+                        </div>
+                        <div class="d-flex justify-content-left align-items-center arrows">
+                            <i class="fas fa-chevron-right" style="color: dodgerblue;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div id="instruction" style="height: 250px;">
+                        <p class="text-muted">Click on date to manage slots</p>
+                        <ul>
+                            <li><i class="fas fa-unlock mr-2"></i> means open slot</li>
+                            <li><i class="fas fa-lock mr-2"></i> means close slot</li>
+                        </ul>
+                    </div>
+                    <div class="loader">
+                        <img src="../assets/img/loader.gif" height="60px">
+                        <span>Loading slots...</span>
+                    </div>
+                    <div class="timeSlot">
+                        <div id="overlay">
+                            <p>This Date is not available for appointment</p>
+                            <small>To Unlock it Click on lock icon and manage your slots</small>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="slotBox p-1">
+                                    <div class="slotTimeHead rounded">
+                                        <img src="../assets/svg/sunrise.svg" class="mr-2" height="20px">
+                                        <span>Morning</span>
+                                    </div>
+                                    <div class="grid slotTime mt-3 ">
+                                        <div class="slot ml-1 shadow-sm" id="" onclick="togglelock(this)">
+                                            <input type="checkbox" class="lock" checked value="10">
+                                            <span class="singleSlot">10:00am</span>
+                                            <i class="fas fa-unlock"></i>
+                                        </div>
+                                        <div class="slot ml-1 shadow-sm" onclick="togglelock(this)">
+                                            <input type="checkbox" class="lock" checked value="10.3">
+                                            <span class="singleSlot">10:30am</span>
+                                            <i class="fas fa-unlock"></i>
+                                        </div>
+                                        <div class="slot ml-1 shadow-sm" onclick="togglelock(this)">
+                                            <input type="checkbox" class="lock" checked value="11">
+                                            <span class="singleSlot">11:00am</span>
+                                            <i class="fas fa-unlock"></i>
+                                        </div>
+                                        <div class="slot ml-1 shadow-sm" onclick="togglelock(this)">
+                                            <input type="checkbox" class="lock" checked value="11.3">
+                                            <span class="singleSlot">11:30am</span>
+                                            <i class="fas fa-unlock"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="slotBox p-1">
+                                    <div class="slotTimeHead rounded">
+                                        <img src="../assets/svg/sun.svg" class="mr-2" height="20px">
+                                        <span style="padding-top:11px ;">Afternoon</span>
+                                    </div>
+                                    <div class="grid slotTime mt-3">
+                                        <div class="slot ml-1 shadow-sm" onclick="togglelock(this)">
+                                            <input type="checkbox" class="lock" checked value="12">
+                                            <span class="singleSlot">12:00pm</span>
+                                            <i class="fas fa-unlock"></i>
+                                        </div>
+                                        <div class="slot ml-1 shadow-sm" onclick="togglelock(this)">
+                                            <input type="checkbox" class="lock" checked value="12.3">
+                                            <span class="singleSlot">12:30pm</span>
+                                            <i class="fas fa-unlock"></i>
+                                        </div>
+                                        <div class="slot ml-1 shadow-sm" onclick="togglelock(this)">
+                                            <input type="checkbox" class="lock" checked value="13">
+                                            <span class="singleSlot">01:00pm</span>
+                                            <i class="fas fa-unlock"></i>
+                                        </div>
+                                        <div class="slot ml-1 shadow-sm" onclick="togglelock(this)">
+                                            <input type="checkbox" class="lock" checked value="13.3">
+                                            <span class="singleSlot">01:30pm</span>
+                                            <i class="fas fa-unlock"></i>
+                                        </div>
+                                        <div class="slot ml-1 shadow-sm" onclick="togglelock(this)">
+                                            <input type="checkbox" class="lock" checked value="14">
+                                            <span class="singleSlot">02:00pm</span>
+                                            <i class="fas fa-unlock"></i>
+                                        </div>
+                                        <div class="slot ml-1 shadow-sm" onclick="togglelock(this)">
+                                            <input type="checkbox" class="lock" checked value="14.3">
+                                            <span class="singleSlot">02:30pm</span>
+                                            <i class="fas fa-unlock"></i>
+                                        </div>
+                                        <div class="slot ml-1 shadow-sm" onclick="togglelock(this)">
+                                            <input type="checkbox" class="lock" checked value="15">
+                                            <span class="singleSlot">03:00pm</span>
+                                            <i class="fas fa-unlock"></i>
+                                        </div>
+                                        <div class="slot ml-1 shadow-sm" onclick="togglelock(this)">
+                                            <input type="checkbox" class="lock" checked value="15.3">
+                                            <span class="singleSlot">03:30pm</span>
+                                            <i class="fas fa-unlock"></i>
+                                        </div>
+                                        <div class="slot ml-1 shadow-sm" onclick="togglelock(this)">
+                                            <input type="checkbox" class="lock" checked value="16">
+                                            <span class="singleSlot">04:00pm</span>
+                                            <i class="fas fa-unlock"></i>
+                                        </div>
+                                        <div class="slot ml-1 shadow-sm" onclick="togglelock(this)">
+                                            <input type="checkbox" class="lock" checked value="16.3">
+                                            <span class="singleSlot">04:30pm</span>
+                                            <i class="fas fa-unlock"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="slotBox p-1">
+                                    <div class="slotTimeHead rounded">
+                                        <img src="../assets/svg/sunset.svg" class="mr-2" height="20px">
+                                        <span>Evening</span>
+                                    </div>
+                                    <div class="grid slotTime mt-3">
+                                        <div class="slot ml-1 shadow-sm" onclick="togglelock(this)">
+                                            <input type="checkbox" class="lock" checked value="17">
+                                            <span class="singleSlot">05:00pm</span>
+                                            <i class="fas fa-unlock"></i>
+                                        </div>
+                                        <div class="slot ml-1 shadow-sm" onclick="togglelock(this)">
+                                            <input type="checkbox" class="lock" checked value="17.3">
+                                            <span class="singleSlot">05:30pm</span>
+                                            <i class="fas fa-unlock"></i>
+                                        </div>
+                                        <div class="slot ml-1 shadow-sm" onclick="togglelock(this)">
+                                            <input type="checkbox" class="lock" checked value="18">
+                                            <span class="singleSlot">06:00pm</span>
+                                            <i class="fas fa-unlock"></i>
+                                        </div>
+                                        <div class="slot ml-1 shadow-sm" onclick="togglelock(this)">
+                                            <input type="checkbox" class="lock" checked value="18.3">
+                                            <span class="singleSlot">06:30pm</span>
+                                            <i class="fas fa-unlock"></i>
+                                        </div>
+                                        <div class="slot ml-1 shadow-sm" onclick="togglelock(this)">
+                                            <input type="checkbox" class="lock" checked value="19">
+                                            <span class="singleSlot">07:00pm</span>
+                                            <i class="fas fa-unlock"></i>
+                                        </div>
+                                        <div class="slot ml-1 shadow-sm" onclick="togglelock(this)">
+                                            <input type="checkbox" class="lock" checked value="19.3">
+                                            <span class="singleSlot">07:30pm</span>
+                                            <i class="fas fa-unlock"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <button class="btn btn-primary float-right" id="updateSlot" onclick="addslots()">update
+                                    <img class="loaderimg ml-2" src="../assets/loader/whiteloader.svg"
+                                        height="20px"></button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="../js/variable.js"></script>
+<script src="../js/mytoast.js"></script>
+<script src="../js/dash.js"></script>
+<!-- <script src="../js/apis/login.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+<script src="../js/handler/handler.js"></script>
+<script src="../js/popup/popup.js"></script>
+<script src="../js/apis/logout.js"></script>
+<script src="../js/handler/dateprint.js"></script>
+<script src="../js/handler/manageslots.js"></script>
+</html>

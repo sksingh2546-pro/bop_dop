@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Slots | BOPDOP</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="../css/mainCss.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/manageslots.css">
+    <link rel="stylesheet" href="css/slot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+</head>
+<style>
+    .card-header {
+        border: none;
+        border-bottom: 1px solid #ddd;
+        background: #fff;
+    }
+</style>
+<!-- <script src="../js/auth/auth.js"></script> -->
+
+<body style="background-color: #fff;">
+    <nav class="homenav shadow-none">
+        <label for="check" class="checkBtn"><i class="fas fa-bars"></i></label>
+        <input type="checkbox" id="check">
+        <label class="logo" onclick="location.href='doctor-dashboard.html'">B<span
+                style="color: var(--danger);">OPD</span>OP</label>
+        <ul>
+            <li style="border-left: 1px solid #eee;">
+                <span id="userMenu"><img src="../assets/img/user.png"><span style="position: relative;"
+                        class="docName"></span><i class="fas fa-angle-down ml-2"></i></span>
+                <div class="triangle2"></div>
+                <div class="userMenu">
+                    <div class="option" onclick="location.href='profile.html'">
+                        Profile
+                    </div>
+                    <!-- <div class="option colorTheme">
+                            Color Theme
+                        </div>
+                        <div class="colorOption py-2">
+                            <div id="color2" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color3" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color4" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color1" class="color" onclick="changeColor(this)"></div> 
+                        </div> -->
+                    <div class="option" style="padding-bottom:5px; border-top: 1px solid #eee;" onclick="logout()">
+                        Logout
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div class="sideNavbar">
+        <ul>
+            <li class="">
+                <a href="doctor-dashboard.html">
+                    <i class="fas fa-tachometer-alt mr-2"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="sideActive">
+                <a href="manage-slots.html">
+                    <i class="fas fa-calendar-alt mr-2"></i>
+                    <span>Manage Slots</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="appointed-patients.html">
+                    <i class="fas fa-user-injured mr-2"></i>
+                    <span>Appointed Patients</span>
+                </a>
+            </li>
+            <li class>
+                <a href="appoitment-request.html">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span>Appointment Requests</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="consultation.html">
+                    <i class="fas fa-comment-medical mr-2"></i>
+                    <span>Consultation</span>
+                </a>
+            </li>
+
+            <li class>
+                <a href="total-visited-patient.html" id="visited">
+                    <i class="fas fa-hospital-user mr-2"></i>
+                    <span>Total Patients</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="consulted-patient.html" id="consulted">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span>Consulted Patient</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="add-handlers.html">
+                    <i class="fas fa-user-cog mr-2"></i>
+                    <span>Add Handlers</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="profile.html">
+                    <i class="fas fa-user mr-2"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:logout()">
+                    <i class="fas fa-sign-out-alt mr-2"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+    <div class="sideContent slot-container">
+        <div class="container-fluid py-2 appointment">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Schedule Timings</h5>
+                    <div class="profile-box">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card schedule-widget mb-0">
+                                    <div class="schedule-header">
+                                        <div class="schedule-nav">
+                                            <ul class="nav nav-tabs nav-justified">
+                                                <li class="nav-item"><a data-toggle="tab" href="#slot_sunday"
+                                                        class="nav-link active">Sunday</a></li>
+                                                <li class="nav-item"><a data-toggle="tab" href="#slot_monday"
+                                                        class="nav-link">Monday</a></li>
+                                                <li class="nav-item"><a data-toggle="tab" href="#slot_tuesday"
+                                                        class="nav-link">Tuesday</a></li>
+                                                <li class="nav-item"><a data-toggle="tab" href="#slot_wednesday"
+                                                        class="nav-link">Wednesday</a></li>
+                                                <li class="nav-item"><a data-toggle="tab" href="#slot_thursday"
+                                                        class="nav-link">Thursday</a></li>
+                                                <li class="nav-item"><a data-toggle="tab" href="#slot_friday"
+                                                        class="nav-link">Friday</a></li>
+                                                <li class="nav-item"><a data-toggle="tab" href="#slot_saturday"
+                                                        class="nav-link">Saturday</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="tab-content schedule-cont">
+                                        <div id="slot_sunday" class="tab-pane fade active show">
+                                            <h4 class="card-title d-flex justify-content-between">
+                                                <span>Time Slots</span>
+                                                <a data-toggle="modal" data-target="#add-time-slots"
+                                                    href="#add-time-slots" class="edit-link">
+                                                    <i class="fas fa-plus-circle"></i>
+                                                    Add Slot
+                                                </a>
+                                            </h4>
+                                            <p class="text-muted mb-0">Not Available</p>
+                                        </div>
+                                        <div id="slot_monday" class="tab-pane fade">
+                                            <h5 class="card-title d-flex justify-content-between">
+                                                <span>Time Slots</span>
+                                                <a data-toggle="modal" data-target="#add-time-slots"
+                                                    href="#add-time-slots" class="edit-link">
+                                                    <i class="fas fa-edit mr-1"></i>
+                                                    Edit
+                                                </a>
+                                            </h5>
+                                            <div class="doc-times">
+                                                <div class="doc-slot-list">
+                                                    8:00 pm - 11:30 pm
+                                                    <a href="javascript:void(0)" class="delete_schedule" onclick="removeSlot(this)">
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="doc-slot-list">
+                                                    11:30 pm - 1:30 pm
+                                                    <a href="javascript:void(0)" class="delete_schedule" onclick="removeSlot(this)"><i
+                                                            class="fa fa-times"></i></a>
+                                                </div>
+                                                <div class="doc-slot-list">
+                                                    3:00 pm - 5:00 pm
+                                                    <a href="javascript:void(0)" class="delete_schedule" onclick="removeSlot(this)"><i
+                                                            class="fa fa-times"></i></a>
+                                                </div>
+                                                <div class="doc-slot-list">
+                                                    6:00 pm - 11:00 pm
+                                                    <a href="javascript:void(0)" class="delete_schedule" onclick="removeSlot(this)"><i
+                                                            class="fa fa-times"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="slot_tuesday" class="tab-pane fade">
+                                            <h4 class="card-title d-flex justify-content-between"><span>Time
+                                                    Slots</span> <a data-toggle="modal" data-target="#add-time-slots"
+                                                    href="#add-time-slots" class="edit-link"><i
+                                                        class="fas fa-plus-circle"></i> Add Slot</a>
+                                            </h4>
+                                            <p class="text-muted mb-0">Not Available</p>
+                                        </div>
+                                        <div id="slot_wednesday" class="tab-pane fade">
+                                            <h4 class="card-title d-flex justify-content-between"><span>Time
+                                                    Slots</span> <a data-toggle="modal" data-target="#add-time-slots"
+                                                    href="#add-time-slots" class="edit-link"><i
+                                                        class="fas fa-plus-circle"></i> Add Slot</a>
+                                            </h4>
+                                            <p class="text-muted mb-0">Not Available</p>
+                                        </div>
+                                        <div id="slot_thursday" class="tab-pane fade">
+                                            <h4 class="card-title d-flex justify-content-between"><span>Time
+                                                    Slots</span> <a data-toggle="modal" data-target="#add-time-slots"
+                                                    href="#add-time-slots" class="edit-link"><i
+                                                        class="fas fa-plus-circle"></i> Add Slot</a>
+                                            </h4>
+                                            <p class="text-muted mb-0">Not Available</p>
+                                        </div>
+                                        <div id="slot_friday" class="tab-pane fade">
+                                            <h4 class="card-title d-flex justify-content-between"><span>Time
+                                                    Slots</span> <a data-toggle="modal" data-target="#add-time-slots"
+                                                    href="#add-time-slots" class="edit-link"><i
+                                                        class="fas fa-plus-circle"></i> Add Slot</a>
+                                            </h4>
+                                            <p class="text-muted mb-0">Not Available</p>
+                                        </div>
+                                        <div id="slot_saturday" class="tab-pane fade">
+                                            <h4 class="card-title d-flex justify-content-between"><span>Time
+                                                    Slots</span> <a data-toggle="modal" data-target="#add-time-slots"
+                                                    href="#add-time-slots" class="edit-link"><i
+                                                        class="fas fa-plus-circle"></i> Add Slot</a>
+                                            </h4>
+                                            <p class="text-muted mb-0">Not Available</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="add-time-slots" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Add Time Slots</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fas fa-times-circle"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <div class="form-group"><label>Timing Slot Duration</label>
+                                <select class="form-control" id="duration" tabindex="-1" aria-hidden="true">
+                                    <option value="">-</option>
+                                    <option value="15">15 mins</option>
+                                    <option value="30" selected="selected">30 mins</option>
+                                    <option value="45">45 mins</option>
+                                    <option value="60"> 1 Hour</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label class="mylabel" for="start-time">Start Time</label>
+                            <input type="time" name="start-time" id="start-time" class="form-control">
+
+                        </div>
+                        <div class="col-md-5">
+                            <label class="mylabel" for="start-time">End Time</label>
+                            <input type="time" name="end-time" id="end-time" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="button" class="btn btn-success" id="saveBtn">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="../js/variable.js"></script>
+<script src="../js/mytoast.js"></script>
+<script src="slotmaking2.js"></script>
+<script>
+    moment().format();
+</script>
+
+</html>

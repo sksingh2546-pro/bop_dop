@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | BOPDOP</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <link rel="stylesheet" href="../css/mainCss.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+</head>
+<script src="../js/auth/auth.js"></script>
+
+<body style="background-color: #f1f1f1;" onload="getDoc(),getProfile()">
+    <nav class="homenav shadow-none">
+        <label for="check" class="checkBtn"><i class="fas fa-bars"></i></label>
+        <input type="checkbox" id="check">
+        <label class="logo" onclick="location.href='doctor-dashboard.html'">B<span
+                style="color: var(--danger);">OPD</span>OP</label>
+        <ul>
+            <li style="border-left: 1px solid #eee;">
+                <span id="userMenu"><img src="../assets/img/user.png"><span style="position: relative;"
+                        class="docName">Dr. Sahil</span><i class="fas fa-angle-down ml-2"></i></span>
+                <div class="triangle2"></div>
+                <div class="userMenu">
+                    <div class="option" onclick="location.href='profile.html'">
+                        Profile
+                    </div>
+                    <!-- <div class="option colorTheme">
+                            Color Theme
+                        </div>
+                        <div class="colorOption py-2">
+                            <div id="color2" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color3" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color4" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color1" class="color" onclick="changeColor(this)"></div> 
+                        </div> -->
+                    <div class="option" style="padding-bottom:5px; border-top: 1px solid #eee;" onclick="logout()">
+                        Logout
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div class="sideNavbar">
+        <ul>
+            <li class="">
+                <a href="doctor-dashboard.html">
+                    <i class="fas fa-tachometer-alt mr-2"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="manage-slots.html">
+                    <i class="fas fa-calendar-alt mr-2"></i>
+                    <span>Manage Slots</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="appointed-patients.html">
+                    <i class="fas fa-user-injured mr-2"></i>
+                    <span>Appointed Patients</span>
+                </a>
+            </li>
+            <li class>
+                <a href="appoitment-request.html">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span>Appointment Requests</span>
+                </a>
+            </li>
+            <li >
+                <a href="today-visits.html">
+                    <i class="fas fa-calendar-check mr-2"></i>
+                    <span>Today Visits</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="consultation.html">
+                    <i class="fas fa-comment-medical mr-2"></i>
+                    <span>Consultation</span>
+                </a>
+            </li>
+            <li class>
+                <a href="total-visited-patient.html" id="visited">
+                    <i class="fas fa-hospital-user mr-2"></i>
+                    <span>Total Visits </span>
+                </a>
+            </li>
+            <li class="">
+                <a href="consulted-patient.html" id="consulted">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span>Consulted Patient</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="add-handlers.html">
+                    <i class="fas fa-user-cog mr-2"></i>
+                    <span>Add Handlers</span>
+                </a>
+            </li>
+            <li class="sideActive">
+                <a href="profile.html">
+                    <i class="fas fa-user mr-2"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:logout()">
+                    <i class="fas fa-sign-out-alt mr-2"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+    <div class="sideContent">
+        <div class="container-fluid my-4">
+            <div class="row mb-2 flexSeparate pr-4">
+                <h4 style="margin-left:50px ;" class="text-shadow">User Profile</h4>
+                <h5>
+                    <span id="todayDate"></span>
+                </h5>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card shadow-sm mb-3">
+                        <div class="card-body py-5" style="height: auto;background-color: #fff;text-align: center;">
+                            <img src="../assets/img/user.png" height="180px"
+                                style="border: 1px solid #eee;border-radius: 10px;">
+                            <h6 class="my-3" id="doctorTitle"></h6>
+                            <span style="background-color: var(--primary);color: #fff;
+                                font-size: 12px; padding: 10px; border-radius: 20px;"
+                                id="specializationTitle">Doctor</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card shadow-sm">
+                        <div class="card-header" style="border:0;border-bottom: 1px solid #eee;background-color: #fff;">
+                            Account Details
+                            <i class="fas fa-edit float-right" onclick="editProfile()"></i>
+                        </div>
+                        <div class="card-body" style="height: auto;">
+                            <form class="needs-validation" id="profile" novalidate>
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustom01">Full name</label>
+                                        <input type="text" class="form-control" id="name1" placeholder="First name"
+                                            value="" required disabled>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustom02">Specialization</label>
+                                        <input type="text" class="form-control" id="specialisation"
+                                            placeholder="Specialization" value="" required disabled>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustom01">Qualification</label>
+                                        <input type="text" class="form-control" id="degree" placeholder="Qualification"
+                                            value="" required disabled>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustom02">Years of Experience</label>
+                                        <input type="text" class="form-control" id="experience" placeholder="Experience"
+                                            value="" required disabled>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustom01">Handlers</label>
+                                        <input type="text" class="form-control" id="handlers"
+                                            placeholder="No. of Hanlders" value="" required disabled>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustom02">Registration Number</label>
+                                        <input type="text" class="form-control" id="registrationNumber"
+                                            placeholder="Registration Number" value="" required disabled>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustom05">Alternate Number</label>
+                                        <input type="number" class="form-control" id="mobile" placeholder="Phone Number"
+                                            value="" required disabled>
+                                        <div class="invalid-feedback">
+                                            Please provide a valid Alternate number.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustomUsername">Email</label>
+                                        <div class="input-group">
+                                            <input type="email" class="form-control" id="email" placeholder="Email"
+                                                value="" aria-describedby="inputGroupPrepend" required disabled>
+                                            <div class="invalid-feedback">
+                                                Please choose a email.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="validationCustom03">Clinic Name</label>
+                                        <input type="text" class="form-control" id="clinicName"
+                                            placeholder="Clinic Name" value="" required disabled>
+                                        <div class="invalid-feedback">
+                                            Please provide a Clinic Name.
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- hidden time -->
+                                <input type="hidden" class="form-control" id="clinicTiming" placeholder="Clinic Timing"
+                                    value="" required disabled>
+
+                                <div class="form-row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="validationCustom03">Clinic Address</label>
+                                        <input type="text" class="form-control" id="clinicAddress"
+                                            placeholder="Clinic Address" value="" required disabled>
+                                        <div class="invalid-feedback">
+                                            Please provide a valid Address.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustom03">Clinic City</label>
+                                        <input type="text" class="form-control" id="city" placeholder="City" value=""
+                                            required disabled>
+                                        <div class="invalid-feedback">
+                                            Please provide a valid city.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustom04">Clinic State</label>
+                                        <input type="text" class="form-control" id="state" placeholder="State" value=""
+                                            required disabled>
+                                        <div class="invalid-feedback">
+                                            Please provide a valid state.
+                                        </div>
+                                    </div>
+                                </div>
+                                <input class="btn btn-primary" type="submit" value="Update Account" disabled/>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card shadow-sm mt-2">
+                        <div class="card-header" style="border:0;border-bottom: 1px solid #eee;background-color: #fff;">
+                            Delete Account
+                        </div>
+                        <div class="card-body" style="height: auto;">
+                            <p>
+                                If you delete your account you won't access your account in future.
+                            </p>
+                            <input type="button" class="btn btn-danger float-right" value="Delete Account"
+                             onclick="deleteAccount()" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="../js/variable.js"></script>
+<script src="../js/apis/login.js"></script>
+<script src="../js/dash.js"></script>
+<script src="../js/mytoast.js"></script>
+
+<script>
+    document.getElementsByClassName("checkBtn")[0].addEventListener("click", () => {
+        if (document.getElementById("check").checked == true) {
+            document.getElementsByClassName("sideNavbar")[0].style.left = "-100%"
+        }
+        else if (document.getElementById("check").checked == false) {
+            document.getElementsByClassName("sideNavbar")[0].style.left = "0px"
+        }
+    });
+</script>
+<script src="../js/apis/logout.js"></script>
+<script src="../js/apis/editProfile.js"></script>
+<script src="../js/apis/loadcities.js"></script>r
+</html>

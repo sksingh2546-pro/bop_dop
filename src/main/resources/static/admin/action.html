@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <nav>
+        <label for="check" class="checkBtn"><i class="fas fa-bars"></i></label>
+        <input type="checkbox" id="check">
+        <label class="logo" onclick="location.href='index.html'">B<span
+                style="color: var(--danger);">OPD</span>OP</label>
+        <ul>
+            <li>
+                <!-- <span href="#" class="notification">
+                    <i class="fas fa-bell" style="color: #777;font-size: 17px;"></i>
+                    <span class="badge">3</span>
+                    <div class="triangle"></div>
+                    <div class="box">
+                        <div class="message">
+                            <img src="../assets/img/message.png" style="border-radius:50%;">
+                            <span class="mesText">Hey amit, raman send you registration request please confirm it.</span>
+                            <span>20 Nov</span>
+                        </div>
+                        <div class="message">
+                            <img src="../assets/img/message.png" style="border-radius:50%;">
+                            <span class="mesText">Hey amit, rohit send you registration request please confirm it.</span>
+                            <span>15 Nov</span>
+                        </div>
+                        <div class="message">
+                            <img src="../assets/img/message.png" style="border-radius:50%;">
+                            <span class="mesText">Hey amit, rahul send you registration request please confirm it.</span>
+                            <span>10 Nov</span>
+                        </div>
+                        <div class="viewmore">
+                            <span><a href="messagePortal.html">view more.....</a></span>
+                        </div>
+                      </div>
+                    </div>
+                </span> -->
+
+            </li>
+            <!-- <li style="border-left: 1px solid #eee;">
+                <span id="userMenu"><img src="../assets/img/user.png"><span style="position: relative;">Ankit</span><i class="fas fa-angle-down ml-2"></i></span>
+                <div class="triangle2"></div>
+                    <div class="userMenu">
+                        <div class="option">
+                            Profile    
+                        </div>
+                        <div class="option colorTheme">
+                            Color Theme
+                        </div>
+                        <div class="colorOption py-2">
+                            <div id="color2" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color3" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color4" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color1" class="color" onclick="changeColor(this)"></div> 
+                        </div> 
+                        <div class="option" style="padding-bottom:5px; border-top: 1px solid #eee;">
+                            Logout
+                        </div>
+                      </div>
+                </div>
+            </li>  -->
+        </ul>
+    </nav>
+    <div class="sidenav">
+        <ul>
+            <li>
+                <a href="index.html" class="active">
+                    <div class="sideOption flexBox">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                </a>
+            </li>
+            <!-- <li>
+                <a href="index.html" class="active">
+                    <div class="sideOption flexBox">
+                        <i class="fas fa-tachometer-alt" ></i>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="totalclinic.html">
+                    <div class="sideOption flexBox">
+                        <i class="fas fa-clinic-medical"></i>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="totalDoctor.html">
+                    <div class="sideOption flexBox">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="totalNurse.html">
+                    <div class="sideOption flexBox">
+                        <i class="fas fa-user-nurse"></i>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="setting.html" class="setting">
+                    <div class="sideOption flexBox">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                </a>
+            </li> -->
+
+        </ul>
+    </div>
+    <section>
+        <div class="container-fluid">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h4 class="text-shadow">Welcome Admin</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="demo animate__animated animate__jackInTheBox">
+                        <div style="width:100%;background-color: #f9f9f9;padding: 15px;padding-left: 20px;">
+                            <span style="font-weight: 600;">Recently added doctors</span>
+                        </div>
+                        <div class="table-responsive" style="padding:10px;font-size: 13px;">
+                            <table class="table table-borderless">
+                                <thead>
+                                    <tr style="color: #999;">
+                                        <td>Name</td>
+                                        <td>Gender</td>
+                                        <td>Age</td>
+                                        <td>Degree</td>
+                                        <td>Applied Date</td>
+                                        <td>Action</td>
+                                    </tr>
+                                </thead>
+                                <tbody id="doctor_data">
+                                    <tr>
+                                        <td>Amitabh</td>
+                                        <td>Male</td>
+                                        <td>40</td>
+                                        <td>MBBS</td>
+                                        <td>20 Oct</td>
+                                        <td>
+                                            <i class="fas fa-money-check text-primary detailBtn"  data-details="">
+                                            </i>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rohit</td>
+                                        <td>Male</td>
+                                        <td>42</td>
+                                        <td>BHMS</td>
+                                        <td>18 Jul</td>
+                                        <td>
+                                            <i class="fas fa-money-check text-primary detailBtn"  data-details="">
+                                            </i>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Aman</td>
+                                        <td>Male</td>
+                                        <td>40</td>
+                                        <td>MBBS</td>
+                                        <td>16 Oct</td>
+                                        <td>
+                                            <i class="fas fa-money-check text-primary detailBtn"  data-details="">
+                                            </i>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rahul</td>
+                                        <td>Male</td>
+                                        <td>39</td>
+                                        <td>BDS</td>
+                                        <td>10 Nov</td>
+                                        <td>
+                                            <i class="fas fa-money-check text-primary detailBtn"  data-details="">
+                                            </i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="whiteBack"></div>
+    <div id="secondModal" class="animate__animated">
+        <i class="fas fa-times"
+            style="color:#000;float: right;margin-top:10px;margin-right: 30px;font-size: 30px;cursor: pointer;"
+            onclick="closeSecondModal()"></i>
+        <div style="padding: 30px;">
+            <h4 class="font-weight-bold ml-4 mt-3" id="doctor_name"></h4>   <!-- doctor name -->
+
+            <div class="row">
+                <div class="clinicInfo">
+                    <div class="flex-item-left">
+                        <h5 class="font-weight-bold"><img src="../assets/svg/info.svg" class="mr-3" 
+                            height="30px">Personal Information</h5>
+                        <table id="personalData" class="clinicData">
+                            <tr>
+                                <th style="padding:10px 50px"><i class="fas fa-user-graduate"></i></th>
+                                <td>Qualification</td>
+                            </tr>
+                            <tr>
+                                <th style="padding:10px 50px"><i class="fas fa-user-md"></i></th>
+                                <td>Specialization</td>
+                            </tr>
+                            
+                            <tr>
+                                <th style="padding:10px 50px"><i class="fab fa-studiovinari"></i></th>
+                                <td>Year of Experience</td>
+                            </tr>
+                            <tr>
+                                <th style="padding:10px 50px"><i class="fas fa-phone"></i></th>
+                                <td>Mobile </td>
+                            </tr>
+                            <tr>
+                                <th style="padding:10px 50px"><i class="far fa-envelope"></i></th>
+                                <td>Email</td>
+                            </tr>
+                            <tr>
+                                <th style="padding:10px 50px"><i class="fas fa-sort-numeric-down-alt"></i></th>
+                                <td>Handlers</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="flex-item-right">
+                        <h5 class="font-weight-bold"><img src="../assets/svg/image.svg">Clinic Information</h5>
+                        <table id="clinicData" class="clinicData">
+                            <tr>
+                                <th style="padding:10px 50px">
+                                    <i class="fas fa-hospital-symbol"></i>
+                                </th>
+                                <td>Kalra Hospital</td>
+                            </tr>
+                            <tr>
+                                <th style="padding:10px 50px"><i class="fas fa-address-card"></i></th>
+                                <td>Address</td>
+                            </tr>
+                            <tr>
+                                <th style="padding:10px 50px"><i class="far fa-building"></i></th>
+                                <td>City</td>
+                            </tr>
+                            <tr>
+                                <th style="padding:10px 50px"><i class="fas fa-map-marker-alt"></i></th>
+                                <td>State</td>
+                            </tr>
+                            <tr>
+                                <th style="padding:10px 50px"><i class="fas fa-tty"></i></th>
+                                <td>Alt number </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+<script src="../js/dash.js"></script>
+<script>
+    window.onload = clickOnRow()
+</script>
+
+</html>

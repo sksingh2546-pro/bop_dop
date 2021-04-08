@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard | BOPDOP</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<style>
+    body {
+        background: #f7f7f7;
+    }
+
+    nav {
+        background: #fff;
+    }
+</style>
+<script>
+    if (sessionStorage.getItem('usermobile') === null) {
+        window.open("authentication/login.html", "_self")
+    }
+</script>
+
+<body onload="getPName(),patientHistory(),currentStatus()">
+    <nav class="homenav shadow-none">
+        <label for="check" class="checkBtn"><i class="fas fa-bars"></i></label>
+        <input type="checkbox" id="check">
+        <label class="logo" onclick="location.href='index.html'">B<span
+                style="color: var(--danger);">OPD</span>OP</label>
+        <ul>
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="search.html">
+                    Book an appointment
+                </a>
+            </li>
+            <li>
+                <a href="consultant.html">
+                    Consult with doctor
+                </a>
+            </li>
+            <li class="loginLI li1">
+                <a href="authentication/login.html">
+                    <button class="homeBtns loginBtn">Login</button>
+                </a>
+            </li>
+            <li class="loginLI li2">
+                <a href="authentication/patient-signup.html">
+                    <button class="homeBtns registerBtn">Sign up</button>
+                </a>
+            </li>
+            <!-- <li class="logined">
+                <a href="javascript:userlogout()">
+                    <button class="homeBtns loginBtn" onclick="userlogout()">Logout</button>
+                </a>
+            </li> -->
+            <li style="border-left: 1px solid #eee;" class="logined">
+                <span id="userMenu"><img src="assets/img/user.png"><span class="pName"
+                        style="position: relative;"></span><i class="fas fa-angle-down ml-2"></i></span>
+                <div class="triangle2"></div>
+                <div class="userMenu">
+
+                    <div class="option" onclick="location.href='patient-dashboard.html'">
+                        Dashboard
+                    </div>
+
+                    <div class="option" onclick="location.href='user-profile.html'">
+                        Profile
+                    </div>
+                    <div class="option" style="padding-bottom:5px; border-top: 1px solid #eee;" onclick="userlogout()">
+                        Logout
+                    </div>
+                </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div class="container-fluid patientDash " style="margin-top: 70px;">
+        <div class="row mb-2 flexSeparate pr-4">
+            <h4 style="margin-left:50px ;" class="text-shadow">Welcome <span class="pName"></span>, <span
+                    id="wish"></span></h4>
+            <h5>
+                <span id="todayDate" class="ml-5"></span>
+            </h5>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 my-3">
+                <div class="card text-center animate__animated animate__bounceInDown shadow-sm">
+                    <div class="card-header bg-theme text-light">
+                        Appointment Status
+                    </div>
+                    <div class="card-body" style="height: auto;">
+                        <div class="appointment text-center" style="display: none;">
+                            <img src="assets/img/doctor.png" class="img-fluid" style="max-height:200px" />
+                            <h5>No Appointment</h5>
+                            <div class="appointmentStatus">
+
+                            </div>
+                            <button class="btn bg-theme text-light mt-4" style="width: 100%;"
+                                onclick="location.href ='search.html'">Take Appointment</button>
+                        </div>
+                        <div class="appointmentExist text-left" style="display: none;">
+                            <!-- <div class="currentStatus">
+                                <div class="bod">
+                                    <div class="image">
+                                        <img src="assets/img/doc.png">
+                                    </div>
+                                    <div class="form3">
+                                        <div class="text_icon">
+                                            <div class="text">
+                                                <h3 id="doc_name">Natasha</h3>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+
+                                            </div>
+                                        </div>
+                                        <div class="text_icon4">
+                                            <p class="p" id="date">28-08-2000</p>
+                                        </div>
+                                        <div class="text_icon2">
+                                            <div class="text3">
+                                                <p class="resolved"><i class="fa fa-clock-o fa3"
+                                                        aria-hidden="true"></i>Resolved</p>
+                                            </div>
+                                            <div class="text3">
+                                                <p class="p" id="date">09:00 AM</p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <div style="flex:50%">
+                                                Your Token <br>
+                                                <span id="token_no"></span>
+                                            </div>
+                                            <div style="flex:50%">
+                                                Current Token in OPD <br>
+                                                <span id="live_opd"></span>
+                                            </div>
+                                        </div>
+                                        <div class="border"></div>
+                                        <div class="text_icon2 clinic">
+                                            <p>Clinic Information</p>
+
+                                        </div>
+                                        <div class="text_icon2 clinic">
+                                            <p class="address" id="clinic_address">Ludhiana</p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="doctorDetails">
+                                <i class="fas fa-user p-3 text-muted" style="font-size: 16px;"></i>
+                                <span id="doc_name" class="py-4" style="font-size: 18px;font-weight: 700;"></span>
+                            </div>
+                            <div class="pt_time">
+                                <i class="far fa-calendar-alt p-3 text-muted"></i>
+                                <span class="py-4" style="font-weight: 500;" id="time"></span><br>
+                            </div>
+
+                            <div class="pt_time">
+                                <i class="far fa-calendar-alt p-3 text-muted"></i>
+                                <span class="py-4" style="font-weight: 500;" id="date"></span><br>
+
+                            </div>
+                            <div class="pt_reason">
+                                <i class="fas fa-clipboard-list p-3 text-muted"></i>
+                                <span class="py-4" style="font-weight: 500;font-size: 15px;" id="token_no"></span>
+                            </div>
+
+                            <div class="pt_reason">
+                                <i class="fas fa-clipboard-list p-3 text-muted"></i>
+                                <span class="py-4" style="font-weight: 500;font-size: 15px;" id="clinic_address"></span>
+                            </div>
+                            <div class="pt_reason">
+                                <i class="fas fa-clipboard-list p-3 text-muted"></i>
+                                <span class="py-4" style="font-weight: 500;font-size: 15px;" id="live_opd"></span>
+                            </div>
+
+                        </div>
+                        <div class="await" style="display: none;">
+                            <img src="assets/svg/waiting.svg" class="img-fluid" style="max-height:200px" />
+                            <p class="text-left pt-3">Appointment requested please wait for the confirmation by doctor
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="col-lg-3 my-3">
+                <div class="card text-center animate__animated animate__bounceInUp shadow-sm">
+                    <div class="card-header bg-theme text-light">
+                        Online Consultation Status
+                    </div>
+                    <div class="card-body">
+                        <img src="assets/mainsvg/consult.svg" class="img-fluid mb-2" style="max-height:200px" />
+                        <h5>No Consultation</h5>
+                        <button class="btn bg-theme text-light mt-4" style="width: 100%;"
+                            onclick="location.href ='search.html'">Take online consultation</button>
+                    </div>
+                </div>
+            </div> -->
+            <div class="col-lg-9 my-3">
+                <div class="card text-center animate__animated animate__bounceInDown shadow-sm">
+                    <div class="card-header bg-theme text-light">
+                        Appointment History
+                    </div>
+                    <div class="card-body" style="height: auto;">
+                        <div class="table-responsive">
+                            <table class="table table-bordered mytable text-left">
+                                <thead class="bg-primary">
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Doctor Name</th>
+                                    <th>Clinic Name</th>
+                                    <th>Status</th>
+                                </thead>
+                                <tbody id="historyTable">
+                                    <tr>
+                                        <td colspan="5">No History</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="enquiry">
+        <div>
+            <img class="enquiry-logo float-right" src="assets/svg/question.svg" alt="enquiry" onclick="openEnquiry()">
+        </div>
+        <div class="card">
+            <div class="card-header">
+                Enquiry
+            </div>
+            <div class="card-body" style="height: auto;">
+                <div class="form-group">
+                    <label for="enqName">Name</label>
+                    <input type="text" class="form-control" id="enqName" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="enqMobile">Mobile</label>
+                    <input type="number" class="form-control" id="enqMobile" placeholder="Mobile Number">
+                </div>
+                <div class="form-group">
+                    <label for="enqMessage">Message</label>
+                    <textarea class="form-control" id="enqMessage" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn" style="background-color: #25b7d3;
+                    border: 1px solid #25b7d3;
+                    color: #fff;" onclick="enquiry(this)">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="cancelAppointment" style="z-index: 10000;" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Appointment Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="appointmentDetails">
+                        <table class="table table-borderless" id="aptTable">
+                            <tr>
+                                <td>
+                                    Appointment Date
+                                </td>
+                                <td>
+                                    25-12-2020 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Appointment Time
+                                </td>
+                                <td>
+                                    10:00am
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Doctor Name </td>
+                                <td>Ankit</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Clinic Information
+                                </td>
+                                <td>
+                                    Arjun Clinic
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    Status
+                                </td>
+                                <td>
+                                    Await
+                                </td>
+                            </tr>
+                        </table>
+                        <div>
+                            <button type="button" class="btn btn-danger float-right" id="cancelAptBtn" >
+                                Cancel Appointment
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="paho.js"></script>
+<script>
+    client = new Paho.MQTT.Client("18.217.174.27", Number(9001), "clientId");
+
+    //set callback handlers
+    client.onConnectionLost = onConnectionLost;
+    client.onMessageArrived = onMessageArrived;
+
+    //connect the client
+    client.connect({ onSuccess: onConnect });
+    function onConnect() {
+        //Once a connection has been made, make a subscription and send a message.
+        console.log("onConnect");
+        client.subscribe("appointed_patients");
+    }
+    function onConnectionLost(responseObject) {
+        if (responseObject.errorCode !== 0) {
+            //client.connect({onSuccess:onConnect});
+            //console.log("onConnectionLost:"+responseObject.errorMessage);
+        }
+    }
+
+    function onMessageArrived(message) {
+        var msg = message.payloadString;
+        var livMsg = msg.split(",");
+        var liv = livMsg[0];
+        var did = livMsg[1];
+
+        if (sessionStorage.getItem("did") == did) {
+            document.getElementById("live_opd").innerHTML = "Current Token Number : " + liv;
+        }
+    }
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="js/mytoast.js"></script>
+<script src="js/variable.js"></script>
+<script src="js/auth/userauth.js"></script>
+<script src="js/date.js"></script>
+<script src="js/changecolor.js"></script>
+<script src="js/dash.js"></script>
+<script src="js/apis/logout.js"></script>
+<script src="js/apis/patient/patient.js"></script>
+
+</html>

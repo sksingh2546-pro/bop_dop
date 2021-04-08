@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | BOPDOP</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/mainCss.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+</head>
+<script src="../js/auth/auth.js"></script>
+<body style="background-color: #f1f1f1;" onload="allPatients(),getDoc()">
+    <nav class="homenav shadow-none">
+        <label for="check" class="checkBtn"><i class="fas fa-bars"></i></label>
+        <input type="checkbox" id="check">
+        <label class="logo" onclick="location.href='doctor-dashboard.html'">B<span style="color: var(--danger);">OPD</span>OP</label>
+        <ul>
+            <li style="border-left: 1px solid #eee;">
+                <span id="userMenu"><img src="../assets/img/user.png">
+                    <span style="position: relative;" class="docName"></span><i
+                        class="fas fa-angle-down ml-2"></i></span>
+                <div class="triangle2"></div>
+                <div class="userMenu">
+                    <div class="option" onclick="location.href='profile.html'">
+                        Profile
+                    </div>
+                    <!-- <div class="option colorTheme">
+                            Color Theme
+                        </div>
+                        <div class="colorOption py-2">
+                            <div id="color2" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color3" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color4" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color1" class="color" onclick="changeColor(this)"></div> 
+                        </div> -->
+                    <div class="option" style="padding-bottom:5px; border-top: 1px solid #eee;" 
+                    onclick="logout()">
+                        Logout
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div class="sideNavbar">
+        <ul>
+            <li class="">
+                <a href="doctor-dashboard.html">
+                    <i class="fas fa-tachometer-alt mr-2"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="manage-slots.html">
+                    <i class="fas fa-calendar-alt mr-2"></i>
+                    <span>Manage Slots</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="appointed-patients.html">
+                    <i class="fas fa-user-injured mr-2"></i>
+                    <span>Appointed Patients</span>
+                </a>
+            </li>
+            <li class>
+                <a href="appoitment-request.html">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span>Appointment Requests</span>
+                </a>
+            </li>
+            <li >
+                <a href="today-visits.html">
+                    <i class="fas fa-calendar-check mr-2"></i>
+                    <span>Today Visits</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="consultation.html">
+                    <i class="fas fa-comment-medical mr-2"></i>
+                    <span>Consultation</span>
+                </a>
+            </li>
+            <li class="sideActive">
+                <a href="total-visited-patient.html" id="visited">
+                    <i class="fas fa-hospital-user mr-2"></i>
+                    <span>Total Visits</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="consulted-patient.html" id="consulted">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span>Consulted Patient</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="add-handlers.html">
+                    <i class="fas fa-user-cog mr-2"></i>
+                    <span>Add Handlers</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="profile.html">
+                    <i class="fas fa-user mr-2"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:logout()">
+                    <i class="fas fa-sign-out-alt mr-2"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+    <div class="sideContent">
+        <div class="row mb-2 py-4 px-5" style="background: #fff;">
+            <h2 class="mb-4 font-weight-bold">Total Visits <small>( Till Now )</small></h2>
+            <div class="table-responsive animate__animated animate__fadeIn">
+                <table class="table table-bordered table-hover table-striped mytable" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            
+                            <th>Patient Name</th>
+                            <th>Gender</th>
+                            <th>Age</th>
+                            <th>Contact</th>
+                            <th>Appointment Date</th>
+                            <th>Slot</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="totalPatientTable">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>   
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="../js/variable.js"></script>
+<script src="../js/apis/login.js"></script>
+<script src="../js/dash.js"></script>
+
+<script>
+    document.getElementsByClassName("checkBtn")[0].addEventListener("click",()=>{
+        if(document.getElementById("check").checked == true){
+            document.getElementsByClassName("sideNavbar")[0].style.left = "-100%"
+        }
+        else if(document.getElementById("check").checked == false ){
+            document.getElementsByClassName("sideNavbar")[0].style.left = "0px"
+        }
+    });
+</script>
+
+<script src="../js/apis/logout.js"></script>
+<script src="../js/apis/appointed.js"></script>
+</html>

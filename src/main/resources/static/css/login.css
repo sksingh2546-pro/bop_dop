@@ -1,0 +1,62 @@
+
+.userSignupForm{
+    max-width:90%;
+    width:25rem;
+    position: fixed;
+    z-index: 1000;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    display: none;
+}
+#blackBackground{
+    position: fixed;
+    top:0;
+    left:0;
+    height: 100vh;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 999;
+    display: none;
+}
+.userSignupForm .card-header{
+    border-color:#f1f1f1;
+}
+.userSignupForm .card-body{
+    height: 500px;
+}
+.userSignupForm p{
+    font-size: 13px;
+}
+.userSignupForm input{
+    font-size: 13px;
+}
+.userSignupForm h4{
+    font-weight: 600;
+    font-family: "Montserrat";
+}
+.userSignupForm .card .card-body::-webkit-scrollbar{
+    width: 0px;
+    height: 0px;
+}
+.circle{
+    height: 25px;
+    width: 25px ;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.alertmessage{
+    background: rgba(250, 114, 114, 0.3);
+    border:1px solid var(--danger);
+    padding: 20px 15px;
+    color: var(--danger);
+    border-radius: 2px;
+    font-size: 12px;
+    transition: 0.5s ease-out;
+}
+.alertmessage i{
+    cursor: pointer;
+}

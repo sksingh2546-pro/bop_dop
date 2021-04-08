@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Doctor | BOPDOP</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<style>
+    body {
+        background: #f7f7f7;
+    }
+
+    nav {
+        background: #fff;
+    }
+</style>
+
+<body>
+    <nav>
+        <label for="check" class="checkBtn"><i class="fas fa-bars"></i></label>
+        <input type="checkbox" id="check">
+        <label class="logo" onclick="location.href='patientDash.html'">BOPDOP</label>
+        <ul>
+            <li>
+                <span href="#" class="notification">
+                    <i class="fas fa-bell" style="color: #777;font-size: 17px;"></i>
+                    <span class="badge">3</span>
+                    <div class="triangle"></div>
+                    <div class="box">
+                        <div class="message">
+                            <img src="assets/img/message.png" style="border-radius:50%;">
+                            <span class="mesText">Hey amit, raman send you registration request please confirm
+                                it.</span>
+                            <span>20 Nov</span>
+                        </div>
+                        <div class="message">
+                            <img src="assets/img/message.png" style="border-radius:50%;">
+                            <span class="mesText">Hey amit, rohit send you registration request please confirm
+                                it.</span>
+                            <span>15 Nov</span>
+                        </div>
+                        <div class="message">
+                            <img src="assets/img/message.png" style="border-radius:50%;">
+                            <span class="mesText">Hey amit, rahul send you registration request please confirm
+                                it.</span>
+                            <span>10 Nov</span>
+                        </div>
+                        <div class="viewmore">
+                            <span><a href="messagePortal.html">view more.....</a></span>
+                        </div>
+                    </div>
+                    </div>
+                </span>
+            </li>
+            <li style="border-left: 1px solid #eee;">
+                <span id="userMenu"><img src="assets/img/user.png"><span style="position: relative;">Ankit</span><i
+                        class="fas fa-angle-down ml-2"></i></span>
+                <div class="triangle2"></div>
+                <div class="userMenu">
+                    <div class="option">
+                        Profile
+                    </div>
+                    <div class="option colorTheme">
+                        Color Theme
+                    </div>
+                    <div class="colorOption py-2">
+                        <div id="color2" class="color" onclick="changeColor(this)"></div>
+                        <div id="color3" class="color" onclick="changeColor(this)"></div>
+                        <div id="color4" class="color" onclick="changeColor(this)"></div>
+                        <div id="color1" class="color" onclick="changeColor(this)"></div>
+                    </div>
+                    <div class="option" style="padding-bottom:5px; border-top: 1px solid #eee;">
+                        Logout
+                    </div>
+                </div>
+                </div>
+            </li>
+        </ul>
+
+    </nav>
+    <div class="container-fluid my-1">
+        <h4 class="mt-3 ml-3">Available Doctor near you</h4>
+        <div class="row mt-3 px-3">
+            <div class="col-md-6 my-2">
+                <input type="search" id="searchByName" placeholder="Search by name..." oninput="searchByName()">
+            </div>
+            <div class="col-md-6 pt-2">
+                <div class="py-3 d-inline">
+                    <span class="font-weight-bold mx-2 text-secondary">Filters : </span>
+                    <span class="mx-2 text-secondary" style="font-weight: 500;">Star</span>
+                </div>
+                <div id="starFilter" class="starFilter py-3 d-inline">
+                    <span class="fa fa-star" onmouseover="starFilter(this)"></span>
+                    <span class="fa fa-star" onmouseover="starFilter(this)"></span>
+                    <span class="fa fa-star" onmouseover="starFilter(this)"></span>
+                    <span class="fa fa-star" onmouseover="starFilter(this)"></span>
+                    <span class="fa fa-star" onmouseover="starFilter(this)"></span>
+                </div>
+                <select class="filterOption m-2 " id="selectCity">
+                    <option value="none">-Select City-</option>
+                    <option value="Gurgaon">Gurgaon</option>
+                    <option value="Karnal">Karnal</option>
+                    <option value="Kaithal">Kaithal</option>
+                </select>
+                <select class="filterOption m-2" id="speciality" onchange="specialityFilter()">
+                    <option value="all">-Select Speciality-</option>
+                        <option>
+                            Allergy And Immunology Specialty
+                        </option>
+                        <option>
+                            Anaesthesia Specialty
+                        </option>
+                        <option>
+                            Assisted Reproductive Medicine
+                            Specialty
+                        </option>
+                        <option>
+                            Assisted Reproductive And IVF
+                            Specialty
+                        </option>
+                        <option>
+                            Audiology Specialty
+                        </option>
+                        <option>
+                            Bariatric Surgery Specialty
+                        </option>
+                        <option>
+                            Bone Marrow Transplant Specialty
+
+                        </option>
+                        <option>
+                            Breast Surgery Specialty
+                        </option>
+                        <option>
+                            Cardiac Anaesthesia Specialty
+
+                        </option>
+                        <option>
+                            Cardio Thoracic And Vascular Surgery
+                            Specialty
+                        </option>
+                        <option>
+                            Cardiology - Electrophysiology
+                            Specialty
+                        </option>
+                        <option>
+                            Cardiology - Interventional
+                            Specialty
+                        </option>
+                        <option>
+                            Cardiology - Non Interventional
+                            Specialty
+                        </option>
+                        <option>
+                            Clinical Haematology Specialty
+
+                        </option>
+                        <option>
+                            Clinical Pharmacology Specialty
+
+                        </option>
+                        <option>
+                            Clinical Psychology Specialty
+
+                        </option>
+                        <option>
+                            Colorectal Surgery Specialty
+
+                        </option>
+                        <option>
+                            Cranio Facial Plastic Surgery
+                            Specialty
+                        </option>
+                        <option>
+                            Dental Surgery Specialty
+                        </option>
+                        <option>
+                            Dermatology Specialty
+                        </option>
+                        <option>
+                            Dermatology And Cosmetology
+                            Specialty
+                        </option>
+                        <option>
+                            Diabetes Educator Specialty
+                        </option>
+                        <option>
+                            Dietetics And Nutrition Specialty
+
+                        </option>
+                        <option>
+                            Ear Nose Throat Head And Neck Surgery
+                            Specialty
+                        </option>
+                        <option>
+                            Emergency Medicine Specialty
+
+                        </option>
+                        <option>
+                            Endocrinology Specialty
+                        </option>
+                        <option>
+                            Facio Maxillary And Oral Surgery
+                            Specialty
+                        </option>
+                        <option>
+                            Family Medicine Specialty
+                        </option>
+                        <option>
+                            Foetal Medicine Specialty
+                        </option>
+                        <option>
+                            General Surgery Specialty
+                        </option>
+                        <option>
+                            General And Laproscopic Surgery
+                            Specialty
+                        </option>
+                        <option>
+                            Geriatrics Specialty
+                        </option>
+                        <option>
+                            Gynaecological Endoscopy
+                            Specialty
+                        </option>
+                        <option>
+                            Haemato Pathology Specialty
+                        </option>
+                        <option>
+                            Hand And Microvascular Surgery
+                            Specialty
+                        </option>
+                        <option>
+                            Head And Neck Surgical Oncology
+                            Specialty
+                        </option>
+                        <option>
+                            Health Check Specialty
+                        </option>
+                        <option>
+                            Hepatobiliary Surgery Specialty
+
+                        </option>
+                        <option>
+                            Hip And Knee Arthroplasty
+                            Specialty
+                        </option>
+                        <option>
+                            Infectious Diseases Specialty
+
+                        </option>
+                        <option>
+                            Intensive Care Specialty
+                        </option>
+                        <option>
+                            Internal Medicine Specialty
+                        </option>
+                        <option>
+                            Internal Medicine And Infectious Diseases
+                            Specialty
+                        </option>
+                        <option>
+                            Interventional Neurology
+                            Specialty
+                        </option>
+                        <option>
+                            Interventional Radiology
+                            Specialty
+                        </option>
+                        <option>
+                            Joint Replacement Surgery
+                            Specialty
+                        </option>
+                        <option>
+                            Laboratory Medicine - Biochemistry
+                            Specialty
+                        </option>
+                        <option>
+                            Laboratory Medicine - Microbiology
+                            Specialty
+                        </option>
+                        <option>
+                            Laboratory Medicine - Pathology
+                            Specialty
+                        </option>
+                        <option>
+                            Lactation Counselling Specialty
+
+                        </option>
+                        <option>
+                            Laproscopic Gynaecology Specialty
+
+                        </option>
+                        <option>
+                            Laproscopic Surgery Specialty
+
+                        </option>
+                        <option>
+                            Laryngology Specialty
+                        </option>
+                        <option>
+                            Liver Transplant And Hepatobiliary Surgery
+                            Specialty
+                        </option>
+                        <option>
+                            Medical Gastroenterology
+                            Specialty
+                        </option>
+                        <option>
+                            Medical Oncology Specialty
+                        </option>
+                        <option>
+                            Medical Services Specialty
+                        </option>
+                        <option>
+                            Medico Legal Specialty
+                        </option>
+                        <option>
+                            Minimal Access Surgery Specialty
+
+                        </option>
+                        <option>
+                            Neonatology Specialty
+                        </option>
+                        <option>
+                            Nephrology Specialty
+                        </option>
+                        <option>
+                            Neuro And Interventional Radiology
+                            Specialty
+                        </option>
+                        <option>
+                            Neurology Specialty
+                        </option>
+                        <option>
+                            Neurosurgery Specialty
+                        </option>
+                        <option>
+                            OP - Clinic Specialty
+                        </option>
+                        <option>
+                            Obstetrics And Gynaecology
+                            Specialty
+                        </option>
+                        <option>
+                            Occupational Therapy Specialty
+
+                        </option>
+                        <option>
+                            Ophthalmology Specialty
+                        </option>
+                        <option>
+                            Orthopaedics Specialty
+                        </option>
+                        <option>
+                            Otology And Cochlear Implantology
+                            Specialty
+                        </option>
+                        <option>
+                            Otorhinolaryngology Specialty
+
+                        </option>
+                        <option>
+                            Paediatric CTVS Specialty
+                        </option>
+                        <option>
+                            Paediatric Cardiology Specialty
+
+                        </option>
+                        <option>
+                            Paediatric Endocrinology
+                            Specialty
+                        </option>
+                        <option>
+                            Paediatric Gastroenterology
+                            Specialty
+                        </option>
+                        <option>
+                            Paediatric Intensive Care
+                            Specialty
+                        </option>
+                        <option>
+                            Paediatric Neurodevelopment
+                            Specialty
+                        </option>
+                        <option>
+                            Paediatric Neurology Specialty
+
+                        </option>
+                        <option>
+                            Paediatric Ophthalmology
+                            Specialty
+                        </option>
+                        <option>
+                            Paediatric Rheumatology Specialty
+
+                        </option>
+                        <option>
+                            Paediatric Surgery Specialty
+
+                        </option>
+                        <option>
+                            Paediatric And NICU Specialty
+
+                        </option>
+                        <option>
+                            Paediatrics Specialty
+                        </option>
+                        <option>
+                            Paediatrics And Neonatology
+                            Specialty
+                        </option>
+                        <option>
+                            Pain Medicine Specialty
+                        </option>
+                        <option>
+                            Paramedical Services Specialty
+
+                        </option>
+                        <option>
+                            Pedodontics Specialty
+                        </option>
+                        <option>
+                            Perinatology Specialty
+                        </option>
+                        <option>
+                            Physiotherapy Specialty
+                        </option>
+                        <option>
+                            Plastic And Reconstructive Surgery
+                            Specialty
+                        </option>
+                        <option>
+                            Podiatry Specialty
+                        </option>
+                        <option>
+                            Psychiatry Specialty
+                        </option>
+                        <option>
+                            Pulmonology Specialty
+                        </option>
+                        <option>
+                            Radiation Oncology Specialty
+
+                        </option>
+                        <option>
+                            Radiology Specialty
+                        </option>
+                        <option>
+                            Renal Transplant Surgery
+                            Specialty
+                        </option>
+                        <option>
+                            Rheumatology And Immunology
+                            Specialty
+                        </option>
+                        <option>
+                            Robotic Surgery Specialty
+                        </option>
+                        <option>
+                            Sexual Medicine Specialty
+                        </option>
+                        <option>
+                            Shoulder And Sports Medicine
+                            Specialty
+                        </option>
+                        <option>
+                            Skull Base Surgery Specialty
+
+                        </option>
+                        <option>
+                            Sleep Lab Therapy Specialty
+                        </option>
+                        <option>
+                            Speech Pathology Specialty
+                        </option>
+                        <option>
+                            Speech Therapy Specialty
+                        </option>
+                        <option>
+                            Spine Surgery Specialty
+                        </option>
+                        <option>
+                            Surgical Gastroenterology
+                            Specialty
+                        </option>
+                        <option>
+                            Surgical Oncology Specialty
+                        </option>
+                        <option>
+                            Urology Specialty
+                        </option>
+                        <option>
+                            Vascular Surgery Specialty
+                        </option>
+                        <option>
+                            Vascular And Endovascular Surgery
+                            Specialty
+                        </option>
+                        <option>
+                            Vitero Retinal Specialty
+                        </option>
+                        <option>
+                            Wards Specialty
+                        </option>
+                        <option>
+                            Wound Care Medicine Specialty
+
+                        </option>
+                    
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="selectDoctor">
+                <div class="doctorEntity mx-1" onclick="detailDoctor(this)">
+                    <div class="dImage"><img src="assets/img/doc3.png" height="75px"></div>
+                    <div class="dName">Dr. Mia <span class="degree">(MBBS)</span>
+                        <div>
+                            <small>
+                               <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/blad.jpg" height="75px"></div>
+                    <div class="dName">Dr. Johnny <span class="degree">(BDS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc2.jpg" height="75px"></div>
+                    <div class="dName">Dr. Jordi <span class="degree">(BDS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc4.jpg   " height="75px"></div>
+                    <div class="dName">Dr. Strange <span class="degree">(MBBS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doctor-img.png" height="75px"></div>
+                    <div class="dName">Dr. Ravean <span class="degree">(MD)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc3.png" height="75px"></div>
+                    <div class="dName">Dr. Mia <span class="degree">(MBBS)</span>
+                        <div>
+                            <small>
+                               <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/blad.jpg" height="75px"></div>
+                    <div class="dName">Dr. Johnny <span class="degree">(BDS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc2.jpg" height="75px"></div>
+                    <div class="dName">Dr. Jordi <span class="degree">(BDS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc4.jpg   " height="75px"></div>
+                    <div class="dName">Dr. Strange <span class="degree">(MBBS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doctor-img.png" height="75px"></div>
+                    <div class="dName">Dr. Ravean <span class="degree">(MD)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc3.png" height="75px"></div>
+                    <div class="dName">Dr. Mia <span class="degree">(MBBS)</span>
+                        <div>
+                            <small>
+                               <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/blad.jpg" height="75px"></div>
+                    <div class="dName">Dr. Johnny <span class="degree">(BDS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc2.jpg" height="75px"></div>
+                    <div class="dName">Dr. Jordi <span class="degree">(BDS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc4.jpg   " height="75px"></div>
+                    <div class="dName">Dr. Strange <span class="degree">(MBBS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doctor-img.png" height="75px"></div>
+                    <div class="dName">Dr. Ravean <span class="degree">(MD)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc3.png" height="75px"></div>
+                    <div class="dName">Dr. Mia <span class="degree">(MBBS)</span>
+                        <div>
+                            <small>
+                               <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/blad.jpg" height="75px"></div>
+                    <div class="dName">Dr. Johnny <span class="degree">(BDS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc2.jpg" height="75px"></div>
+                    <div class="dName">Dr. Jordi <span class="degree">(BDS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc4.jpg   " height="75px"></div>
+                    <div class="dName">Dr. Strange <span class="degree">(MBBS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doctor-img.png" height="75px"></div>
+                    <div class="dName">Dr. Ravean <span class="degree">(MD)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc3.png" height="75px"></div>
+                    <div class="dName">Dr. Mia <span class="degree">(MBBS)</span>
+                        <div>
+                            <small>
+                               <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/blad.jpg" height="75px"></div>
+                    <div class="dName">Dr. Johnny <span class="degree">(BDS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc2.jpg" height="75px"></div>
+                    <div class="dName">Dr. Jordi <span class="degree">(BDS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc4.jpg   " height="75px"></div>
+                    <div class="dName">Dr. Strange <span class="degree">(MBBS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doctor-img.png" height="75px"></div>
+                    <div class="dName">Dr. Ravean <span class="degree">(MD)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc3.png" height="75px"></div>
+                    <div class="dName">Dr. Mia <span class="degree">(MBBS)</span>
+                        <div>
+                            <small>
+                               <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/blad.jpg" height="75px"></div>
+                    <div class="dName">Dr. Johnny <span class="degree">(BDS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc2.jpg" height="75px"></div>
+                    <div class="dName">Dr. Jordi <span class="degree">(BDS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc4.jpg   " height="75px"></div>
+                    <div class="dName">Dr. Strange <span class="degree">(MBBS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doctor-img.png" height="75px"></div>
+                    <div class="dName">Dr. Ravean <span class="degree">(MD)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc3.png" height="75px"></div>
+                    <div class="dName">Dr. Jean <span class="degree">(MBBS)</span>
+                        <div>
+                            <small>
+                               <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/blad.jpg" height="75px"></div>
+                    <div class="dName">Dr. Johnny <span class="degree">(BDS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc2.jpg" height="75px"></div>
+                    <div class="dName">Dr. Jordi <span class="degree">(BDS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc4.jpg   " height="75px"></div>
+                    <div class="dName">Dr. Strange <span class="degree">(MBBS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doctor-img.png" height="75px"></div>
+                    <div class="dName">Dr. Ravean <span class="degree">(MD)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc3.png" height="75px"></div>
+                    <div class="dName">Dr. Mia <span class="degree">(MBBS)</span>
+                        <div>
+                            <small>
+                               <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/blad.jpg" height="75px"></div>
+                    <div class="dName">Dr. Johnny <span class="degree">(BDS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc2.jpg" height="75px"></div>
+                    <div class="dName">Dr. Jordi <span class="degree">(BDS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc4.jpg   " height="75px"></div>
+                    <div class="dName">Dr. Strange <span class="degree">(MBBS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doctor-img.png" height="75px"></div>
+                    <div class="dName">Dr. Ravean <span class="degree">(MD)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc3.png" height="75px"></div>
+                    <div class="dName">Dr. Mia <span class="degree">(MBBS)</span>
+                        <div>
+                            <small>
+                               <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/blad.jpg" height="75px"></div>
+                    <div class="dName">Dr. Johnny <span class="degree">(BDS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc2.jpg" height="75px"></div>
+                    <div class="dName">Dr. Maxwell <span class="degree">(BDS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doc4.jpg   " height="75px"></div>
+                    <div class="dName">Dr. Strange <span class="degree">(MBBS)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctorEntity mx-1">
+                    <div class="dImage"><img src="assets/img/doctor-img.png" height="75px"></div>
+                    <div class="dName">Dr. Ravean <span class="degree">(MD)</span>
+                        <div>
+                            <small>
+                                <i class="fas fa-thumbs-up liked"></i><span class="ml-2">98%</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-11"></div>
+            <div class="col-md-1">
+                <button class="btn bg-theme text-light" onclick="location.href = 'appointment.html'">Next</button>
+            </div>
+        </div>
+    </div>
+    <div id="doctorDetailPopup">
+        
+        <div class="doctorDetailPopupHeader flexSep">
+            <div class="popDName">Dr. Mia <span class="popDegree">(MBBS)</span>
+                <div>
+                    <small>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                    </small>
+                </div>
+            </div>
+            <div class="pr-2 pt-1">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="doctorDetailPopupBody">
+            <div class="popDImage"><img src="assets/img/doc3.png" height="75px"></div>
+            <div class="DDetails">
+                
+            </div>
+        </div>
+    </div>
+    <div id="backCover"></div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="../js/selectDoctor.js"></script>
+<script src="../js/dash.js"></script>
+<script src="../js/changecolor.js"></script>
+
+</html>

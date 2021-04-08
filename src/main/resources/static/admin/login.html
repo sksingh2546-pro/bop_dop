@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<style>
+    a {
+        color: black;
+    }
+
+    a.active,
+    a:hover {
+        color: #fe4066;
+        transition: .3s;
+        text-decoration: none;
+    }
+</style>
+
+<body style="background: url('../assets/img/back.jpg'); background-position: center; background-size: cover;">
+    <div style="background: rgba(255,255,255,0.8);height: 100vh;">
+        <nav>
+            
+            <label class="logo">B<span style="color: var(--danger);">OPD</span>OP</label>
+        </nav>
+        <main>
+            <div class="container">
+
+                <div class="card mt-4" style="max-width: 400px;margin: auto;">
+                    <div class="card-body px-4" style="height: auto;">
+                        <h2 class="font-weight-bold my-2">
+                            <span id="type">Admin</span>
+                            Login
+
+                        </h2>
+                        <p class="text-muted my-3">You can use your BOPDOP account to handle this portal. </p>
+                        <form >
+                            <div class="form-group">
+                                <input class="form-control p-3" id="username" type="email"
+                                    placeholder="Enter email address" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control p-3" id="password" type="password"
+                                    placeholder="Enter password" required>
+                            </div>
+                            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-2">
+                                <button class="btn bg-theme p-3 text-light" style="width: 100%;"  >Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="../js/mytoast.js"></script>
+<script src="../js/variable.js"></script>
+<script src="../js/admin/admin.js"></script>
+
+<script>
+    document.getElementsByTagName('form')[0].addEventListener('submit', event => {
+        adminlogin();
+        event.preventDefault();
+    });
+</script>
+
+</html>

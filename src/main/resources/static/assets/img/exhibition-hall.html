@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://kit-pro.fontawesome.com/releases/v5.13.1/css/pro.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Exhibition Hall</title>
+    <style>
+        .box {
+            height: 80px;
+            width: 100%;
+            border-radius: 10px;
+            border: 2px solid #dddd;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .cont {
+            width: 300px;
+            float: right;
+            position: fixed;
+            top: 14%;
+            left: 1000px;
+            font-family: sans-serif;
+            letter-spacing: 0.5px;
+            border-radius: 12px;
+
+
+        }
+
+        .msg-header {
+
+            border: 1px solid #ccc;
+            width: 100%;
+            height: 8%;
+            border-bottom: none;
+            display: inline-flex;
+            background-color: #1e88e5;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .msg-header-img {
+            border-radius: 50%;
+            width: 40px;
+            margin-left: 5%;
+            margin-top: 12px;
+            float: left;
+        }
+
+        .active {
+            width: 120px;
+            float: left;
+            margin-top: 10px;
+
+        }
+
+        .active h4 {
+            font-size: 20px;
+            margin-left: 10px;
+            color: #fff;
+        }
+
+        .active h6 {
+            font-size: 10px;
+            margin-left: 10px;
+            line-height: 2px;
+            color: #fff;
+        }
+
+        .header-icon {
+            margin-top: 13px;
+            float: right;
+            margin-right: 15px;
+        }
+
+        .header-icon i {
+            padding-right: 5px;
+        }
+
+        .msg-body {
+
+            height: 350px;
+            width: 100%;
+            background: white;
+        }
+
+        .msg-footer {
+            border: 1px solid #ccc;
+
+            width: 100%;
+            height: 8%;
+            border-bottom: none;
+            display: inline-block;
+            background-color: #1e88e5;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .input-field {
+            margin-top: 7px;
+            margin-left: 13px;
+            border-radius: 3px;
+            border-style: none;
+        }
+
+        /* input[type="text"] {
+            border-radius: 50px;
+            border-style: none;
+            height: 35px;
+            width: 200px;
+            border: none;
+            margin-bottom: 7px;
+
+        } */
+
+        input:focus {
+            outline: none;
+
+        }
+
+        .footer-icon {
+            float: right;
+            margin-top: -41px;
+            margin-right: 20px;
+        }
+
+        .circle {
+
+
+            position: absolute;
+            height: 30px;
+            width: 30px;
+            background: #1e88e5;
+            margin-top: 600px;
+            margin-left: 1300px;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <header class="bg-light">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="#"><img src="images/main-logo.jpg" style="width:100px;"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav m-auto">
+                        <li class="nav-item active text-center px-2">
+                            <a class="nav-link" href="live.html"><i class="fas fa-home"
+                                    style="margin-top:-18px;"></i><br>HOME </a>
+                        </li>
+                        <li class="nav-item text-center px-2">
+                            <a class="nav-link" href="informations.html"><i class="fas fa-info-circle"
+                                    style="margin-top:7px;"></i><br>INFORMATION</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="right-menu">
+                    <ul>
+                        <li class="nav-item dropdown mx-3">
+                            <a class="nav-link dropdown-toggle waves-effect waves-light rounded-list"
+                                id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="true">
+                                <i class="fas fa-user"></i> </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-info"
+                                aria-labelledby="navbarDropdownMenuLink-4">
+                                <a class="dropdown-item waves-effect waves-light" href="#">Online</a>
+                                <a class="dropdown-item waves-effect waves-light" href="#">Away</a>
+                                <a class="dropdown-item waves-effect waves-light" href="#">Do Not Disturb</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown mx-3">
+                            <a class="nav-link dropdown-toggle waves-effect waves-light rounded-list"
+                                id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="true">
+                                <i class="fas fa-cog"></i> </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-info"
+                                aria-labelledby="navbarDropdownMenuLink-5">
+                                <a class="dropdown-item waves-effect waves-light" href="#">Download My Data</a>
+                                <a class="dropdown-item waves-effect waves-light" href="#">Profile Setting</a>
+                                <a class="dropdown-item waves-effect waves-light" href="#">Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="main_div" class="common-page2">
+
+        <div class="content-wrap">
+            <div class="content infocontent">
+                <div class="exhibition-bg">
+                    <div class="container">
+                        <div class="row m-0">
+                            <div class="col-3 py-5 ml-4 mt-5 px-5 text-center">
+                                <button type="button" class="btn btn-light w-100 px-3 py-2 my-2"
+                                    onclick="joinVideoCall()"><i class="fa fa-file-video-o" aria-hidden="true"></i>VIDEO
+                                    CALL</button>
+                                <button type="button" class="btn btn-light w-100 px-3 py-2 my-2" data-toggle="modal"
+                                    data-target="#modal-Schedule">SCHEDULE CALL</button>
+                                <button type="button" class="btn btn-light w-100 px-3 py-2  my-2" data-toggle="modal"
+                                    data-target="#modal-brochure">BROCHURE</button>
+                                <button type="button" class="btn btn-light w-100 px-3 py-2  my-2" data-toggle="modal"
+                                    data-target="#modal1">VISTING CARDS</button>
+
+                            </div>
+                            <div class="col-6"></div>
+
+                            <div class="col-2 py-5 px-3 ml-4 mt-5 text-center">
+                                <button type="button" class="btn btn-light w-100 px-3 py-2 my-2"
+                                    onclick="visitwebsite()">VISIT WEBSITES</button>
+                                <button type="button" class="btn btn-light w-100 px-3 py-2 my-2" data-toggle="modal"
+                                    data-target="#modal-3dmodel">3D MODELS</button>
+                                <button type="button" class="btn btn-light w-100 px-3 py-2 my-2">CHAT WITH US</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-light btn3 px-3 py-2" data-toggle="collapse"
+                        data-target="#contain" onclick="showMsg()">CHAT
+
+                        <br> WITH<br> US</button>
+                    <button type="button" class="btn btn-light btn4 px-4 py-2" data-toggle="collapse"
+                        data-target="#">BROCHURE</button>
+                </div>
+            </div>
+            <!--msg box-->
+            <div class="cont collapse" id="contain">
+                <div class="msg-header">
+                    <div class="msg-header-img">
+                        <img>
+                    </div>
+                    <div class="active">
+                        <h4>john lewis</h4>
+                        <h6>3 hour ago</h6>
+                            
+                    </div>
+                    <div class="header-icon">
+                        <i class="fa fa-phone" style="color:white;"></i>
+                        <i class="fa fa-video-camera" style="color:white;"></i>
+                        <i class="fa fa-info-circle" style="color:white;"></i>
+                    </div>
+                    <div><i class="fas fa-times-circle" onclick="clk()" style="color:white;margin-left:25px;"></i ></div>
+                </div>
+                <div class="msg-body" sytle=" overflow: auto;">
+                    <br>
+                    <span id="dataaa" style="font-size:13px;color:white;margin-left:10px;margin-right:10px;"></span>
+                </div>
+                <div class="msg-footer">
+                    <div class="input-field">
+
+                        <input type="text" id="msg">
+
+                    </div>
+                    <div class="footer-icon">
+                        <i class="far fa-check-circle fa-2x" onclick="message()" style="color:white;"></i>
+                    </div>
+                </div>
+            </div>
+            <!--end of msg-->
+        </div>
+
+        <footer class="footer">
+            <div class="footer-top">
+                <ul class="footer-nav">
+                    <li class="footer-link navigation-link"><a href="javascript:void(0);"><img
+                                src="images/Navigation.svg" alt="Navigation"> Navigation </a>
+                    </li>
+                    <li class="footer-link"><a href="live.html" class="lobby-home"><img src="images/lobby.svg"
+                                alt="Lobby">Lobby</a></li>
+
+                    <li class="footer-link"><a href="javascript:void(0);" class="common-link audi_btn" location-id="3"
+                            data-section="auditorium_1" data-current="nav"><img src="images/audit.svg"
+                                alt="Session Hall 1">Session Hall</a></li>
+
+
+
+                    <li class="footer-link"><a class="floor_switch" href="exhibition-hall.html"><img
+                                src="images/first-floor.svg" alt="First Floor">Exhibition Floor</a></li>
+                    <li class="exhibitor_btn footer-link"><a href="exhibitors.html"><img src="images/exhibitor.svg"
+                                alt="Exhibitors"> Exhibitors</a></li>
+
+                </ul>
+
+                <ul class="footer-nav chat-nav border-left border-dark ml-2 ">
+
+                    <li class="footer-link"><a data-fancybox="" data-type="ajax"
+                            data-src="https://ve.vhhe.in/lobbies/feedback" href="javascript:void(0);"
+                            class=" popup_cls feedback_footer" data-left="10" data-top="34"><img
+                                src="images/feedback.svg" alt="Feedback">Feedback</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <a class="footer-logo" href="javascript:void(0);"><img src="images/dreamcast-gray.png" alt=""></a>
+
+            </div>
+    </section>
+    </footer>
+    <!--Modal: Name-->
+    <div class="modal" id="modal1" tabindex="0" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+        data-backdrop="false">
+        <div class="modal-dialog modal-lg" role="document">
+
+            <!--Content-->
+            <div class="modal-content">
+                <!--Body-->
+                <div class="modal-body mb-0 p-3">
+                    <div class="">
+                        <button class="close-one" type="button" data-dismiss="modal">X</button>
+                        <video id="vid1s" controls style="width:100%;">
+                            <source src="videos/right-walkthrough.mp4">
+                        </video>
+                    </div>
+
+                </div>
+
+            </div>
+            <!--/.Content-->
+
+        </div>
+    </div>
+    <!--modals  -->
+    <!--schedule-->
+    <div class="modal " id="modal-Schedule" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary ">
+                    <h5 class="modal-title text-white " id="exampleModalLabel" style="margin-left:170px;">Schedule call</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="Visitor-data">
+
+                        <table width="100%" cellpadding="4">
+                            <tr>
+                                
+                                <td colspan="2"><h3 style="color:black;margin-left:140px;" id=" ">HIS GROUP</h3></td>
+                            </tr>
+                            <tr>
+                                <td class="text-dark">Visitor name</td>
+                                <td><label class="form-control" id="NameOfVisitor">Ankt Bansail </td>
+                            </tr>
+                            <tr>
+                                <td class="text-dark">Contact No</td>
+                                <td><input type="text" class="form-control" id="NameOfVisitor" ></td>
+                            </tr>
+                            <tr>
+                                <td class="text-dark">Date</td>
+                                <td><input type="datetime-local" onclick="validDate()" class="form-control" id="visDate"
+                                        max=retdate() name="date">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-dark">Time</td>
+                                <td><input type="time" class="form-control" id="theidofurinput"
+                                        onclick="checktimeval()">
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-info" style="margin-right:180px;" id="submitCall">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--brochure-->
+    <div class="modal " id="modal-brochure" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title text-white" id="exampleModalLabel">Brochure</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body form-group">
+                    <div class="brochureInfo text-cenetr">
+                        <div class=" text-center box">
+                            <table width="100%" class="text-center mt-2">
+                                <tr>
+                                    <td><img src="images/pdf.png" id="img1" width="35px" height="35px"></td>
+                                    <td><a href="#"><label class="form-control" style="border:none;">Name1
+                                                !</label></a></td>
+                                    <td style="float:right;margin-top: 13px;">
+                                        <a data-toggle="modal" data-target="#"> <svg width="1em" height="1em"
+                                                onclick="myfunBro()" viewBox="0 0 16 16"
+                                                class="bi bi-eye-fill text-dark" fill="currentColor"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                            </svg>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="images/pd1.png" download>
+                                            <image src="images/download.png" class="img-fluid" height="30px"
+                                                width="30px">
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <br>
+                        <div class="text-center box">
+                            <table width="100%" class="text-center mt-2">
+                                <tr>
+                                    <td><img src="images/pdf.png" id="img1" width="35px" height="35px"></td>
+                                    <td class="text-center"><a href="#"><label class="form-control"
+                                                style="border:none;">Name2 !</label></a></td>
+                                    <td style="float:right;margin-top: 13px;">
+                                        <a data-toggle="modal" data-target="#"> <svg width="1em" height="1em"
+                                                onclick="myfunBro()" viewBox="0 0 16 16"
+                                                class="bi bi-eye-fill text-dark" fill="currentColor"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                            </svg>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="#" download>
+                                            <image src="images/download.png" class="img-fluid" height="30px"
+                                                width="30px">
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <br>
+                        <div class="text-center box">
+                            <table width="100%" class="text-center mt-2">
+                                <tr>
+                                    <td><img src="images/pdf.png" id="img1" width="35px" height="35px"></td>
+                                    <td><a href="#"><label class="form-control" style="border:none;">Name3
+                                                !</label></a></td>
+                                    <td style="float:right;margin-top: 13px;">
+                                        <a data-toggle="modal" data-target="#"><svg width="1em" height="1em"
+                                                onclick="myfunBro()" viewBox="0 0 16 16"
+                                                class="bi bi-eye-fill text-dark" fill="currentColor"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                            </svg>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="#" download>
+                                            <image src="images/download.png" class="img-fluid" height="30px"
+                                                width="30px">
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--3d model-->
+    <div class="modal" id="modal-3dmodel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false"
+        data-backdrop="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title text-white" id="exampleModalLabel">3d Model</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body form-group">
+                    <div class="brochureInfo text-cenetr">
+                        <div class=" text-center box">
+                            <table width="100%" class="text-center mt-2">
+                                <tr>
+                                    <td><img src="images/pdf.png" id="img1" width="35px" height="35px"></td>
+                                    <td><a href="#"><label class="form-control" style="border:none;">Name1
+                                                !</label></a></td>
+                                    <td>
+                                        <a data-toggle="modal" data-target="#modal1" data-backdrop="true"> <svg
+                                                width="1em" height="1em" onclick="myfun()" viewBox="0 0 16 16"
+                                                class="bi bi-eye-fill text-dark" fill="currentColor"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                            </svg>
+                                        </a>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </div>
+                        <br>
+                        <div class="text-center box">
+                            <table width="100%" class="text-center mt-2">
+                                <tr>
+                                    <td><img src="images/pdf.png" id="img1" width="35px" height="35px"></td>
+                                    <td class="text-center"><a href="#"><label class="form-control"
+                                                style="border:none;">Name2 !</label></a></td>
+                                    <td>
+                                        <a data-toggle="modal" data-target="#modal1"> <svg width="1em" height="1em"
+                                                onclick="myfun()" viewBox="0 0 16 16" class="bi bi-eye-fill text-dark"
+                                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                            </svg>
+                                        </a>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </div>
+                        <br>
+                        <div class="text-center box">
+                            <table width="100%" class="text-center mt-2">
+                                <tr>
+                                    <td><img src="images/pdf.png" id="img1" width="35px" height="35px"></td>
+                                    <td><a href="#"><label class="form-control" style="border:none;">Name3
+                                                !</label></a></td>
+                                    <td>
+                                        <a data-toggle="modal" data-target="#modal1"><svg width="1em" height="1em"
+                                                onclick="myfun()" viewBox="0 0 16 16" class="bi bi-eye-fill text-dark"
+                                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                            </svg>
+                                        </a>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--end-->
+    <!-- End Modal-->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+
+        function joinVideoCall() {
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function () {
+                if (this.status == 200 && this.readyState == 4) {
+
+                    if (this.responseText == null || this.responseText == "" || this.responseText == "[]") {
+                        alert("Exhibitor is not available now please Schedule a Call !!!")
+                    }
+                    else {
+                        console.log(this.responseText + " in else ")
+                        window.open("meeting.html");
+                    }
+                }
+            }
+            var organiser_name = "exhibitor2";
+            request.open("GET", "/api/visitor_meeting?org_name=exhibitor", true);
+            request.send();
+        }
+        // Visiting_Website 
+        function visitwebsite() {
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function () {
+                if (this.status == 200 && this.readyState == 4) {
+                    console.log(this.responseText)
+                    var url = this.responseText;
+                    window.open(url, "_blank");
+                }
+            }
+            request.open("GET", "/api/geting_website?orga_name=exhibitor1", true)
+            request.send();
+
+
+        }
+        function myfun() {
+            document.getElementById('modal-3dmodel').style.display = "none";
+
+        }
+
+        function myfunBro() {
+
+            document.getElementById('modal-brochure').style.display = "none";
+
+        }
+        function validDate() {
+            var today = new Date().toISOString().split('T')[0];
+            var nextWeekDate = new Date(new Date().getTime() + 6 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+            document.getElementsByName("date")[0].setAttribute('min', today);
+            document.getElementsByName("date")[0].setAttribute('max', nextWeekDate)
+        }
+
+        function checktimeval() {
+            var timeval = document.getElementById("theidofurinput").value;
+            if (!(timeval > 1 && timeval < 12)) {
+                document.getElementById("theidofurinput").innerHTML = timeval;
+            }
+        }
+        function message() {
+        
+            var msg = document.getElementById('msg').value;
+            if (msg.length <= 40) {
+                       
+                        document.getElementById('dataaa').innerHTML = msg;
+                        document.getElementById('dataaa').style.wordBreak = "break-all";
+                        document.getElementById('dataaa').style.padding="5px";
+                        document.getElementById('dataaa').style.background="green";
+                        document.getElementById('dataaa').style.borderRadius="20px";
+                    }  
+            
+   
+                      
+        }     
+        function showMsg(){
+            document.getElementById('contain').style.display="block";
+        }
+        function clk(){
+            document.getElementById('contain').style.display="none";
+            element.classList.toggle("");
+        }
+           
+    </script>
+
+</body>
+
+</html>

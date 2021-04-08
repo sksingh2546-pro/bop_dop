@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Appointment | BOPDOP</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="css/appoint.css">
+</head>
+<script>
+    if (sessionStorage.getItem('UserAuthenticationState') == null) {
+        window.open("authentication/login.html?status=none&redirect="+encodeURI(location.href), "_self");
+    }
+</script>
+<body onload="getAppointData(),getPName(),fetchDate()">
+    <nav class="homenav shadow-none">
+        <label for="check" class="checkBtn"><i class="fas fa-bars"></i></label>
+        <input type="checkbox" id="check">
+        <label class="logo" onclick="location.href='index.html'">B<span style="color: var(--danger);">OPD</span>OP</label>
+        <ul>
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="search.html">
+                    Book an appointment
+                </a>
+            </li>
+            <li>
+                <a href="consultant.html">
+                    Consult with doctor
+                </a>
+            </li>
+            <li class="loginLI li1">
+                <a href="authentication/login.html">
+                    <button class="homeBtns loginBtn">Login</button>
+                </a>
+            </li>
+            <li class="loginLI li2">
+                <a href="authentication/patient-signup.html">
+                    <button class="homeBtns registerBtn">Sign up</button>
+                </a>
+            </li>
+            <!-- <li class="logined">
+                <a href="javascript:userlogout()">
+                    <button class="homeBtns loginBtn" onclick="userlogout()">Logout</button>
+                </a>
+            </li> -->
+            <li style="border-left: 1px solid #eee;" class="logined">
+                <span id="userMenu"><img src="assets/img/user.png"><span style="position: relative;"
+                        class="pName"></span><i class="fas fa-angle-down ml-2"></i></span>
+                <div class="triangle2"></div>
+                <div class="userMenu">
+                    <!-- <div class="option">
+                            Profile
+                        </div> -->
+                    <!-- <div class="option colorTheme">
+                            Color Theme
+                        </div>
+                        <div class="colorOption py-2">
+                            <div id="color2" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color3" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color4" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color1" class="color" onclick="changeColor(this)"></div> 
+                        </div> -->
+                    <div class="option" onclick="location.href='patient-dashboard.html'">
+                        Dashboard
+                    </div>
+                    <div class="option" onclick="location.href='user-profile.html'">
+                        Profile
+                    </div>
+                    <div class="option" style="padding-bottom:5px; border-top: 1px solid #eee;" onclick="userlogout()">
+                        Logout
+                    </div>
+                </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div class="homewrapper">
+        <div class="container py-4 appointment">
+            <div class="row py-2">
+                <div class="col-12">
+                    <div style="font-size: 12px;font-weight: 500;color: #aaa;">SELECT TIME</div>
+                    <div>
+                        <span class="cName"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="doctorENTITY">
+                        <div class="docIMG">
+                            <img src="assets/img/user.png" />
+                        </div>
+                        <div class="doc_details">
+                            <div class="doc_name">
+                                
+                            </div>
+                            <div class="docSpecs">
+                                
+                            </div>
+                        </div>
+                        <div class="pl-4">
+                            <span><a href="search.html" style="color: var(--secondary);">Want to change?</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row py-2 pt-3">
+                <div class="col-sm-6">
+                    <div class="py-2">
+                        <span style="font-size: 12px;font-weight: 500;color: #aaa;">
+                            SELECT DATE
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="py-2 text-right">
+                        <span class="Showmonth shadow-sm"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="appointDate">
+                        <div class="d-flex justify-content-right align-items-center arrows">
+                            <i class="fas fa-chevron-left" style="color: dodgerblue;"></i>
+                        </div>
+                        <div class="pick">
+                            <span class="week"></span><br>
+                            <span class="day"></span>
+                            <input type="checkbox" class="apdate" value="" checked>
+                        </div>
+                        <div class="pick">
+                            <span class="week"></span><br>
+                            <span class="day"></span>
+                            <input type="checkbox" class="apdate" value="" checked>
+                        </div>
+                        <div class="pick">
+                            <span class="week"></span><br>
+                            <span class="day"></span>
+                            <input type="checkbox" class="apdate" value="" checked>
+                        </div>
+                        <div class="pick">
+                            <span class="week"></span><br>
+                            <span class="day"></span>
+                            <input type="checkbox" class="apdate" value="" checked>
+                        </div>
+                        <div class="pick">
+                            <span class="week"></span><br>
+                            <span class="day"></span>
+                            <input type="checkbox" class="apdate" value="" checked>
+                        </div>
+                        <div class="pick">
+                            <span class="week"></span><br>
+                            <span class="day"></span>
+                            <input type="checkbox" class="apdate" value="" checked>
+                        </div>
+                        <div class="pick">
+                            <span class="week"></span><br>
+                            <span class="day"></span>
+                            <input type="checkbox" class="apdate" value="" checked>
+                        </div>
+                        <div class="d-flex justify-content-left align-items-center arrows">
+                            <i class="fas fa-chevron-right" style="color: dodgerblue;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div id="instruction" style="height: 250px;">
+                        <p class="text-muted">Click on date to select time slot for booking .</p>
+                    </div>
+                    <div class="loader">
+                        <img src="assets/img/loader.gif" height="60px">
+                        <span>Loading slots...</span>
+                    </div>
+                    <div id="overlay">
+                        <p>Doctor is not available.</p>
+                    </div>
+                    <div class="timeSlot">
+                        
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="slotBox p-2">
+                                    <div class="slotTimeHead rounded">
+                                        <img src="assets/svg/sunrise.svg" class="mr-2" height="20px">
+                                        <span>Morning</span>
+                                    </div>
+                                    <div class="grid slotTime mt-3 ">
+                                        <div class="slot mx-1"><input type="hidden" class="slotvalue" value="10">
+                                            <i class="fa-check-circle mr-1"></i>
+                                            <span class="singleSlot">10:00am</span>
+                                        </div>
+                                        <div class="slot mx-1"><input type="hidden" class="slotvalue" value="10.3">
+                                            <i class="fa-check-circle mr-1"></i>
+                                            <span class="singleSlot">10:30am</span>
+                                        </div>
+                                        <div class="slot mx-1"><input type="hidden" class="slotvalue" value="11">
+                                            <i class="fa-check-circle mr-1"></i>
+                                            <span class="singleSlot">11:00am</span>
+                                        </div>
+                                        <div class="slot mx-1"><input type="hidden" class="slotvalue" value="11.3">
+                                            <i class="fa-check-circle mr-1"></i>
+                                            <span class="singleSlot">11:30am</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="slotBox p-2">
+                                    <div class="slotTimeHead rounded">
+                                        <img src="assets/svg/sun.svg" class="mr-2" height="20px">
+                                        <span style="padding-top:11px ;">Afternoon</span>
+                                    </div>
+                                    <div class="grid slotTime mt-3">
+                                        <div class="slot mx-1"><input type="hidden" class="slotvalue" value="12">
+                                            <i class="fa-check-circle mr-1"></i>
+                                            <span class="singleSlot">12:00pm</span>
+                                        </div>
+                                        <div class="slot mx-1"><input type="hidden" class="slotvalue" value="12.3">
+                                            <i class="fa-check-circle mr-1"></i>
+                                            <span class="singleSlot">12:30pm</span>
+                                        </div>
+                                        <div class="slot mx-1"><input type="hidden" class="slotvalue" value="13">
+                                            <i class="fa-check-circle mr-1"></i>
+                                            <span class="singleSlot">01:00pm</span>
+                                        </div>
+                                        <div class="slot mx-1"><input type="hidden" class="slotvalue" value="13.3">
+                                            <i class="fa-check-circle mr-1"></i>
+                                            <span class="singleSlot">01:30pm</span>
+                                        </div>
+                                        <div class="slot mx-1"><input type="hidden" class="slotvalue" value="14">
+                                            <i class="fa-check-circle mr-1"></i>
+                                            <span class="singleSlot">02:00pm</span>
+                                        </div>
+                                        <div class="slot mx-1"><input type="hidden" class="slotvalue" value="14.3">
+                                            <i class="fa-check-circle mr-1"></i>
+                                            <span class="singleSlot">02:30pm</span>
+                                        </div>
+                                        <div class="slot mx-1"><input type="hidden" class="slotvalue" value="15">
+                                            <i class="fa-check-circle mr-1"></i>
+                                            <span class="singleSlot">03:00pm</span>
+                                        </div>
+                                        <div class="slot mx-1"><input type="hidden" class="slotvalue" value="15.3">
+                                            <i class="fa-check-circle mr-1"></i>
+                                            <span class="singleSlot">03:30pm</span>
+                                        </div>
+                                        <div class="slot mx-1"><input type="hidden" class="slotvalue" value="16">
+                                            <i class="fa-check-circle mr-1"></i>
+                                            <span class="singleSlot">04:00pm</span>
+                                        </div>
+                                        <div class="slot mx-1"><input type="hidden" class="slotvalue" value="16.3">
+                                            <i class="fa-check-circle mr-1"></i>
+                                            <span class="singleSlot">04:30pm</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="slotBox p-2">
+                                    <div class="slotTimeHead rounded">
+                                        <img src="assets/svg/sunset.svg" class="mr-2" height="20px">
+                                        <span>Evening</span>
+                                    </div>
+                                    <div class="grid slotTime mt-3">
+                                        <div class="slot mx-1"><input type="hidden" class="slotvalue" value="17">
+                                            <i class="fa-check-circle mr-1" style="display: none;"></i><span
+                                                class="singleSlot">05:00pm</span>
+                                        </div>
+                                        <div class="slot mx-1"><input type="hidden" class="slotvalue" value="17.3">
+                                            <i class="fa-check-circle mr-1" style="display: none;"></i><span
+                                                class="singleSlot">05:30pm</span>
+                                        </div>
+                                        <div class="slot mx-1"><input type="hidden" class="slotvalue" value="18">
+                                            <i class="fa-check-circle mr-1" style="display: none;"></i><span
+                                                class="singleSlot">06:00pm</span>
+                                        </div>
+                                        <div class="slot mx-1"><input type="hidden" class="slotvalue" value="18.3">
+                                            <i class="fa-check-circle mr-1" style="display: none;"></i><span
+                                                class="singleSlot">06:30pm</span>
+                                        </div>
+                                        <div class="slot mx-1"><input type="hidden" class="slotvalue" value="19">
+                                            <i class="fa-check-circle mr-1" style="display: none;"></i><span
+                                                class="singleSlot">07:00pm</span>
+                                        </div>
+                                        <div class="slot mx-1"><input type="hidden" class="slotvalue" value="19.3">
+                                            <i class="fa-check-circle mr-1" style="display: none;"></i><span
+                                                class="singleSlot">07:30pm</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <button class="btn btn-primary float-right" id="nextBtn">Take Appointment</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <div class="enquiry">
+        <div>
+            <img class="enquiry-logo float-right"
+            src="assets/svg/question.svg" alt="enquiry" onclick="openEnquiry()">
+        </div>
+        <div class="card" >
+            <div class="card-header" >
+                Enquiry  
+            </div>
+            <div class="card-body" style="height: auto;">
+                <div class="form-group">
+                    <label for="enqName">Name</label>
+                    <input type="text" class="form-control" id="enqName"
+                        placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="enqMobile">Mobile</label>
+                    <input type="number" class="form-control" id="enqMobile"
+                        placeholder="Mobile Number">
+                </div>
+                <div class="form-group">
+                    <label for="enqMessage">Message</label>
+                    <textarea class="form-control" id="enqMessage" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn" style="background-color: #25b7d3;
+                    border: 1px solid #25b7d3;
+                    color: #fff;" onclick="enquiry(this)" >Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="js/mytoast.js"></script>
+<script src="js/variable.js"></script>
+<script src="js/auth/userauth.js"></script>
+
+<script src="js/appointment/appoint.js"></script>
+<script src="js/dash.js"></script>
+<script src="js/apis/logout.js"></script>
+
+</html>

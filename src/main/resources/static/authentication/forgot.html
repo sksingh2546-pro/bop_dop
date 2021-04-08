@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password | BOPDOP</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<style>
+    a{
+        color: black;
+    }
+    a:hover{
+    color:#fe4066;
+    transition: .3s;
+    text-decoration: none;
+}
+
+</style>
+<body style="background: url('../assets/img/searchbackground.jpg'); background-position: center; background-size: cover;">
+<div style="background: rgba(255,255,255,0.5);height: calc(100vh-70px);">
+    <nav class="homenav">
+        <label class="logo">B<span style="color: var(--danger);">OPD</span>OP</label>
+        <ul>
+            <li style="border-left: 1px solid #eee;"><span onclick="location.href='login.html'">Login</span></li> 
+        </ul>
+        <div class="adminBox">
+            
+        </div>
+    </nav>
+    <main style="margin-top:70px;padding-top: 50px;">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="card mt-4 shadow-sm">
+                        <div class="card-body px-4" style="height: auto;">
+                            <form id="forgotForm">
+                                <h2 class="font-weight-bold my-2">Forgot Password</h2>
+                                <p class="text-muted my-3">Enter your mobile number. </p>
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="d-flex justify-content-between align-item-center">
+                                                <span class="mobCode px-2 py-2">+91</span>
+                                                <input class="myFields mob px-3 py-2" id="mobile" type="number"
+                                                    placeholder="Mobile Number" style="border-top-left-radius: 0px;
+                                                    border-bottom-left-radius: 0px;" autofocus/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group d-flex align-items-center justify-content-between mt-2 mb-2">
+                                    <button class="btn bg-theme p-3 text-light" style="width: 100%;" onclick="forgot()">Forgot Password</button>
+                                </div>
+                            </form>
+                            <div id="otpmessage" class="mt-2">
+                                <h2 class="font-weight-bold my-2">Forgot Password</h2>
+                                <small>we have sent you an otp on</small>
+                                <p class="my-2"><span id="myNumber"></span><i class="fas fa-pen ml-3" onclick="editNumber()"></i></p>
+                            </div>
+                            
+                           <form id="forgetOtpForm" style="display: none;">
+                                <div class="form-group">
+                                    <input class="form-control p-3" id="otp" maxlength="4" type="text" placeholder="Enter OTP" />
+                                </div>
+                                <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-2">
+                                    <button class="btn bg-theme p-3 text-light" style="width: 100%;" onclick="verifyOTP()" >Submit</button>
+                                </div>
+                            </form>
+
+                            <form id="createPassword" >
+                                <h4 class="font-weight-bold my-3">Create new password</h4>
+                                <div class="form-group">
+                                    <input class="form-control p-3" id="newpassword" type="password" placeholder="Enter new password" />
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control p-3" id="confirmpassword" type="password" placeholder="Enter Confirm password" />
+                                </div>
+                                <div class="form-group">
+                                    <small style="font-size:12px;color: red;">
+                                        Note: Password should contain atleast one number
+                                        , one special character,
+                                        one uppercase character,
+                                        one lowercase character 
+                                        minimum 8 characters
+                                    </small> 
+                                </div>
+                                <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-2">
+                                    <button class="btn bg-theme p-3 text-light" style="width: 100%;" onclick="passwordcheck()" >Submit</button>
+                                </div>
+                            </form>
+
+                            <div class="text-center mt-4">
+                                <div class="small"><a class="mylink" href="login.html">Back to login</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+<script>
+    function checkNumber(){
+        var mobile = document.getElementById("mobile").value;
+        document.getElementById("otpForm").style.display = "block";
+    }
+</script>
+<script src="../js/variable.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="../js/mytoast.js" ></script>
+<script src="../js/apis/validation.js"></script>
+<script src="../js/apis/forgot.js"></script>
+</html>

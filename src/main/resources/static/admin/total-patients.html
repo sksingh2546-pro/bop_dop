@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor | Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<style>
+    body {
+        background: #f7f7f7;
+    }
+
+    nav {
+        background: #fff;
+    }
+</style>
+<body>
+    <nav>
+        <label for="check" class="checkBtn"><i class="fas fa-bars"></i></label>
+        <input type="checkbox" id="check">
+        <label class="logo" onclick="location.href='index.html'">BOPDOP</label>
+        <ul>
+            <li style="border-left: 1px solid #eee;">
+                <img src="assets/img/user.png">
+                <span>Dr. Sahil</span>
+                <div class="dropdown" style="display: inline;">
+                    <i class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false"></i>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="adminBox">
+
+        </div>
+    </nav>
+    <div class="container-fluid my-4">
+        <div class="row my-4">
+            <div style="margin-left:50px;display:flex;justify-content: space-between;align-items: center;width: 100%;" class="text-shadow" >
+                <div>
+                    <a href="doctorDash.html">
+                        <i class="fas fa-arrow-alt-circle-left mr-4" style="font-size:20px;color:#000"></i>
+                    </a>
+                    <h4 style="display: inline;" id="viewPatientHead">Total Patient</h4>
+                </div>
+                <div class="mr-4">
+                    <select class="custom-select" onchange="viewPatient(this)">
+                        <option value="TP">Total Patient</option>
+                        <option value="PP">Pending Patient</option>
+                        <option value="CP">Completed Patient</option>
+                        <option value="OP">Overall Patient</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-2 p-5 " style="background: #fff;">
+            <div class="table-responsive animate__animated animate__fadeIn">
+                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Patient Name</th>
+                            <th>Gender</th>
+                            <th>Age</th>
+                            <th>Contact</th>
+                            <th>Appointment Date</th>
+                            <th>Slot</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pt_data">
+                        <tr>
+                            <td>Rahul</td>
+                            <td>Male</td>
+                            <td>26</td>
+                            <td>9856231245</td>
+                            <td>5-10-2020</td>
+                            <td>10:00 AM</td>
+                        </tr>
+                        <tr>
+                            <td>Rohit</td>
+                            <td>Male</td>
+                            <td>24</td>
+                            <td>8956451223</td>
+                            <td>5-10-2020</td>
+                            <td>10:00 AM</td>
+                        </tr>
+                        <tr>
+                            <td>Amit</td>
+                            <td>Male</td>
+                            <td>23</td>
+                            <td>7001294523</td>
+                            <td>5-10-2020</td>
+                            <td>10:00 AM</td>
+                        </tr>
+                        <tr>
+                            <td>Rohan</td>
+                            <td>Male</td>
+                            <td>18</td>
+                            <td>9856231245</td>
+                            <td>5-10-2020</td>
+                            <td>10:00 AM</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>   
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="../js/patientview.js"></script>
+<script>
+    $('#dataTable').DataTable();
+</script>
+</html>

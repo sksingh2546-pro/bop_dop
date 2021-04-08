@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap');
+:root{
+    --secondary:rgb(254, 64, 102);
+    --secondary:rgb(7,71,166);
+    --secHover : rgb(28,99,206);
+    --active:orange;
+    --animate-delay: 0.2s;
+    --animate-delay: 0.4s;
+    --animate-delay: 0.6s;
+    --animate-delay: 0.8s;
+}
+*{
+    font-family: "Lato";
+}
+.appointment .cName{
+    font-weight: 700;
+    font-family: "Lato";
+    font-size: 1.5rem;
+}
+.appointment .doctorENTITY{
+    background-color: #ddf6fd9f;
+    border:1px solid #eee;
+    border-radius: 5px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+.appointment .doctorENTITY .docIMG{
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+    background: #f7f7f7;
+    border:1px solid #ddd;
+}
+.appointment .doctorENTITY .docIMG img{
+    height: 50px;
+}
+.appointment .doctorENTITY .doc_details{
+    padding-left:20px
+}
+.appointment .doctorENTITY .doc_name{
+    font-size: 18px;
+    font-weight: 500;
+}
+.appointment .doctorENTITY .docSpecs{
+    font-size: 14px;
+    font-weight: 500;
+    color: #777;
+}
+.appointment .Showmonth{
+    font-size: 15px;
+    font-weight: 600;
+    padding:10px;
+}
+.appointment .appointDate{
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    padding-top:15px;
+    padding-bottom:15px;
+    justify-content: space-around;
+    overflow: auto;
+}
+.appointment .appointDate .arrows{
+   cursor:not-allowed
+}
+@media(max-width:800px){
+    .appointment .appointDate{
+        justify-content: flex-start;
+    }
+    .appointment .appointDate .arrows{
+        display: none;
+        visibility: hidden;
+    }
+}
+.appointment .pick{
+    text-align: center;
+    padding: 5px 20px;
+    color: #222;
+}
+.appointment .pick:hover{
+  cursor: pointer;
+  color: var(--secondary);
+}
+.appointment .picked{
+  /* border:1px solid var(--secondary); */
+  color: var(--secondary);
+  /* background-color: #fe406621; */
+}
+.appointment .pick .week{
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.appointment .pick .day{
+  font-size: 25px;
+}
+.appointment .timeSlot{
+    padding-top: 20px;
+}
+.appointment .slotTime {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-areas: "div";
+}
+
+.appointment .slot {
+    padding: 10px 10px;
+    background-color: #ddf6fd;
+    text-align: center;
+    margin: 10px;
+    border: 1px solid #f1f1f1;
+    border-radius: 3px;
+    font-size: 13px;
+    font-family: 'Open Sans', sans-serif;
+    color: #222;
+}
+.appointment .slot i{
+    display: none;
+}
+.appointment .slot:hover{
+    background: #ddf6fd9f;
+    cursor: pointer;
+}

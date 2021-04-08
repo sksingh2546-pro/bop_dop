@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation | BOPDOP</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav class="homenav shadow-none">
+        <label for="check" class="checkBtn"><i class="fas fa-bars"></i></label>
+        <input type="checkbox" id="check">
+        <label class="logo" onclick="location.href='index.html'">B<span
+                style="color: var(--danger);">OPD</span>OP</label>
+        <ul>
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="search.html">
+                    Book an appointment
+                </a>
+            </li>
+            <li>
+                <a href="search.html" style="color: var(--secondary);">
+                    Consult with doctor
+                </a>
+            </li>
+            <li class="loginLI li1">
+                <a href="authentication/login.html">
+                    <button class="homeBtns loginBtn">Login</button>
+                </a>
+            </li>
+            <li class="loginLI li2">
+                <a href="authentication/patient-signup.html">
+                    <button class="homeBtns registerBtn">Sign up</button>
+                </a>
+            </li>
+            <li style="border-left: 1px solid #eee;" class="logined">
+                <span id="userMenu"><img src="assets/img/user.png"><span class="pName"
+                        style="position: relative;"></span><i class="fas fa-angle-down ml-2"></i></span>
+                <div class="triangle2"></div>
+                <div class="userMenu">
+                    <!-- <div class="option">
+                            Profile
+                        </div> -->
+                    <!-- <div class="option colorTheme">
+                            Color Theme
+                        </div>
+                        <div class="colorOption py-2">
+                            <div id="color2" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color3" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color4" class="color" onclick="changeColor(this)"></div> 
+                            <div id="color1" class="color" onclick="changeColor(this)"></div> 
+                        </div> -->
+                    <div class="option" onclick="location.href='patient-dashboard.html'">
+                        Dashboard
+                    </div>
+                    <div class="option" onclick="location.href='user-profile.html'">
+                        Profile
+                    </div>
+                    <div class="option" style="padding-bottom:5px; border-top: 1px solid #eee;">
+                        <a href="javascript:userlogout()">Logout</a>
+                    </div>
+                </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div class="homewrapper">
+        <div class="consultation">
+            <h1>Consult with a doctor</h1>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="sideImage py-5">
+                        <img src="assets/mainsvg/chat.svg" alt="" class="responsive">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="consultationForm">
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <p class="px-2">Tell us your Symptoms or health status <span class="mandatory">*</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea class="myFields px-3 py-3" id="symptoms" rows="6"
+                                        placeholder="Symptoms..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <p class="px-2">Doctor<span class="mandatory">*</span></p>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="myFields px-3 py-3" id="doctorName" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-2">
+                            <button class="btn p-3 font-weight-bold" style="width: 100%;background-color: #fff;"
+                                id="consultBtn">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="consultation d-none">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="sideImage py-5">
+                        <img src="assets/mainsvg/confirm.svg" alt="" class="responsive">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="confirmation py-5">
+                        <h1>Consultation Confirmed</h1>
+                        <div class="py-4 px-4">
+                            <p style="font-size: 17px;color: #555;">
+                                You Get reply of your message in 24 hours. Stay Happy.
+                            </p>
+                            <!-- <a class="cancelLink" href="cancel.html">Cancel your consultation -></a> -->
+                        </div>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="background-color: #fff;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#0747a6" fill-opacity="1" d="M0,320L1440,96L1440,320L0,320Z"></path>
+            </svg>
+        </div>
+
+        <div class="footer text-center text-light">
+            <h1 class="font-weight-bold">BOPDOP</h1>
+            <p>Copyright © 2020, BOPDOP. All rights reserved.</p>
+        </div>
+    </div>
+
+    <div class="enquiry">
+        <div>
+            <img class="enquiry-logo float-right"
+            src="assets/svg/question.svg" alt="enquiry" onclick="openEnquiry()">
+        </div>
+        <div class="card">
+            <div class="card-header">
+                Enquiry
+            </div>
+            <div class="card-body" style="height: auto;">
+                <div class="form-group">
+                    <label for="enqName">Name</label>
+                    <input type="text" class="form-control" id="enqName" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="enqMobile">Mobile</label>
+                    <input type="number" class="form-control" id="enqMobile" placeholder="Mobile Number">
+                </div>
+                <div class="form-group">
+                    <label for="enqMessage">Message</label>
+                    <textarea class="form-control" id="enqMessage" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn" style="background-color: #25b7d3;
+                        border: 1px solid #25b7d3;
+                        color: #fff;" onclick="enquiry(this)">
+                        Submit
+
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aes-js/3.1.2/index.js"
+    integrity="sha512-5e17hebfdkOW/S7tdw5zGbA9eqD747Wz1S2VlkEXavOhdeW12JQHRi9LPb7NfWZcIl9AK98wxPod/Df9PgdGIw=="
+    crossorigin="anonymous">
+
+    </script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="js/mytoast.js"></script>
+<script src="js/variable.js"></script>
+<script src="js/dash.js"></script>
+<script src="js/auth/userauth.js"></script>
+
+</html>

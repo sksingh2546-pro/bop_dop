@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<style>
+    a {
+        color: black;
+
+    }
+
+    a:hover {
+        color: #fe4066;
+        transition: .3s;
+        text-decoration: none;
+    }
+
+    #registerForm {
+        font-size: 14px;
+    }
+
+    #registerForm p {
+        margin-bottom: 5px;
+    }
+
+    .card-header {
+        border: none;
+        background: none;
+    }
+
+    .card-body {
+        border: none;
+        background: none;
+        color: #fff;
+    }
+
+    .card {
+        background: none;
+        border: none;
+    }
+
+    a {
+        color: white;
+        text-decoration: underline;
+    }
+
+    a:hover {
+        text-decoration: underline;
+        color: white;
+    }
+</style>
+<script>
+    if (localStorage.getItem('doc_mobile') === null) {
+        window.open("../authentication/signup.html", "_self");
+    }
+
+</script>
+
+<body style="background-color: var(--secondary);" onload="getNumber()">
+    <div>
+        <nav class="shadow-none">
+            <label class="logo">B<span style="color: var(--danger);">OPD</span>OP</label>
+            <ul>
+                <li style="border-left: 1px solid #eee;"><span>Login</span></li>
+            </ul>
+        </nav>
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="loginImg d-flex justify-content-center align-items-center" style="height: 100%;">
+                            <img src="../assets/mainsvg/register.svg" class="responsive" alt="login" height="300">
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card my-4" style="width: 100%;">
+                            <div class="card-body px-4" style="height: auto;">
+                                <h2 class="font-weight-bold my-2">OTP Verification</h2>
+
+                                <form id="otpForm" class="my-3">
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <p class="px-2">We have sent you an OTP on</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="d-flex justify-content-between align-item-center">
+                                                    <span class="mobCode px-3 py-2">+91</span>
+                                                    <input class="myFields mob px-3 py-2" id="mobileNumber"
+                                                        type="number" placeholder="Mobile Number" style="border-top-left-radius: 0px;
+                                                        border-bottom-left-radius: 0px;" readonly />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <p class="px-2">OTP<span class="mandatory">*</span> </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <div class="form-group pb-0">
+                                                <input class="myFields px-3 py-2 mb-0" id="otp" type="text"
+                                                    maxlength="4" oninput="validateOTP()" placeholder="OTP" />
+
+                                            </div>
+                                            <small><a href="#" class="float-right">Resend OTP</a></small>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <small class="px-2">By signing up, I agree to <a href="#"
+                                                style="text-decoration:underline">terms</a></small>
+                                    </div>
+                                    <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-2">
+                                        <button class="btn bg-light p-3 text-dark" style="width: 100%;" id="otpBtn"
+                                            onclick="verify()">
+                                            Verify OTP
+                                            <span id="preloader" class="mr-2">
+                                                <img src="/assets/svg/loader.svg">
+                                            </span>
+                                        </button>
+                                    </div>
+                                </form>
+                                <div class="text-center mt-3">
+                                    <div class="small"><a href="login.html">Have an account? Go to login</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"
+    integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous">
+
+    </script>
+<script src="../js/variable.js"></script>
+<script src="../js/mytoast.js"></script>
+<script>
+    document.getElementById("otpBtn").disabled = true;
+    document.querySelector('form').addEventListener('submit', event => {
+        event.preventDefault();
+    });
+</script>
+
+<script src="../js/apis/validation.js"></script>
+<script src="../js/apis/login.js"></script>
+
+</html>

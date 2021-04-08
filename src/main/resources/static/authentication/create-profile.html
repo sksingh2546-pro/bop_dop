@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<style>
+    a {
+        color: black;
+    }
+
+    a:hover {
+        color: #fff;
+        transition: .3s;
+        text-decoration: underline;
+
+    }
+
+    #registerForm {
+        font-size: 14px;
+    }
+</style>
+<script>
+    if (localStorage.getItem('doc_mobile') === null) {
+        window.open("../authentication/signup.html", "_self");
+    }
+   
+</script>
+<body > 
+    <div>
+        <nav class="homenav">
+            <label class="logo">B<span style="color: var(--danger);">OPD</span>OP</label>
+            <ul>
+                <li style="border-left: 1px solid #eee;"><span id="headName"></span></li>
+            </ul>
+        </nav>
+        <main style="margin-top: 60px;">
+            <div class="container py-3">
+                <h2 class="font-weight-bold py-2 text-center text-light bg-theme">Profile Creation</h2>
+                <hr />
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="card my-4" style="width: 100%;">
+                            <div class="card-body px-4" style="height: auto;">
+                                <p class="text-muted my-3"> Symbol ( <span class="mandatory">*</span> ) denoted
+                                    mandatory fields.</p>
+                                <form id="registerForm">
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <p class="py-2 px-3">Full Name <span class="mandatory">*</span> </p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <input class="myFields py-2 px-3" oninput="validateProfile()" id="name1"
+                                                    type="text" placeholder="Enter Doctor Name" value="" disabled/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <p class="py-2 px-3">Qualification<span class="mandatory">*</span></p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <input class="myFields py-2 px-3" oninput="validateProfile()"
+                                                    id="degree" type="text" placeholder="Enter Qualification" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <p class="py-2 px-3">Year of Experience<span class="mandatory">*</span></p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <input class="myFields py-2 px-3" oninput="validateProfile()"
+                                                    id="experience" placeholder="Example: 6" type="number" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <p class="py-2 px-3">Specialization<span class="mandatory">*</span></p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <select class="myFields" onchange="validateProfile()"
+                                                    id="specialisation" style="height: 40px">
+                                                    <option>---- Select Specialisation ----</option>
+                                                    <option>
+                                                        Allergy And Immunology Specialty
+                                                    </option>
+                                                    <option>
+                                                        Anaesthesia Specialty
+                                                    </option>
+                                                    <option>
+                                                        Assisted Reproductive Medicine
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Assisted Reproductive And IVF
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Audiology Specialty
+                                                    </option>
+                                                    <option>
+                                                        Bariatric Surgery Specialty
+                                                    </option>
+                                                    <option>
+                                                        Bone Marrow Transplant Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Breast Surgery Specialty
+                                                    </option>
+                                                    <option>
+                                                        Cardiac Anaesthesia Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Cardio Thoracic And Vascular Surgery
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Cardiology - Electrophysiology
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Cardiology - Interventional
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Cardiology - Non Interventional
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Clinical Haematology Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Clinical Pharmacology Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Clinical Psychology Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Colorectal Surgery Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Cranio Facial Plastic Surgery
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Dental Surgery Specialty
+                                                    </option>
+                                                    <option>
+                                                        Dermatology Specialty
+                                                    </option>
+                                                    <option>
+                                                        Dermatology And Cosmetology
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Diabetes Educator Specialty
+                                                    </option>
+                                                    <option>
+                                                        Dietetics And Nutrition Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Ear Nose Throat Head And Neck Surgery
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Emergency Medicine Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Endocrinology Specialty
+                                                    </option>
+                                                    <option>
+                                                        Facio Maxillary And Oral Surgery
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Family Medicine Specialty
+                                                    </option>
+                                                    <option>
+                                                        Foetal Medicine Specialty
+                                                    </option>
+                                                    <option>
+                                                        General Surgery Specialty
+                                                    </option>
+                                                    <option>
+                                                        General And Laproscopic Surgery
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Geriatrics Specialty
+                                                    </option>
+                                                    <option>
+                                                        Gynaecological Endoscopy
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Haemato Pathology Specialty
+                                                    </option>
+                                                    <option>
+                                                        Hand And Microvascular Surgery
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Head And Neck Surgical Oncology
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Health Check Specialty
+                                                    </option>
+                                                    <option>
+                                                        Hepatobiliary Surgery Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Hip And Knee Arthroplasty
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Infectious Diseases Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Intensive Care Specialty
+                                                    </option>
+                                                    <option>
+                                                        Internal Medicine Specialty
+                                                    </option>
+                                                    <option>
+                                                        Internal Medicine And Infectious Diseases
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Interventional Neurology
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Interventional Radiology
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Joint Replacement Surgery
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Laboratory Medicine - Biochemistry
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Laboratory Medicine - Microbiology
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Laboratory Medicine - Pathology
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Lactation Counselling Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Laproscopic Gynaecology Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Laproscopic Surgery Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Laryngology Specialty
+                                                    </option>
+                                                    <option>
+                                                        Liver Transplant And Hepatobiliary Surgery
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Medical Gastroenterology
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Medical Oncology Specialty
+                                                    </option>
+                                                    <option>
+                                                        Medical Services Specialty
+                                                    </option>
+                                                    <option>
+                                                        Medico Legal Specialty
+                                                    </option>
+                                                    <option>
+                                                        Minimal Access Surgery Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Neonatology Specialty
+                                                    </option>
+                                                    <option>
+                                                        Nephrology Specialty
+                                                    </option>
+                                                    <option>
+                                                        Neuro And Interventional Radiology
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Neurology Specialty
+                                                    </option>
+                                                    <option>
+                                                        Neurosurgery Specialty
+                                                    </option>
+                                                    <option>
+                                                        OP - Clinic Specialty
+                                                    </option>
+                                                    <option>
+                                                        Obstetrics And Gynaecology
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Occupational Therapy Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Ophthalmology Specialty
+                                                    </option>
+                                                    <option>
+                                                        Orthopaedics Specialty
+                                                    </option>
+                                                    <option>
+                                                        Otology And Cochlear Implantology
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Otorhinolaryngology Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Paediatric CTVS Specialty
+                                                    </option>
+                                                    <option>
+                                                        Paediatric Cardiology Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Paediatric Endocrinology
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Paediatric Gastroenterology
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Paediatric Intensive Care
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Paediatric Neurodevelopment
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Paediatric Neurology Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Paediatric Ophthalmology
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Paediatric Rheumatology Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Paediatric Surgery Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Paediatric And NICU Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Paediatrics Specialty
+                                                    </option>
+                                                    <option>
+                                                        Paediatrics And Neonatology
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Pain Medicine Specialty
+                                                    </option>
+                                                    <option>
+                                                        Paramedical Services Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Pedodontics Specialty
+                                                    </option>
+                                                    <option>
+                                                        Perinatology Specialty
+                                                    </option>
+                                                    <option>
+                                                        Physiotherapy Specialty
+                                                    </option>
+                                                    <option>
+                                                        Plastic And Reconstructive Surgery
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Podiatry Specialty
+                                                    </option>
+                                                    <option>
+                                                        Psychiatry Specialty
+                                                    </option>
+                                                    <option>
+                                                        Pulmonology Specialty
+                                                    </option>
+                                                    <option>
+                                                        Radiation Oncology Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Radiology Specialty
+                                                    </option>
+                                                    <option>
+                                                        Renal Transplant Surgery
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Rheumatology And Immunology
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Robotic Surgery Specialty
+                                                    </option>
+                                                    <option>
+                                                        Sexual Medicine Specialty
+                                                    </option>
+                                                    <option>
+                                                        Shoulder And Sports Medicine
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Skull Base Surgery Specialty
+
+                                                    </option>
+                                                    <option>
+                                                        Sleep Lab Therapy Specialty
+                                                    </option>
+                                                    <option>
+                                                        Speech Pathology Specialty
+                                                    </option>
+                                                    <option>
+                                                        Speech Therapy Specialty
+                                                    </option>
+                                                    <option>
+                                                        Spine Surgery Specialty
+                                                    </option>
+                                                    <option>
+                                                        Surgical Gastroenterology
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Surgical Oncology Specialty
+                                                    </option>
+                                                    <option>
+                                                        Urology Specialty
+                                                    </option>
+                                                    <option>
+                                                        Vascular Surgery Specialty
+                                                    </option>
+                                                    <option>
+                                                        Vascular And Endovascular Surgery
+                                                        Specialty
+                                                    </option>
+                                                    <option>
+                                                        Vitero Retinal Specialty
+                                                    </option>
+                                                    <option>
+                                                        Wards Specialty
+                                                    </option>
+                                                    <option>
+                                                        Wound Care Medicine Specialty
+
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <p class="py-2 px-3">Registration Number<span class="mandatory">*</span></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <input class="myFields py-2 px-3" oninput="validateProfile()"
+                                                    id="registrationNumber" type="text" placeholder="Enter Registration Number" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <p id="selectTiminng" class="py-2 px-3">Clinic Timing <span
+                                                        class="mandatory">*</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group py-2 px-3">
+                                                <div>
+                                                    <p>For Timing we give you time slots which is managed by you at your dashboard.</p>
+                                                </div>
+                                                <!-- <div class="mb-2 d-flex justify-content-between">
+                                                    <div class="py-2">
+                                                        <input onchange="readcheck()" type="checkbox" class="ml-3 mr-1"
+                                                            name="morning" id="morning" value="morning"
+                                                            class="timeField">
+                                                        Morning
+                                                    </div>
+                                                    <div id="morningTiming">
+                                                        <input type="time" class="from"> to
+                                                        <input type="time" class="to">
+                                                    </div>
+                                                </div>
+                                                <div class="mb-2 d-flex justify-content-between">
+                                                    <div class="py-2">
+                                                        <input onchange="readcheck()" type="checkbox" class="ml-3 mr-1"
+                                                            name="afternoon" id="afternoon" value="afternoon"
+                                                            class="timeField">
+                                                        Afternoon
+                                                    </div>
+                                                    <div id="afternoonTiming">
+                                                        <input type="time" class="from"> to
+                                                        <input type="time" class="to">
+                                                    </div>
+                                                </div>
+                                                <div class="mb-2 d-flex justify-content-between">
+                                                    <div class="py-2">
+                                                        <input onchange="readcheck()" type="checkbox" class="ml-3 mr-1"
+                                                            name="evening" id="evening" value="evening"
+                                                            class="timeField">
+                                                        Evening
+                                                    </div>
+                                                    <div id="eveningTiming">
+                                                        <input type="time" class="from"> to
+                                                        <input type="time" class="to">
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <p class="py-2 px-3">Clinic Name<span class="mandatory">*</span></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <input class="myFields py-2 px-3" oninput="validateProfile()"
+                                                    id="clinicName" type="text" placeholder="Enter Clinic Name" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <p class="py-2 px-3">Clinic Address<span class="mandatory">*</span></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <input class="myFields py-2 px-3" oninput="validateProfile()"
+                                                    id="location" type="text" placeholder="Enter Clinic Location" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <p class="py-2 px-3">Clinic State<span class="mandatory">*</span></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <select name="state" id="state" class="myFields py-2 px-3" onchange="loadcities()">
+                                                     <option value="">--Select State--</option>
+                                                    <!--<option value="Andhra Pradesh">Andhra Pradesh</option>
+                                                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar
+                                                        Islands</option>
+                                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                                    <option value="Assam">Assam</option>
+                                                    <option value="Bihar">Bihar</option>
+                                                    <option value="Chandigarh">Chandigarh</option>
+                                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                                    <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli
+                                                    </option>
+                                                    <option value="Daman and Diu">Daman and Diu</option>
+                                                    <option value="Delhi">Delhi</option>
+                                                    <option value="Lakshadweep">Lakshadweep</option>
+                                                    <option value="Puducherry">Puducherry</option>
+                                                    <option value="Goa">Goa</option>
+                                                    <option value="Gujarat">Gujarat</option>
+                                                    <option value="Haryana">Haryana</option>
+                                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                                    <option value="Jharkhand">Jharkhand</option>
+                                                    <option value="Karnataka">Karnataka</option>
+                                                    <option value="Kerala">Kerala</option>
+                                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                                    <option value="Maharashtra">Maharashtra</option>
+                                                    <option value="Manipur">Manipur</option>
+                                                    <option value="Meghalaya">Meghalaya</option>
+                                                    <option value="Mizoram">Mizoram</option>
+                                                    <option value="Nagaland">Nagaland</option>
+                                                    <option value="Odisha">Odisha</option>
+                                                    <option value="Punjab">Punjab</option>
+                                                    <option value="Rajasthan">Rajasthan</option>
+                                                    <option value="Sikkim">Sikkim</option>
+                                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                                    <option value="Telangana">Telangana</option>
+                                                    <option value="Tripura">Tripura</option>
+                                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                                    <option value="Uttarakhand">Uttarakhand</option>
+                                                    <option value="West Bengal">West Bengal</option> -->
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <p class="py-2 px-3">Clinic City<span class="mandatory">*</span></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <select name = "city" id="city" class="myFields py-2 px-3">
+                                                    <option value="">--Select City--</option>
+                                                   
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <p class="py-2 px-3">Alternate Number<span class="mandatory">*</span></p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <input class="myFields py-2 px-3" oninput="validateProfile()"
+                                                    id="otherNumber" placeholder="xxxxxxxxxx" type="number" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <p class="py-2 px-3">No. of Handlers<span class="mandatory">*</span></p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <input class="myFields py-2 px-3" oninput="validateProfile()"
+                                                    id="handlers" placeholder="Example: 3" type="number" min=0 max=3 />
+                                            </div>
+                                            <div class="form-group">
+                                                <small class="text-danger">Maximum 3 handlers allowed</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <p class="py-2 px-3">Email<span class="mandatory">*</span> </p>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <input class="myFields py-2 px-3" oninput="validateProfile()" id="email"
+                                                    type="email" aria-describedby="emailHelp"
+                                                    placeholder="Enter email address" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-2">
+                                        <button class="btn bg-theme p-3 text-light" style="width: 100%;"
+                                            id="createProfileBtn" onclick="createProfile()">
+                                            Create Profile
+                                            <span id="preloader" class="mr-2">
+                                                <img src="../assets/svg/loader.svg">
+                                            </span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="loginImg d-flex justify-content-center align-items-center">
+                            <img src="../assets/mainsvg/profileMain.svg" class="responsive my-5" alt="login"
+                                height="200">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div style="background-color: #fff;margin-bottom: -7px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#0747a6" fill-opacity="1" d="M0,320L1440,96L1440,320L0,320Z"></path>
+            </svg>
+        </div>
+        <div class="footer text-center text-light">
+            <h1 class="font-weight-bold">BOPDOP</h1>
+            <p>Copyright © 2020, BOPDOP. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+<script>
+    document.getElementById("createProfileBtn").disabled = true;
+    document.querySelector('form').addEventListener('submit', event => {
+        event.preventDefault();
+    });
+
+</script>
+<script src="../js/variable.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="../js/mytoast.js"></script>
+<script src="../js/apis/login.js"></script>
+<script src="../js/apis/validation.js"></script>
+<script src="../js/apis/loadcities.js"></script>
+<script>
+    getName();
+    loadstates();
+</script>
+
+</html>

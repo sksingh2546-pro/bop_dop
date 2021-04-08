@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handler Home | BOPDOP</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/mainCss.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+</head>
+<script src="../js/auth/handlerAuth.js"></script>
+<body style="background-color: #f1f1f1;" onload="allPatients()" >
+    <nav class="homenav shadow-none">
+        <label for="check" class="checkBtn"><i class="fas fa-bars"></i></label>
+        <input type="checkbox" id="check">
+        <label class="logo">B<span style="color: var(--danger);">OPD</span>OP</label>
+    </nav>
+    <div class="sideNavbar">
+        <ul>
+            <li>
+                <a href="index.html">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span>Live OPD</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="appointed-patients.html">
+                    <i class="fas fa-tachometer-alt mr-2"></i>
+                    <span>Appointed Patients</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="manage-slots.html">
+                    <i class="fas fa-calendar-alt mr-2"></i>
+                    <span>Manage Slots</span>
+                </a>
+            </li>
+            <li class="sideActive">
+                <a href="total-visited-patients.html" id="visited">
+                    <i class="fas fa-hospital-user mr-2"></i>
+                    <span>Total Patients visited</span>
+                </a>
+            </li>
+            <li >
+                <a href="#" onclick="handlerlogout()">
+                    <i class="fas fa-sign-out-alt mr-2"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="sideContent">
+        <div class="row mb-2 py-4 px-5" style="background: #fff;">
+            <h2 class="mb-4 font-weight-bold">Total Visits</h2>
+            <div class="table-responsive animate__animated animate__fadeIn">
+                <table class="table table-bordered table-hover table-striped mytable" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                           
+                            <th>Patient Name</th>
+                            <th>Gender</th>
+                            <th>Age</th>
+                            <th>Contact</th>
+                            <th>Appointment Date</th>
+                            <th>Slot</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="totalPatientTable">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>   
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="../js/variable.js"></script>
+<script src="../js/dash.js"></script>
+
+<script>
+    document.getElementsByClassName("checkBtn")[0].addEventListener("click",()=>{
+        if(document.getElementById("check").checked == true){
+            document.getElementsByClassName("sideNavbar")[0].style.left = "-100%"
+        }
+        else if(document.getElementById("check").checked == false ){
+            document.getElementsByClassName("sideNavbar")[0].style.left = "0px"
+        }
+    });
+</script>
+<script src="../js/apis/appointed.js"></script>
+<script src="../js/apis/logout.js"></script>
+</html>
