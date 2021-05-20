@@ -1175,11 +1175,16 @@ input[type=number] {
     border:1px solid #888;
 }
 
-input[type=time]{
+input[type=time],.duration{
     border:1px solid #ced4da;
     padding:5px 10px; 
     border-radius: 5px;
 }
+.duration{
+    padding: 6px 10px;
+    background: none;   
+}
+
 #morningTiming,#afternoonTiming,#eveningTiming{
     display: none;
 }
@@ -1815,4 +1820,10 @@ font-size: 14px;
 }
 .nav-tabs .nav-item{
     width: 50%;
+}
+.select-time{
+    border:1px solid #ced4da;
+    padding:5px 10px; 
+    border-radius: 5px;
+    background-color: transparent;
 }

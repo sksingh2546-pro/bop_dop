@@ -22,7 +22,11 @@
         text-decoration: none;
     }
 </style>
-
+<script>
+    if (sessionStorage.getItem('AdminAuth') != null) {
+        window.open("../admin/index.html", "_self");
+    }
+</script>
 <body style="background: url('../assets/img/back.jpg'); background-position: center; background-size: cover;">
     <div style="background: rgba(255,255,255,0.8);height: 100vh;">
         <nav>
@@ -42,7 +46,7 @@
                         <p class="text-muted my-3">You can use your BOPDOP account to handle this portal. </p>
                         <form >
                             <div class="form-group">
-                                <input class="form-control p-3" id="username" type="email"
+                                <input class="form-control p-3" id="username" type="text"
                                     placeholder="Enter email address" required>
                             </div>
                             <div class="form-group">

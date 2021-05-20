@@ -6,7 +6,10 @@ function editProfile() {
       inputs[i].id == "experience" ||
       inputs[i].id == "degree" ||
       inputs[i].id == "name1" ||
-      inputs[i].id == "specialisation"
+      inputs[i].id == "specialisation" ||
+      inputs[i].id == "city" ||
+      inputs[i].id == "state" ||
+      inputs[i].id == "handlers"
     ) {
 
     }
@@ -45,9 +48,9 @@ function getProfile() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
-        console.log(this.responseText)
+        // console.log(this.responseText)
         var result = JSON.parse(this.responseText)[0];
-        console.log(result);
+        // console.log(result);
         document.getElementById("name1").value = result.doctor_name;
         document.getElementById("experience").value = result.experience;
         document.getElementById("degree").value = result.qualification;
@@ -59,9 +62,10 @@ function getProfile() {
         document.getElementById("clinicAddress").value = result.clinic_address;
         document.getElementById("email").value = result.email;
         document.getElementById("doctorTitle").innerHTML = result.doctor_name;
-        document.getElementById("clinicTiming").value = result.timing;
+        document.getElementById("hiddenClinicTiming").setAttribute("data-time",result.timing);
         document.getElementById("handlers").value = result.number_of_handlers;
         document.getElementById("registrationNumber").value = result.reg_number;
+        
       }
     };
     xhttp.open("GET", ip + "/doctor/doctor_profile?mob_num=" + mob_num, true);
@@ -81,7 +85,7 @@ function deleteAccount() {
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
           if (this.readyState == 4 && this.status == 200) {
-              console.log(this.responseText);
+              // console.log(this.responseText);
               if(this.responseText == "successfull"){
                   mytoast("Account Deleted Successfully");
                   logout();

@@ -19,7 +19,7 @@ function addHandler() {
 
     if (handler_name != "" && handler_password != "") {
         url = "http://bopdop.in/handler/login.html?d=" + encryptedMob;
-        console.log(url);
+        // console.log(url);
         var formData = new FormData();
         formData.append("user_name", handler_name);
         formData.append("password", handler_password);
@@ -52,12 +52,12 @@ function verifyHandler() {
     if (username != "" && password != "") {
         var queryString = location.search;
         var array = queryString.split("?d=");
-        console.log(array)
+        // console.log(array)
         var mobile = array[1];
         if (array.length > 1) {
             var decrypted = CryptoJS.AES.decrypt(mobile, "Secret Passphrase");
             var mob_num = decrypted.toString(CryptoJS.enc.Utf8);
-            console.log(mob_num)
+            // console.log(mob_num)
         } else {
             mytoast("Invalid URL Go to Doctor for URL", "crimson");
             return;
@@ -73,7 +73,7 @@ function verifyHandler() {
 
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                console.log(this.responseText);
+                // console.log(this.responseText);
                 if (this.responseText != "Unsuccessfull") {
                     sessionStorage.setItem("HandlerAuthenticationState", "Authenticated");
                     localStorage.setItem("doc_mobile", mob_num);
@@ -104,7 +104,7 @@ function handlerData() {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var result = JSON.parse(this.responseText);
-            console.log(result)
+            // console.log(result)
             result.forEach(element => {
                 document.getElementById("handlerTable").innerHTML +=
                     '<tr>' +
@@ -147,7 +147,7 @@ function deleteHandler(element) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
+            // console.log(this.responseText);
             element.parentNode.parentNode.remove();
             Toastify({
                 text: "Deleted",

@@ -5,7 +5,7 @@ function patientList(){
            
             if (this.responseText != "") {
                 var result = JSON.parse(this.responseText);
-                console.log(result);
+                
                 result.forEach(data => {
                     document.getElementById("patientTable").innerHTML +=
                         '<tr>' +
@@ -39,7 +39,7 @@ function deletePatientList(){
            
             if (this.responseText != "") {
                 var result = JSON.parse(this.responseText);
-                console.log(result);
+                
                 result.forEach(data => {
                     document.getElementById("deletedPatientTable").innerHTML +=
                         '<tr>' +
@@ -76,7 +76,7 @@ function deletePatient(patient_id){
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                console.log(this.responseText);
+                
                 if(this.responseText == "successful"){
                     mytoast("Account Deleted Successfully");
                     location.reload();
@@ -100,7 +100,7 @@ function reactivatePatient(patient_id){
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                console.log(this.responseText);
+               
                 if(this.responseText == "successful"){
                     mytoast("Account Deleted Successfully");
                     location.reload();

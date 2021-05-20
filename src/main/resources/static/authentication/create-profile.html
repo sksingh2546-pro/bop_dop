@@ -45,50 +45,73 @@
                 <h2 class="font-weight-bold py-2 text-center text-light bg-theme">Profile Creation</h2>
                 <hr />
                 <div class="row">
-                    <div class="col-lg-7">
+                    <div class="col-lg-12 ">
                         <div class="card my-4" style="width: 100%;">
                             <div class="card-body px-4" style="height: auto;">
                                 <p class="text-muted my-3"> Symbol ( <span class="mandatory">*</span> ) denoted
                                     mandatory fields.</p>
-                                <form id="registerForm">
-                                    <div class="form-row">
-                                        <div class="col-md-4">
-                                            <p class="py-2 px-3">Full Name <span class="mandatory">*</span> </p>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <input class="myFields py-2 px-3" oninput="validateProfile()" id="name1"
-                                                    type="text" placeholder="Enter Doctor Name" value="" disabled/>
+                                <form id="registerForm" autocomplete="off">
+                                    <div class="row p-0">
+                                        <div class="col-md-7 p-0">
+                                            <div class="form-row">
+                                                <div class="col-md-5">
+                                                    <p class="py-2 px-3">Full Name <span class="mandatory">*</span> </p>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div class="form-group">
+                                                        <input class="myFields py-2 px-3" oninput="validateProfile()" id="name1"
+                                                            type="text" placeholder="Enter Doctor Name" value="" disabled/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-5">
+                                                    <p class="py-2 px-3">Qualification<span class="mandatory">*</span></p>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div class="form-group">
+                                                        <input class="myFields py-2 px-3" oninput="validateProfile()"
+                                                            id="degree" type="text" placeholder="Enter Qualification" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-5">
+                                                    <p class="py-2 px-3">Year of Experience<span class="mandatory">*</span></p>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div class="form-group">
+                                                        <input class="myFields py-2 px-3" oninput="validateProfile()"
+                                                            id="experience" placeholder="Example: 6" type="number" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <p class="py-2 px-3">Registration Number<span class="mandatory">*</span></p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div class="form-group">
+                                                        <input class="myFields py-2 px-3" oninput="validateProfile()"
+                                                            id="registrationNumber" type="text" placeholder="Enter Registration Number" />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-4">
-                                            <p class="py-2 px-3">Qualification<span class="mandatory">*</span></p>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <input class="myFields py-2 px-3" oninput="validateProfile()"
-                                                    id="degree" type="text" placeholder="Enter Qualification" />
+                                        <div class="col-md-5">
+                                            <div class="loginImg d-flex justify-content-center align-items-center">
+                                                <img src="../assets/mainsvg/profileMain.svg" class="responsive my-2 ml-3" alt="login"
+                                                    height="150">
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>  
                                     <div class="form-row">
-                                        <div class="col-md-4">
-                                            <p class="py-2 px-3">Year of Experience<span class="mandatory">*</span></p>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <input class="myFields py-2 px-3" oninput="validateProfile()"
-                                                    id="experience" placeholder="Example: 6" type="number" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <p class="py-2 px-3">Specialization<span class="mandatory">*</span></p>
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-9">
                                             <div class="form-group">
                                                 <select class="myFields" onchange="validateProfile()"
                                                     id="specialisation" style="height: 40px">
@@ -500,33 +523,18 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
                                     <div class="form-row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <p class="py-2 px-3">Registration Number<span class="mandatory">*</span></p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <input class="myFields py-2 px-3" oninput="validateProfile()"
-                                                    id="registrationNumber" type="text" placeholder="Enter Registration Number" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <p id="selectTiminng" class="py-2 px-3">Clinic Timing <span
                                                         class="mandatory">*</span>
                                                 </p>
                                             </div>
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-9">
                                             <div class="form-group py-2 px-3">
-                                                <div>
-                                                    <p>For Timing we give you time slots which is managed by you at your dashboard.</p>
-                                                </div>
-                                                <!-- <div class="mb-2 d-flex justify-content-between">
+                                                <div class="mb-2 d-flex justify-content-between">
                                                     <div class="py-2">
                                                         <input onchange="readcheck()" type="checkbox" class="ml-3 mr-1"
                                                             name="morning" id="morning" value="morning"
@@ -534,8 +542,19 @@
                                                         Morning
                                                     </div>
                                                     <div id="morningTiming">
-                                                        <input type="time" class="from"> to
-                                                        <input type="time" class="to">
+                                                        <select onchange="validateTime(this)" class="from timing select-time" tabindex="-1" aria-hidden="true">
+
+                                                        </select>
+                                                        to
+                                                        <select class="to timing select-time" tabindex="-1" aria-hidden="true">
+
+                                                        </select>
+                                                        <select class="duration timing" >
+                                                            <option value="" selected>slot duration</option>
+                                                            <option value="15">15 mins</option>
+                                                            <option value="30">30 mins</option>
+                                                            <option value="60"> 1 Hour</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="mb-2 d-flex justify-content-between">
@@ -546,8 +565,19 @@
                                                         Afternoon
                                                     </div>
                                                     <div id="afternoonTiming">
-                                                        <input type="time" class="from"> to
-                                                        <input type="time" class="to">
+                                                        <select onchange="validateTime(this)" class="from timing select-time" tabindex="-1" aria-hidden="true">
+
+                                                        </select>
+                                                        to
+                                                        <select class="to timing select-time" tabindex="-1" aria-hidden="true">
+
+                                                        </select>
+                                                        <select class="duration timing" >
+                                                            <option value="" selected>slot duration</option>
+                                                            <option value="15">15 mins</option>
+                                                            <option value="30">30 mins</option>
+                                                            <option value="60"> 1 Hour</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="mb-2 d-flex justify-content-between">
@@ -558,21 +588,32 @@
                                                         Evening
                                                     </div>
                                                     <div id="eveningTiming">
-                                                        <input type="time" class="from"> to
-                                                        <input type="time" class="to">
+                                                        <select onchange="validateTime(this)" class="from timing select-time" tabindex="-1" aria-hidden="true">
+
+                                                        </select>
+                                                        to
+                                                        <select class="to timing select-time" tabindex="-1" aria-hidden="true">
+
+                                                        </select>
+                                                        <select class="duration timing" >
+                                                            <option value="" selected>slot duration</option>
+                                                            <option value="15">15 mins</option>
+                                                            <option value="30">30 mins</option>
+                                                            <option value="60"> 1 Hour</option>
+                                                        </select>
                                                     </div>
-                                                </div> -->
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <div class="form-row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <p class="py-2 px-3">Clinic Name<span class="mandatory">*</span></p>
                                             </div>
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-9">
                                             <div class="form-group">
                                                 <input class="myFields py-2 px-3" oninput="validateProfile()"
                                                     id="clinicName" type="text" placeholder="Enter Clinic Name" />
@@ -580,12 +621,12 @@
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <p class="py-2 px-3">Clinic Address<span class="mandatory">*</span></p>
                                             </div>
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-9">
                                             <div class="form-group">
                                                 <input class="myFields py-2 px-3" oninput="validateProfile()"
                                                     id="location" type="text" placeholder="Enter Clinic Location" />
@@ -594,12 +635,12 @@
                                     </div>
                                     
                                     <div class="form-row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <p class="py-2 px-3">Clinic State<span class="mandatory">*</span></p>
                                             </div>
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-9">
                                             <div class="form-group">
                                                 <select name="state" id="state" class="myFields py-2 px-3" onchange="loadcities()">
                                                      <option value="">--Select State--</option>
@@ -646,12 +687,12 @@
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <p class="py-2 px-3">Clinic City<span class="mandatory">*</span></p>
                                             </div>
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-9">
                                             <div class="form-group">
                                                 <select name = "city" id="city" class="myFields py-2 px-3">
                                                     <option value="">--Select City--</option>
@@ -661,10 +702,10 @@
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <p class="py-2 px-3">Alternate Number<span class="mandatory">*</span></p>
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-9">
                                             <div class="form-group">
                                                 <input class="myFields py-2 px-3" oninput="validateProfile()"
                                                     id="otherNumber" placeholder="xxxxxxxxxx" type="number" />
@@ -672,10 +713,10 @@
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <p class="py-2 px-3">No. of Handlers<span class="mandatory">*</span></p>
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-9">
                                             <div class="form-group">
                                                 <input class="myFields py-2 px-3" oninput="validateProfile()"
                                                     id="handlers" placeholder="Example: 3" type="number" min=0 max=3 />
@@ -686,10 +727,10 @@
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <p class="py-2 px-3">Email<span class="mandatory">*</span> </p>
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-9">
                                             <div class="form-group">
                                                 <input class="myFields py-2 px-3" oninput="validateProfile()" id="email"
                                                     type="email" aria-describedby="emailHelp"
@@ -710,12 +751,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-5">
-                        <div class="loginImg d-flex justify-content-center align-items-center">
-                            <img src="../assets/mainsvg/profileMain.svg" class="responsive my-5" alt="login"
-                                height="200">
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </main>
@@ -730,6 +766,11 @@
         </div>
     </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     document.getElementById("createProfileBtn").disabled = true;
     document.querySelector('form').addEventListener('submit', event => {
@@ -737,15 +778,24 @@
     });
 
 </script>
+
 <script src="../js/variable.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script src="../js/mytoast.js"></script>
 <script src="../js/apis/login.js"></script>
 <script src="../js/apis/validation.js"></script>
 <script src="../js/apis/loadcities.js"></script>
+<script src="../js/cdn/moment.min.js"></script>
+<script src="../js/opdtiming.js"></script>
 <script>
-    getName();
-    loadstates();
+    
+    $(document).ready(function(){
+        getName();
+        loadstates();
+        fillTime('morningTiming',new Date(2018, 11, 24, 5, 30, 0, 0),12, 30);
+        fillTime('afternoonTiming',new Date(2018, 11, 24, 11, 30, 0, 0),16, 30);
+        fillTime('eveningTiming',new Date(2018, 11, 24, 15, 30, 0, 0),23, 30);
+    });
 </script>
 
 </html>

@@ -57,7 +57,7 @@ function closeDate(date){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-           console.log(this.responseText);
+        //    console.log(this.responseText);
            if(this.responseText == "Successfull"){
                mytoast("Date closed");
            }else{
@@ -78,7 +78,7 @@ function openDate(date){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-           console.log(this.responseText);
+        //    console.log(this.responseText);
            if(this.responseText == "Deleted"){
             mytoast("Opened Successfully")
            }else{
@@ -174,12 +174,12 @@ $('#slothelp').popover({
 
 function restrictDate(datearray) {
     var manageDate = document.getElementsByClassName("apdate");
-    console.log(manageDate[0])
+    // console.log(manageDate[0])
     datearray.forEach(date => {
         for (let i = 0; i < manageDate.length; i++) {
             if (date.dates == manageDate[i].value) {
-                console.log(manageDate[i])
-                console.log(manageDate[i].parentNode.firstElementChild)
+                // console.log(manageDate[i])
+                // console.log(manageDate[i].parentNode.firstElementChild)
                 manageDate[i].parentNode.firstElementChild.classList.remove("fa-unlock");
                 manageDate[i].parentNode.firstElementChild.classList.add("fa-lock");
                 manageDate[i].parentNode.style.color = "#aaa";
@@ -199,7 +199,7 @@ function getDateSlot() {
         if (this.readyState == 4 && this.status == 200) {
             if(this.responseText != ""){
                 var result = JSON.parse(this.responseText);
-                console.log(result)
+                // console.log(result)
                 restrictDate(result);
             }
         }
@@ -214,7 +214,7 @@ function restrictTime(timearray) {
     timearray.forEach(time => {
         for (let i = 0; i < manageSlot.length; i++) {
             if (time == manageSlot[i].value) {
-                console.log(manageSlot[i])
+                // console.log(manageSlot[i])
                 manageSlot[i].parentElement.lastElementChild
                 manageSlot[i].parentElement.lastElementChild.classList.remove("fa-unlock");
                 manageSlot[i].parentElement.lastElementChild.classList.add("fa-lock");
@@ -240,11 +240,11 @@ function getTimeSlot(dateparam,check) {
             if(this.responseText != ""){
                 var result = JSON.parse(this.responseText)[0].closed_slots;
                 result = result.split(",");
-                console.log(result);
+                // console.log(result);
                 //
                 restrictTime(result);
             }else{
-                console.log(check)
+                // console.log(check)
                 if(check == false){
                     document.getElementById("overlay").style.display = "flex";
                 }

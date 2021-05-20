@@ -34,10 +34,10 @@ function checkdoctorRegister(){
 }
 
 var userfields = document.getElementById("userRegisterForm").getElementsByTagName("input");
-console.log(userfields);
+// console.log(userfields);
 for (var i = 0; i < userfields.length; i++) {
     userfields[i].addEventListener('input', (event) => {
-        console.log("input");
+        // console.log("input");
         checkuserRegister();
     });
     
@@ -45,10 +45,10 @@ for (var i = 0; i < userfields.length; i++) {
 
 
 var docterfields = document.getElementById("doctorRegisterForm").getElementsByTagName("input");
-console.log(docterfields);
+// console.log(docterfields);
 for (var i = 0; i < docterfields.length; i++) {
     docterfields[i].addEventListener('input', (event) => {
-        console.log("input");
+        // console.log("input");
         checkdoctorRegister();
     })
 }

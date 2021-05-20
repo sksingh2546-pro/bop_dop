@@ -42,7 +42,7 @@ function createSlots(activeTab) {
 function createSlotsArray(starttime,endtime,interval) {
     // var starttime = "11:50";
     // var interval = "30";
-    // var endtime = "10:50";
+    // var endtime = "1"0:50;
     var timeslots = [starttime];
     while (starttime != endtime) {
 
@@ -51,7 +51,6 @@ function createSlotsArray(starttime,endtime,interval) {
 
     }
     return timeslots;
-
 }
 
 
@@ -62,4 +61,45 @@ function addMinutes(time, minutes) {
         ((date.getMinutes().toString().length == 1) ? '0' + date.getMinutes() : date.getMinutes());
     return tempTime;
 }
+
+
+
+// $(document).ready(function(){
+
+//     $(".submitTime").click(function(){
+//         addClinicTiming($(this));
+        
+//     });
+
+//     $(".addTimeBtn").click(addTimeBox);
+// })
+
+// function addClinicTiming(element){
+//     console.log(element)
+    
+//    var id = '#'+element.parent().parent().parent().parent().attr('id');
+//    console.log(id);
+//     var start = $(id+' .startTime');
+//     var end = $(id+'  .endTime');
+//     var duration = $(id+'  .duration');
+
+//     if(start.val() != "" && end.val()  !="" && duration.val()  !="" ) {
+//         $(id+" input[type=time],"+id+" select").attr("disabled","true");
+//         mytoast("success "+start.val()+ " " + end.val() + " "+duration.val() );
+//         element.val("Edit");
+
+//     }else{
+//         mytoast("error")
+//     }
+// }
+
+// function addTimeBox(){
+
+//     var lastTimebox = $(".addTimingBox .schedule-box:last-child").attr("id");
+//     console.log($(".addTimingBox .schedule-box:last-child"))
+//     var id = 'time' + (parseInt(lastTimebox.split('e')[1])+1);
+//     var newTimebox = $("<div id="+id+"></div>").html($("#tempTimeBox").html());
+    
+//     $(".addTimingBox").append(newTimebox);
+// }
 

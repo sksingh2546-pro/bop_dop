@@ -6,7 +6,7 @@ function getdoctorlist() {
 
             if (this.responseText != "") {
                 var result = JSON.parse(this.responseText);
-                console.log(result);
+                // console.log(result);
                 result.forEach(data => {
                     document.getElementById("doctor_data").innerHTML +=
                         '<tr>' +
@@ -177,7 +177,7 @@ function addDoctor() {
         "registration_number": reg_num,
 
     }
-    console.log(temp);
+    // console.log(temp);
 
 
     var xhttp = new XMLHttpRequest();
@@ -207,7 +207,7 @@ function workingdoctorlist() {
 
             if (this.responseText != "") {
                 var result = JSON.parse(this.responseText);
-                console.log(result);
+                // console.log(result);
                 result.forEach(data => {
                     document.getElementById("workingDoctorsTable").innerHTML +=
                         '<tr>' +
@@ -289,7 +289,7 @@ function counts() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText)
+            // console.log(this.responseText)
             if (this.responseText != "") {
                 var result = JSON.parse(this.responseText);
                 document.getElementById("totalPatient").innerHTML = result.pt_count;
@@ -309,7 +309,7 @@ function deletedDoctorList() {
 
             if (this.responseText != "") {
                 var result = JSON.parse(this.responseText);
-                console.log(result);
+                // console.log(result);
                 result.forEach(data => {
                     document.getElementById("deletedDoctorsTable").innerHTML +=
                         '<tr>' +

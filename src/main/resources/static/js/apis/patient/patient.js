@@ -6,14 +6,14 @@ function patientHistory() {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText != "") {
                 var result = JSON.parse(this.responseText);
-                console.log(result);
+                
 
                 document.getElementById("historyTable").innerHTML = "";
                 result.forEach(data => {
                     if (data.apt_status == "approve") {
                         document.getElementById("historyTable").innerHTML += "<tr onclick='checkAppointmentStatus(" + data.apt_id + ")'> " +
-                            '<td>' + data.date + '</td>' +
-                            '<td>' + data.time_slot + '</td>' +
+                            '<td>' + moment(data.date,"YYYY MM DD").format("LL") + '</td>' +
+                            '<td>' + tConvert(data.time_slot) + '</td>' +
                             '<td> Dr. ' + data.doctor + '</td>' +
                             '<td>' + data.clinic_name + '</td>' +
                             '<td><span class="status ' + data.apt_status + '1">' + data.apt_status + '</td>' +
@@ -23,8 +23,8 @@ function patientHistory() {
                         document.getElementById("historyTable").innerHTML += 
                         "<tr onclick='getAwaitData(this,"+ data.apt_id +")'" +
                         "data-toggle='modal' data-target='#cancelAppointment' data-id='" + data.apt_id + "'> " +
-                            '<td>' + data.date + '</td>' +
-                            '<td>' + data.time_slot + '</td>' +
+                            '<td>' + moment(data.date,"YYYY MM DD").format("LL") + '</td>' +
+                            '<td>' + tConvert(data.time_slot) + '</td>' +
                             '<td> Dr. ' + data.doctor + '</td>' +
                             '<td>' + data.clinic_name + '</td>' +
                             '<td><span class="status ' + data.apt_status + '1">' + data.apt_status + '</td>' +
@@ -32,8 +32,8 @@ function patientHistory() {
                     }
                     else {
                         document.getElementById("historyTable").innerHTML += "<tr > " +
-                            '<td>' + data.date + '</td>' +
-                            '<td>' + data.time_slot + '</td>' +
+                            '<td>' + moment(data.date,"YYYY MM DD").format("LL") + '</td>' +
+                            '<td>' + tConvert(data.time_slot) + '</td>' +
                             '<td> Dr. ' + data.doctor + '</td>' +
                             '<td>' + data.clinic_name + '</td>' +
                             '<td><span class="status ' + data.apt_status + '1">' + data.apt_status + '</td>' +
@@ -55,7 +55,7 @@ function currentStatus() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
+            
             if (this.responseText == "await") {
                 document.getElementsByClassName("await")[0].style.display = "block";
                 document.getElementsByClassName("appointmentExist")[0].style.display = "none";
@@ -72,10 +72,10 @@ function currentStatus() {
                 document.getElementsByClassName("appointment")[0].style.display = "none";
 
                 var result = JSON.parse(this.responseText);
-                console.log(result)
+               
                 document.getElementById("doc_name").innerHTML = "Dr. " + result.doc_name.toUpperCase();
-                document.getElementById("time").innerHTML = "Time Slot : " + result.time;
-                document.getElementById("date").innerHTML = "Date : " + result.date;
+                document.getElementById("time").innerHTML = "Time Slot : " + tConvert(result.time);
+                document.getElementById("date").innerHTML = "Date : " +  moment(result.date,"YYYY MM DD").format("LL") ;
                 document.getElementById("clinic_address").innerHTML = "Address : "+result.clinic + ", "  + result.location ;
                 document.getElementById("token_no").innerHTML = "Token number : " + result.token;
                 document.getElementById("live_opd").innerHTML = "Current Token Number : " + result.live;
@@ -92,7 +92,7 @@ function getProfileData() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
+            
             var result = JSON.parse(this.responseText);
             if (this.responseText != "") {
                 document.getElementById("name").value = result.patient_name;
@@ -146,12 +146,12 @@ function updateUserProfile() {
         "age": dob.value
     }
 
-    console.log(temp);
+    
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText)
+           
             if (this.responseText == "updated") {
                 mytoast("Profile Updated");
                 location.reload();
@@ -168,34 +168,37 @@ function updateUserProfile() {
 }
 
 function checkAppointmentStatus(apt_id) {
-    document.getElementsByClassName("appointment")[0].style.display = "block";
+    
 
     var formData = new FormData();
     formData.append("apt_id", apt_id)
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
+           
             if (this.responseText == "await") {
+                console.log("await")
                 document.getElementsByClassName("await")[0].style.display = "block";
                 document.getElementsByClassName("appointmentExist")[0].style.display = "none";
                 document.getElementsByClassName("appointment")[0].style.display = "none";
             }
             else if (this.responseText == "") {
+                console.log("no")
                 document.getElementsByClassName("await")[0].style.display = "none";
                 document.getElementsByClassName("appointmentExist")[0].style.display = "none";
                 document.getElementsByClassName("appointment")[0].style.display = "block";
             }
             else {
+                console.log("sy")
                 document.getElementsByClassName("await")[0].style.display = "none";
                 document.getElementsByClassName("appointmentExist")[0].style.display = "block";
                 document.getElementsByClassName("appointment")[0].style.display = "none";
 
                 var result = JSON.parse(this.responseText);
-                console.log(result)
+               
                 document.getElementById("doc_name").innerHTML = "Dr. " + result.doc_name.toUpperCase();
-                document.getElementById("time").innerHTML = "Time Slot : " + result.time;
-                document.getElementById("date").innerHTML = "Date : " + result.date;
+                document.getElementById("time").innerHTML = "Time Slot : " + tConvert(result.time);
+                document.getElementById("date").innerHTML = "Date : " + moment(result.date,"YYYY MM DD").format("LL");
                 document.getElementById("clinic_address").innerHTML = "Address : "+result.clinic + ", "  + result.location ;
                 document.getElementById("token_no").innerHTML = "Token number : " + result.token;
                 document.getElementById("live_opd").innerHTML = "Current Token Number : " + result.live;
@@ -217,7 +220,7 @@ function deleteUserAccount() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                console.log(this.responseText);
+                
                 if(this.responseText == "successful"){
                     mytoast("Account Deleted Successfully");
                     userlogout();
@@ -243,7 +246,7 @@ function cancelAppointment(apt_id){
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                console.log(this.responseText);
+                
                 if(this.responseText == "successfull"){
                     mytoast("Appointment Canceled Successfully");
                     location.reload();

@@ -28,7 +28,7 @@ function addLocationListen(){
   var locations = document.getElementsByClassName("location");
   for(let i=0;i<locations.length;i++){
       locations[i].addEventListener("click",()=>{
-          console.log("click")
+          // console.log("click")
           document.getElementById("searchLocation").value = locations[i].innerText.trim();
           document.getElementsByClassName("suggestions")[0].style.display = "none";
       })
@@ -41,7 +41,7 @@ function addDoctorListen(){
   var doctors = document.getElementsByClassName("doctors");
   for(let i=0;i<doctors.length;i++){
       doctors[i].addEventListener("click",()=>{
-          console.log("click")
+          // console.log("click")
           document.getElementById("searchDoctor").value = doctors[i].innerText.trim();
           document.getElementsByClassName("suggestions")[1].style.display = "none";
       })
@@ -51,7 +51,7 @@ function addDoctorListen(){
 
 function filterFunction() {
     var input, filter, a, i;
-    console.log("Lfunction");
+    // console.log("Lfunction");
     input = document.getElementById("searchLocation");
     filter = input.value.toUpperCase();
     divs = document.getElementsByClassName("location");
@@ -67,7 +67,7 @@ function filterFunction() {
   }
   function filterDoctor() {
     var input, filter, a, i;
-    console.log("Dfunction");
+    // console.log("Dfunction");
     input = document.getElementById("searchDoctor");
     filter = input.value.toUpperCase();
     divs = document.getElementsByClassName("doctors");

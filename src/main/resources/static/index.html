@@ -114,7 +114,7 @@
                             <div class="position-relative searchstyle">
                                 <input type="search" placeholder="Search location" class="searchFields"
                                     id="searchLocation" name="location" value="Getting location..."
-                                    onfocus="openLocationSuggestion()" oninput="filterFunction()" autocomplete="false" required>
+                                    onfocus="openLocationSuggestion()" oninput="filterFunction()" autocomplete="off" required>
                                 <img src="assets/svg/globe.svg" class="fonticon" />
                                 <div class="suggestions">
 
@@ -129,7 +129,7 @@
                             </div>
                             <div class="position-relative searchstyle" style="margin-left: 4px">
                                 <input type="search" placeholder="Search by Speciality" class="searchFields"
-                                    id="searchDoctor" onfocus="openDoctorSuggestion(getSpecialityList)" autocomplete="false"
+                                    id="searchDoctor" onfocus="openDoctorSuggestion(getSpecialityList)" autocomplete="off"
                                     oninput="filterDoctor()" name="doctor" required>
                                 <img src="assets/svg/darksearch.svg" class="fonticon" />
                                 <div class="suggestions">
@@ -323,6 +323,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script src="js/mytoast.js"></script>
 <script src="js/variable.js"></script>

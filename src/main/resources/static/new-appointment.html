@@ -17,7 +17,7 @@
         window.open("authentication/login.html?status=none&redirect="+encodeURI(location.href), "_self");
     }
 </script>
-<body onload="getAppointData(),getPName(),fetchDate()">
+<body onload="getAppointData(),getPName(),patientSlots(),fetchDate()">
     <nav class="homenav shadow-none">
         <label for="check" class="checkBtn"><i class="fas fa-bars"></i></label>
         <input type="checkbox" id="check">
@@ -196,8 +196,8 @@
                                         <img src="assets/svg/sunrise.svg" class="mr-2" height="20px">
                                         <span>Morning</span>
                                     </div>
-                                    <div class="grid slotTime mt-3 ">
-                                        <div class="slot mx-1"><input type="hidden" class="slotvalue" value="10">
+                                    <div class="grid slotTime mt-3 slotBoxMorning">
+                                        <!-- <div class="slot mx-1"><input type="hidden" class="slotvalue" value="10">
                                             <i class="fa-check-circle mr-1"></i>
                                             <span class="singleSlot">10:00am</span>
                                         </div>
@@ -212,7 +212,7 @@
                                         <div class="slot mx-1"><input type="hidden" class="slotvalue" value="11.3">
                                             <i class="fa-check-circle mr-1"></i>
                                             <span class="singleSlot">11:30am</span>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -222,8 +222,8 @@
                                         <img src="assets/svg/sun.svg" class="mr-2" height="20px">
                                         <span style="padding-top:11px ;">Afternoon</span>
                                     </div>
-                                    <div class="grid slotTime mt-3">
-                                        <div class="slot mx-1"><input type="hidden" class="slotvalue" value="12">
+                                    <div class="grid slotTime mt-3 slotBoxAfternoon" >
+                                        <!-- <div class="slot mx-1"><input type="hidden" class="slotvalue" value="12">
                                             <i class="fa-check-circle mr-1"></i>
                                             <span class="singleSlot">12:00pm</span>
                                         </div>
@@ -262,7 +262,7 @@
                                         <div class="slot mx-1"><input type="hidden" class="slotvalue" value="16.3">
                                             <i class="fa-check-circle mr-1"></i>
                                             <span class="singleSlot">04:30pm</span>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -272,8 +272,8 @@
                                         <img src="assets/svg/sunset.svg" class="mr-2" height="20px">
                                         <span>Evening</span>
                                     </div>
-                                    <div class="grid slotTime mt-3">
-                                        <div class="slot mx-1"><input type="hidden" class="slotvalue" value="17">
+                                    <div class="grid slotTime mt-3 slotBoxEvening" >
+                                        <!-- <div class="slot mx-1"><input type="hidden" class="slotvalue" value="17">
                                             <i class="fa-check-circle mr-1" style="display: none;"></i><span
                                                 class="singleSlot">05:00pm</span>
                                         </div>
@@ -296,7 +296,7 @@
                                         <div class="slot mx-1"><input type="hidden" class="slotvalue" value="19.3">
                                             <i class="fa-check-circle mr-1" style="display: none;"></i><span
                                                 class="singleSlot">07:30pm</span>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -353,8 +353,9 @@
 <script src="js/mytoast.js"></script>
 <script src="js/variable.js"></script>
 <script src="js/auth/userauth.js"></script>
-
 <script src="js/appointment/appoint.js"></script>
+<script src="js/appointment/slot.js"></script>
+
 <script src="js/dash.js"></script>
 <script src="js/apis/logout.js"></script>
 

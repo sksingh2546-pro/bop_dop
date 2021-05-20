@@ -9,7 +9,7 @@ function getlocation() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
+            // console.log(this.responseText);
             if (this.responseText != "") {
                 var result = JSON.parse(this.responseText);
 
@@ -35,6 +35,7 @@ function getlocation() {
     xhttp.open("GET", ip + "/patient/cities", true);
     xhttp.send();
 }
+var secret = "mybopdopapp";
 
 function getSpecialityList() {
     document.getElementsByClassName("suggestions")[1].innerHTML =
@@ -48,7 +49,7 @@ function getSpecialityList() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
+            // console.log(this.responseText);
             if (this.responseText != "") {
                 var result = JSON.parse(this.responseText);
 
@@ -86,10 +87,10 @@ function getDoctorNameList() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
+            // console.log(this.responseText);
             if (this.responseText != "") {
                 var result = JSON.parse(this.responseText);
-                console.log(result);
+                // console.log(result);
                 document.getElementsByClassName("suggestions")[1].innerHTML = "";
                 for (let i = 0; i < result.length; i++) {
                     document.getElementsByClassName("suggestions")[1].innerHTML +=
@@ -124,10 +125,10 @@ function getHospitalList() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
+            // console.log(this.responseText);
             if (this.responseText != "") {
                 var result = JSON.parse(this.responseText);
-                console.log(result);
+                // console.log(result);
                 document.getElementsByClassName("suggestions")[1].innerHTML = "";
                 for (let i = 0; i < result.length; i++) {
                     document.getElementsByClassName("suggestions")[1].innerHTML +=
@@ -170,7 +171,7 @@ function getAllDoctors(searchtype) {
         '</div>' +
         '<div class="text-center">' +
         '<span id="preloader">' +
-        '<img src="/assets/svg/black-loader.svg">' +
+        '<img src="assets/svg/black-loader.svg">' +
         '</span>' +
         '</div>';
 
@@ -205,11 +206,14 @@ function getAllDoctors(searchtype) {
 
             if (this.responseText != "") {
                 var result = JSON.parse(this.responseText);
-                console.log(result);
+                // console.log(result);
                 var stringDoctor = "";
                 document.getElementsByClassName("searchResult")[0].style.display = "block";
                 for (let i = 0; i < result.length; i++) {
                     stringDoctor = result[i].doctor_name;
+                    var encryptedM = CryptoJS.AES.encrypt(result[i].doc_number, secret);
+                    let timing = JSON.parse(result[i].timing);
+                    timing = JSON.stringify(timing);
                     document.getElementsByClassName("searchResult")[0].innerHTML +=
                         '<div class="bopdopDoctor">' +
                         '<div class="row">' +
@@ -221,7 +225,7 @@ function getAllDoctors(searchtype) {
                         '<div class="col-md-10 mb-2">' +
                         '<div class="boppdopDoctorDetails">' +
                         '<h5 class="m-0">' +
-                        '<a href="watch-doctor-profile.html?d=' + encodeURI(result[i].doc_number) + '">' +
+                        '<a href="watch-doctor-profile.html?d=' + encryptedM + '">' +
                         'Dr. <span class="DName">' + stringDoctor + '</span>' +
                         '</a>' +
                         '</h5>' +
@@ -236,7 +240,7 @@ function getAllDoctors(searchtype) {
                         '<p class="my-2">' +
                         '<i class="fas fa-phone-square-alt"></i>' +
                         '<span class="Dphone mx-2">' + result[i].alt_number + '</span>' +
-                        '<button class="btn btn-success m-2" id="redirectBtn" onclick=location.href="new-appointment.html?dname=' +
+                        `<button class="btn btn-success m-2" id="redirectBtn" data-time=${timing} onmouseup=setOpd(this) onclick=location.href="new-appointment.html?dname=` +
                         encodeURI(stringDoctor) + "&dspec=" + encodeURI(result[i].specialty) + "&degree=" + encodeURI(result[i].degree) + "&dnum=" + result[i].doc_id +
                         "&clinicname=" + encodeURI(result[i].clinic_name)+ '">' +
                         '<i class="fas fa-calendar-check text-light mr-2" ></i>' +
@@ -247,7 +251,7 @@ function getAllDoctors(searchtype) {
                         '<i class="fas fa-comment-medical text-light ml-2"></i>' +
                         '</button>' +
                         '</p>' +
-                        '<a href="watch-doctor-profile.html?d=' + encodeURI(result[i].doc_number) + '">view profile</a>' +
+                        '<a href="watch-doctor-profile.html?d=' + encryptedM + '">view profile</a>' +
                         '</div>' +
                         '</div>' +
                         '</div>' +
@@ -271,6 +275,10 @@ function getAllDoctors(searchtype) {
     };
     xhttp.open("POST", ip + "/patient/" + searchtype, true);
     xhttp.send(formData);
+}
+function setOpd(element){
+    let time = element.getAttribute("data-time");
+    localStorage.setItem("t",time);
 }
 
 function searchType() {

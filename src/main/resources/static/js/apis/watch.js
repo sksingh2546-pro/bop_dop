@@ -1,7 +1,10 @@
 
 function getProfileData() {
     var queryString = location.search;
-    const urlParams = new URLSearchParams(queryString);
+    const urlParams = queryString.split("?d=")[1];
+    var decrypted = CryptoJS.AES.decrypt(urlParams, "mybopdopapp");
+
+    var d_num = decrypted.toString(CryptoJS.enc.Utf8).trim();
     // urlParams.get('d');
 
     var xhttp = new XMLHttpRequest();
@@ -9,21 +12,24 @@ function getProfileData() {
 
         if (this.readyState == 4 && this.status == 200) {
             var result = JSON.parse(this.responseText)[0];
-
+            // console.log(result)
             var dspec = encodeURIComponent(result.specialisation);
             var degree = encodeURIComponent(result.degree);
-            var timing = encodeURIComponent(result.timing);
+            var timing = result.timing;
             var doc_name = encodeURIComponent(result.doctor_name);
+            var clinic_name = encodeURIComponent(result.clinic_name);
+
             if (sessionStorage.getItem("usermobile") != null) {
                 document.getElementById("getAppoint").setAttribute("onclick",
                     "location.href='new-appointment.html?dname=" + doc_name + "&dspec=" + dspec + "&degree=" + degree + "&dnum=" + result.doctor_id +
-                    "&dtiming=" + timing + "'");
+                    "&clinicname=" + clinic_name + "'");
             }
             else {
                 document.getElementById("getAppoint").setAttribute("onclick",
                     "location.href='../authentication/login.html'");
             }
-
+            // console.log(timing);
+            localStorage.setItem("t",timing);
             document.getElementsByClassName("backBox")[0].innerHTML =
                 '<div class="bopdopDoctor">' +
                 '<div class="flexSeparate">' +
@@ -61,6 +67,6 @@ function getProfileData() {
 
         }
     };
-    xhttp.open("GET", ip + "/patient/pt_doctor_profile?mob_num=" + urlParams.get('d'), true);
+    xhttp.open("GET", ip + "/patient/pt_doctor_profile?mob_num=" + d_num, true);
     xhttp.send();
 }

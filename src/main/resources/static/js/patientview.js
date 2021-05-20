@@ -1,6 +1,6 @@
 var url = new URL(window.location.href);
 var c = url.searchParams.get("vp");
-console.log(c);
+// console.log(c);
 document.getElementsByClassName("custom-select")[0].value = c; 
 if(c == "PP"){
     document.getElementById("viewPatientHead").innerHTML = "Pending Patients";

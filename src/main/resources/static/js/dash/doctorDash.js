@@ -3,7 +3,7 @@ function getCount() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
+            // console.log(this.responseText);
             document.getElementById("loading").style.display = "none";
             var count = this.responseText.split(":");
             document.getElementById("todayTotalPatient").innerHTML = count[0];

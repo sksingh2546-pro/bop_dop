@@ -61,4 +61,6 @@ function allowDoctor(){
 
 function logout(){
   localStorage.clear();
+  sessionStorage.clear();
+  location.reload();
 }

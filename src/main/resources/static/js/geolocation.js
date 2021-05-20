@@ -19,7 +19,7 @@ function getCity(coordinates) {
             var response = JSON.parse(xhr.responseText); 
             var city = response.address.city; 
 			document.getElementById("searchLocation").value=response.address.state;
-            console.log(response); 
+            // console.log(response); 
             return; 
         } 
     } 

@@ -72,7 +72,7 @@ function numcheck() {
     // Start Preloader
     openPreLoader();
 
-    // console.log("name is : "+name+" mob : "+mobile+" paswrd "+passsword)
+   
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -102,7 +102,7 @@ function numcheck() {
                     stopOnFocus: true,
                 }).showToast();
             }
-            else if(this.responseText == "patient"){
+            else if (this.responseText == "patient") {
                 mytoast("This number is registered as Patient")
             }
             else {
@@ -122,12 +122,12 @@ function numcheck() {
             closePreLoader();
 
         }
-        else if(this.readyState == 4 && this.status == 500){
+        else if (this.readyState == 4 && this.status == 500) {
             mytoast("Server Error", "crimson");
             // Close Preloader
             closePreLoader();
         }
-        else if(this.readyState == 4 && this.status == 404){
+        else if (this.readyState == 4 && this.status == 404) {
             mytoast("Something went wrong", "crimson");
             // Close Preloader
             closePreLoader();
@@ -175,7 +175,7 @@ function signUp() {
     var name = localStorage.getItem("doc_name");
     var mobile = localStorage.getItem("doc_mobile");
     var passsword = localStorage.getItem("doc_password");
-    console.log("doc sign up ! ")
+   
     var formData = new FormData();
     formData.append("doctor_name", name);
     formData.append("mob_number", mobile);
@@ -205,7 +205,7 @@ function signUp() {
 // STEP 5
 function createProfile() {
     // Start Preloader
-    openPreLoader();
+    // openPreLoader();
 
     var doc_name = document.getElementById("name1").value;
     var degree = document.getElementById("degree").value;
@@ -222,65 +222,58 @@ function createProfile() {
     var reg_num = document.getElementById("registrationNumber").value;
 
 
-    /*var opd_timing = "";
-    if (document.getElementById("morning").checked == true) {
-        opd_timing = "M=" + document.getElementById("morningTiming").getElementsByTagName("input")[0].value + " to " +
-            document.getElementById("morningTiming").getElementsByTagName("input")[1].value;
-    }
-    if (document.getElementById("afternoon").checked == true) {
-        opd_timing += "A=" + document.getElementById("afternoonTiming").getElementsByTagName("input")[0].value + " to " +
-            document.getElementById("afternoonTiming").getElementsByTagName("input")[1].value;
-    }
-    if (document.getElementById("evening").checked == true) {
-        opd_timing += "E=" + document.getElementById("eveningTiming").getElementsByTagName("input")[0].value + " to " +
-            document.getElementById("eveningTiming").getElementsByTagName("input")[1].value;
-    }*/
+    var opd_timing = getOPDTiming();
 
-    var temp = {
-        "doctor_name": doc_name,
-        "degree": degree,
-        "specialisation": specialisation,
-        "clinic_location": clinic_location,
-        "city": city,
-        "state": state,
-        "emial": emial,
-        "no_of_handlers": parseInt(no_of_handlers),
-        "experience": parseInt(experience),
-        "alt_contact_num": alt_contact_num,
-//        "opd_timing": opd_timing,
-        "mob_number": mobile,
-        "clinic_name": clinic_name,
-        "registration_number": reg_num
 
-    }
-    console.log(temp);
+    if (opd_timing.length > 0) {
+        var temp = {
+            "doctor_name": doc_name,
+            "degree": degree,
+            "specialisation": specialisation,
+            "clinic_location": clinic_location,
+            "city": city,
+            "state": state,
+            "emial": emial,
+            "no_of_handlers": parseInt(no_of_handlers),
+            "experience": parseInt(experience),
+            "alt_contact_num": alt_contact_num,
+            "opd_timing": JSON.stringify(opd_timing),
+            "mob_number": mobile,
+            "clinic_name": clinic_name,
+            "registration_number": reg_num
 
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-
-            if (this.responseText == "Successfull") {
-                sessionStorage.setItem("DoctorAuthenticationState", "Authenticated");
-                location.href = "request.html?loginstatus=done";
-
-            }
-            else {
-                mytoast("SERVER ERROR !!", "crimson");
-            }
-            // Close Preloader
-            closePreLoader();
         }
-    };
-    xhttp.open("POST", ip + "/doctor/add_doc_detail", true);
-    xhttp.setRequestHeader("Content-type", "application/json")
-    xhttp.send(JSON.stringify(temp));
+       
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+
+                if (this.responseText == "Successfull") {
+                    sessionStorage.setItem("DoctorAuthenticationState", "Authenticated");
+                    location.href = "request.html?loginstatus=done";
+
+                }
+                else {
+                    mytoast("SERVER ERROR !!", "crimson");
+                }
+                // Close Preloader
+                closePreLoader();
+            }
+        };
+        xhttp.open("POST", ip + "/doctor/add_doc_detail", true);
+        xhttp.setRequestHeader("Content-type", "application/json")
+        xhttp.send(JSON.stringify(temp));
+    } else {
+        mytoast("Fill OPD Timing", "tomato");
+    }
+
 }
 
 function getNumber() {
     var queryString = location.search;
     const urlParams = new URLSearchParams(queryString);
-    console.log(urlParams);
-    console.log(urlParams.get('p'));
+    
     document.getElementById("mobileNumber").value = urlParams.get('p');
     document.getElementById("otp").focus();
 }
@@ -289,6 +282,43 @@ Date.prototype.addHours = function (h) {
     this.setTime(this.getTime() + (h * 60 * 60 * 1000));
     return this;
 }
+function getOPDTiming() {
+    var opd_timing = [];
+    var morningTiming = document.getElementById("morningTiming").getElementsByClassName("timing");
+    var eveningTiming = document.getElementById("eveningTiming").getElementsByClassName("timing");
+    var afternoonTiming = document.getElementById("afternoonTiming").getElementsByClassName("timing");
+
+    if (document.getElementById("morning").checked == true) {
+        if (morningTiming[0].value != "" && morningTiming[1].value && morningTiming[2].value) {
+            opd_timing.push({
+                "type": "M", "Stime": morningTiming[0].value,"Etime":morningTiming[1].value, "duration": morningTiming[2].value
+            });
+        } else {
+            return [];
+        }
+    }
+
+    if (document.getElementById("afternoon").checked == true) {
+        if (afternoonTiming[0].value != "" && afternoonTiming[1].value && afternoonTiming[2].value) {
+            opd_timing.push({
+                "type": "A", "Stime": afternoonTiming[0].value,"Etime":afternoonTiming[1].value, "duration": afternoonTiming[2].value
+            });
+        } else {
+            return [];
+        }
+    }
+    if (document.getElementById("evening").checked == true) {
+        if (eveningTiming[0].value != "" && eveningTiming[1].value && eveningTiming[2].value) {
+            opd_timing.push({
+                "type": "E", "Stime": eveningTiming[0].value,"Etime":eveningTiming[1].value, "duration": eveningTiming[2].value
+            });
+        } else {
+            return [];
+        }
+    }
+    return opd_timing;
+}
+
 
 function getName() {
     document.getElementById("name1").value = localStorage.getItem("doc_name");
@@ -315,34 +345,34 @@ function login() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                console.log(this.responseText);
+                // console.log(this.responseText);
                 try {
                     var result = JSON.parse(this.responseText);
-                    console.log(result);
+                    // console.log(result);
                 } catch (error) {
                     console.warn(error)
                 }
-               
-                if (result.name != null && result.degree !=null) {
-                    console.log("signing in !!");
+
+                if (result.name != null && result.degree != null) {
+                    
                     localStorage.setItem("doc_name", result.name.trim());
-                    localStorage.setItem("doc_mobile", mobile);    
+                    localStorage.setItem("doc_mobile", mobile);
                     sessionStorage.setItem("DoctorAuthenticationState", "Authenticated");
                     location.href = "../doctor/doctor-dashboard.html";
                 }
-                else if (result.degree == null && result.name !=null) {
+                else if (result.degree == null && result.name != null) {
                     localStorage.setItem("doc_name", result.name.trim());
                     localStorage.setItem("doc_mobile", mobile);
-    
+
                     location.href = "create-profile.html";
-                 }
+                }
                 else {
                     document.getElementById("loading").style.display = "none";
                     mytoast("wrong username or password", "crimson");
                 }
                 document.getElementsByClassName("loaderimg")[0].style.display = "none";
 
-            }else if (this.readyState == 4 && this.status == 500) {
+            } else if (this.readyState == 4 && this.status == 500) {
                 mytoast("Server Error");
                 document.getElementsByClassName("loaderimg")[0].style.display = "none";
             }
@@ -357,7 +387,7 @@ function login() {
 }
 
 function updateProfile() {
-    
+
     var doc_name = document.getElementById("name1").value;
     var degree = document.getElementById("degree").value;
     var specialisation = document.getElementById("specialisation").value;
@@ -371,7 +401,7 @@ function updateProfile() {
     var clinic_name = document.getElementById("clinicName").value;
     var mobile = localStorage.getItem("doc_mobile");
     var reg_num = document.getElementById("registrationNumber").value;
-    var opd_timing = document.getElementById("clinicTiming").value;
+    var opd_timing = document.getElementById("hiddenClinicTiming").getAttribute("data-time");
 
     var temp = {
         "doctor_name": doc_name,
@@ -390,12 +420,12 @@ function updateProfile() {
         "registration_number": reg_num
 
     }
-    console.log(temp);
+    // console.log(temp);
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText)
+            
             if (this.responseText == "Successfull") {
                 mytoast("Profile Updated");
                 location.reload();

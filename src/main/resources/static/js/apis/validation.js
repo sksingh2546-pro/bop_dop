@@ -1,6 +1,6 @@
 function validateNumber(number) {
     let regexNumber = /^\d{10}$/;
-    console.log(regexNumber.test(number));
+    // console.log(regexNumber.test(number));
     return regexNumber.test(number);
 }
 
@@ -11,7 +11,7 @@ function validDate(){
 
 function validatePassword(password) {
     var regexPassword = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z!#$@%&? "])[a-zA-Z0-9!#$@%&?]{8,20}$/;
-    console.log(regexPassword.test(password));
+    // console.log(regexPassword.test(password));
     return regexPassword.test(password);
 }
 

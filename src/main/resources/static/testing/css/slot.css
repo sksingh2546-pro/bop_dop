@@ -1,80 +1,80 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
-.slot-container{
+.addTimingBox .slot-container{
     background-color: #f8f9fa;
     font-family: "Poppins",sans-serif;
     color: #272b41;
 }
-.slot-container *{
+.addTimingBox .slot-container *{
     color: #272b41;
     font-family: 'Poppins', sans-serif;
 }
-a:active, a:focus, a:hover {
+.addTimingBox  a:active, a:focus, a:hover {
     outline: none;
     text-decoration: none;
 }
 
-a:hover {
+.addTimingBox a:hover {
     color: #09dca4; 
 }
-a:hover {
+.addTimingBox  a:hover {
     color: #0056b3;
     text-decoration: none;
 }
 
-.edit-link {
+.addTimingBox  .edit-link {
     color: #20c0f3 !important; 
     font-size: 16px;
     margin-top: 4px;
 }
-.edit-link  i{
+.addTimingBox  .edit-link  i{
     color: #20c0f3 !important; 
 }
-.card {
+.addTimingBox .card {
     border: 1px solid #f0f0f0;
     margin-bottom: 1.875rem;
     height: auto;
 }
-.card-body{
+.addTimingBox .card-body{
     height: auto;
 }
-.card-title {
+.addTimingBox .card-title {
     margin-bottom: 15px;
 }
-.schedule-widget {
+.addTimingBox .schedule-widget {
     border-radius: 4px;
     min-height: 100px;
 }
-.schedule-header {
+.addTimingBox .schedule-header {
     border-bottom: 1px solid #f0f0f0;
     border-radius: 4px 4px 0 0;
     padding: 10px 20px;
 }
-.schedule-nav .nav-tabs {
+.addTimingBox .schedule-nav .nav-tabs {
     border: 0!important;
     flex-wrap: wrap;
 }
-.schedule-nav .nav-tabs li {
+.addTimingBox .schedule-nav .nav-tabs li {
     margin: 5px 15px 5px 0;
     display: inline-block;
 }
-.schedule-nav .nav-tabs li a.active {
+.addTimingBox .schedule-nav .nav-tabs li a.active {
     background: #ff4877;
     border: 1px solid #ff4877!important;
     color: #fff;
 }
-.schedule-nav .nav-tabs>li>a {
+.addTimingBox .schedule-nav .nav-tabs>li>a {
     border: 1px solid #dcddea;
     border-radius: 4px;
     padding: 6px 15px;
     text-transform: uppercase;
 }
-.schedule-cont {
+.addTimingBox .schedule-cont {
     padding: 20px;
 }
-.tab-content.schedule-cont .card-title {
+.addTimingBox .tab-content.schedule-cont .card-title {
     margin-bottom: 10px;
 }
-.nav-tabs.nav-justified>li>a:focus, .nav-tabs.nav-justified>li>a:hover {
+.addTimingBox .nav-tabs.nav-justified>li>a:focus, .nav-tabs.nav-justified>li>a:hover {
     border-bottom-color: #ddd;
     text-decoration: none;
 }
@@ -84,17 +84,17 @@ a:hover {
     border-color: transparent;
     color: #272b41;
 }
-.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+.addTimingBox .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
     border-color: #e9ecef #e9ecef #dee2e6;
 }
 a.edit-link:hover{
     text-decoration: none;
 }
-.doc-times {
+.addTimingBox .doc-times {
     display: flex;
     flex-wrap: wrap;
 }
-.doc-slot-list {
+.addTimingBox .doc-slot-list {
     background-color: #d9534f;
     border: 1px solid #d43f3a;
     border-radius: 4px;
@@ -103,11 +103,33 @@ a.edit-link:hover{
     margin: 10px 10px 0 0;
     padding: 6px 15px;
 }
-.doc-slot-list a {
+.addTimingBox .doc-slot-list a {
     color: #e48784;
     display: inline-block;
     margin-left: 5px;
 }
-.mylabel{
+.addTimingBox .mylabel{
     font-weight: 500;
+}
+
+.addTimingBox .addTimeBtn{
+    color: white;
+    height: 50px;
+    width: 50px;
+    border-radius:50% ;
+    text-align: center ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    cursor: pointer;
+    box-shadow: 1px 7px 18px -4px #777;
+    margin-top:10px;
+    margin-right: 10px;
+    float: right;
+}
+.addTimingBox .addTimeBtn:hover{
+    transform: scale(1.05);
+    transition: 0.5s;
+    opacity: 0.9;
 }

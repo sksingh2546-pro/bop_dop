@@ -23,7 +23,7 @@
 </style>
 <script src="../js/auth/auth.js"></script>
 
-<body style="background-color: #fff;" onload="getDoc(),getDateSlot()">
+<body style="background-color: #fff;" onload="getDoc(),getDoctorOpdTiming(),getDateSlot()">
     <nav class="homenav shadow-none">
         <label for="check" class="checkBtn"><i class="fas fa-bars"></i></label>
         <input type="checkbox" id="check">
@@ -224,8 +224,8 @@
                                         <img src="../assets/svg/sunrise.svg" class="mr-2" height="20px">
                                         <span>Morning</span>
                                     </div>
-                                    <div class="grid slotTime mt-3 ">
-                                        <div class="slot ml-1 shadow-sm" id="" onclick="togglelock(this)">
+                                    <div class="grid slotTime mt-3 slotBoxMorning">
+                                        <!-- <div class="slot ml-1 shadow-sm" id="" onclick="togglelock(this)">
                                             <input type="checkbox" class="lock" checked value="10">
                                             <span class="singleSlot">10:00am</span>
                                             <i class="fas fa-unlock"></i>
@@ -244,7 +244,7 @@
                                             <input type="checkbox" class="lock" checked value="11.3">
                                             <span class="singleSlot">11:30am</span>
                                             <i class="fas fa-unlock"></i>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -254,8 +254,8 @@
                                         <img src="../assets/svg/sun.svg" class="mr-2" height="20px">
                                         <span style="padding-top:11px ;">Afternoon</span>
                                     </div>
-                                    <div class="grid slotTime mt-3">
-                                        <div class="slot ml-1 shadow-sm" onclick="togglelock(this)">
+                                    <div class="grid slotTime mt-3 slotBoxAfternoon">
+                                        <!-- <div class="slot ml-1 shadow-sm" onclick="togglelock(this)">
                                             <input type="checkbox" class="lock" checked value="12">
                                             <span class="singleSlot">12:00pm</span>
                                             <i class="fas fa-unlock"></i>
@@ -304,7 +304,7 @@
                                             <input type="checkbox" class="lock" checked value="16.3">
                                             <span class="singleSlot">04:30pm</span>
                                             <i class="fas fa-unlock"></i>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -314,8 +314,8 @@
                                         <img src="../assets/svg/sunset.svg" class="mr-2" height="20px">
                                         <span>Evening</span>
                                     </div>
-                                    <div class="grid slotTime mt-3">
-                                        <div class="slot ml-1 shadow-sm" onclick="togglelock(this)">
+                                    <div class="grid slotTime mt-3 slotBoxEvening">
+                                        <!-- <div class="slot ml-1 shadow-sm" onclick="togglelock(this)">
                                             <input type="checkbox" class="lock" checked value="17">
                                             <span class="singleSlot">05:00pm</span>
                                             <i class="fas fa-unlock"></i>
@@ -344,7 +344,7 @@
                                             <input type="checkbox" class="lock" checked value="19.3">
                                             <span class="singleSlot">07:30pm</span>
                                             <i class="fas fa-unlock"></i>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -382,5 +382,5 @@
 <script src="../js/apis/logout.js"></script>
 <script src="../js/handler/dateprint.js"></script>
 <script src="../js/handler/manageslots.js"></script>
-
+<script src="../js/appointment/slot.js"></script>
 </html>

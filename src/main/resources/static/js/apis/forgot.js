@@ -13,7 +13,7 @@ function sendOTP(phone, otp) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var result = JSON.parse(this.responseText);
-            console.log(result);
+            // console.log(result);
             if (result.Status == "Success") {
                 mytoast("OTP Sent Successfully", "var(--secondary)");
                 document.getElementById("mobile").disabled = true;
@@ -36,7 +36,7 @@ function forgot() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                console.log(this.responseText);
+                // console.log(this.responseText);
                 if(this.responseText == ""){
                     mytoast("Mobile Number is not registered");
                 }
@@ -70,7 +70,7 @@ function verifyOTP() {
     var input = document.getElementById("otp").value;
     var otp = decrypted.toString(CryptoJS.enc.Utf8);
     if (otp == input) {
-        console.log("verified");
+        // console.log("verified");
         mytoast("OTP verified", "var(--success)");
         document.getElementById("forgetOtpForm").style.display = "none";
         document.getElementById("otpmessage").style.display = "none";
@@ -92,7 +92,7 @@ function forgotpassword(newpass) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
 
-            console.log(this.responseText);
+            // console.log(this.responseText);
             if(this.responseText == "pass"){
                 mytoast("Password Changed back to login page.","");
                 document.getElementById("newpassword").value = "";

@@ -1,7 +1,5 @@
 package com.Bop_Dop;
 
-import java.io.IOException;
-
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttClient;
@@ -20,7 +18,7 @@ public class MqttConnection implements MqttCallback
         conOpt.setCleanSession(true);
         if (Subscriber.client == null) 
         {
-        	Subscriber.client = new MqttClient(host, clientId+Math.random(), new MemoryPersistence());
+        	Subscriber.client = new MqttClient(host,clientId+Math.random(), new MemoryPersistence());
         	Subscriber.client.setCallback(this);
         	Subscriber.client.connect(conOpt);
         	Subscriber.client.subscribe(Subscriber.topic, Subscriber.qos);

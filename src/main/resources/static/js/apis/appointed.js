@@ -20,7 +20,7 @@ function addOPD() {
     var live = document.getElementById("liveOPD").value;
     var addValue = parseInt(live) + 1;
     document.getElementById("liveOPD").value = addValue;
-    console.log("value is : " + addValue)
+    
 
     var xml = new XMLHttpRequest();
     var mob = localStorage.getItem("doc_mobile");
@@ -37,7 +37,7 @@ function addOPD() {
     }
 
     xml.open("POST", ip+"/live/updates", true);
-    console.log("sending data !")
+    // console.log("sending data !")
     xml.send(formData);
 }
 
@@ -65,7 +65,7 @@ function minusOPD() {
         }
     }
     xml.open("POST", ip+"/live/updates", true);
-    console.log("sending minus value !")
+    
     xml.send(formData);
 }
 
@@ -80,11 +80,13 @@ function appointed() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText)
+            
             if (this.responseText != "") {
                 var result = JSON.parse(this.responseText);
-                console.log(result);
+                
                 result.forEach(element => {
+                    let slot = tConvert(element.slot);
+                    let apt_date = moment(element.apt_date,"YYYY MM DD").format("LL");
                     document.getElementById("appointedTable").innerHTML +=
                         '<tr>' +
                         '<td><span class="token-number">' + element.token_no_reason + '</span></td>' +
@@ -92,8 +94,8 @@ function appointed() {
                         '<td>' + element.gender + '</td>' +
                         '<td>' + element.age + '</td>' +
                         '<td>' + element.contact + '</td>' +
-                        '<td>' + element.apt_date + '</td>' +
-                        '<td>' + element.slot + '</td>' +
+                        '<td>' + apt_date + '</td>' +
+                        '<td>' + slot + '</td>' +
                         '<td><button class="btn btn-outline-success" data-key="' + element.apt_id +
                         '" onclick="visited(this)">Mark Visited <i class="fas fa-check"></i></button></td>' +
                         '</tr>';
@@ -117,7 +119,7 @@ function visited(element) {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                console.log(this.responseText);
+               
                 if (this.responseText == "Done") {
 
                     location.reload();
@@ -137,12 +139,13 @@ function visitedPatientList() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
+           
 
             if (this.responseText != "") {
                 var result = JSON.parse(this.responseText);
-                console.log(result);
+                
                 result.forEach(element => {
+                    let slot = tConvert(element.slot);
                     document.getElementById("totalPatientTable").innerHTML +=
                         '<tr>' +
                         '<td>' + element.token_no_reason + '</td>' +
@@ -151,7 +154,7 @@ function visitedPatientList() {
                         '<td>' + element.age + '</td>' +
                         '<td>' + element.contact + '</td>' +
                         '<td>' + element.apt_date + '</td>' +
-                        '<td>' + element.slot + '</td>' +
+                        '<td>' + slot + '</td>' +
 
                         '</tr>';
                 });
@@ -172,20 +175,21 @@ function allPatients() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
-
+            
             if (this.responseText != "") {
                 var result = JSON.parse(this.responseText);
-                console.log(result);
+                
                 result.forEach(element => {
+                    let slot = tConvert(element.slot);
+                    let apt_date = moment(element.apt_date,"YYYY MM DD").format("LL");
                     document.getElementById("totalPatientTable").innerHTML +=
                         '<tr>' +
                         '<td>' + element.patient_name + '</td>' +
                         '<td>' + element.gender + '</td>' +
                         '<td>' + element.age + '</td>' +
                         '<td>' + element.contact + '</td>' +
-                        '<td>' + element.apt_date + '</td>' +
-                        '<td>' + element.slot + '</td>' +
+                        '<td>' + apt_date + '</td>' +
+                        '<td>' + slot + '</td>' +
                         '<td><span class="status status-' + element.status + '">' + element.status + '</span></td>' +
                         '</tr>';
                 });
@@ -208,20 +212,22 @@ function todayPatients(){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
+          
 
             if (this.responseText != "") {
                 var result = JSON.parse(this.responseText);
-                console.log(result);
+                
                 result.forEach(element => {
+                    let slot = tConvert(element.slot);
+                    let apt_date = moment(element.apt_date,"YYYY MM DD").format("LL");
                     document.getElementById("todayPatientTable").innerHTML +=
                         '<tr>' +
                         '<td>' + element.patient_name + '</td>' +
                         '<td>' + element.gender + '</td>' +
                         '<td>' + element.age + '</td>' +
                         '<td>' + element.contact + '</td>' +
-                        '<td>' + element.apt_date + '</td>' +
-                        '<td>' + element.slot + '</td>' +
+                        '<td>' + apt_date + '</td>' +
+                        '<td>' + slot + '</td>' +
                         '<td><span class="status status-' + element.status + '">' + element.status + '</span></td>' +
                         '</tr>';
                 });

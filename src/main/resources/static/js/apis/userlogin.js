@@ -17,7 +17,7 @@ function userNumcheck() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText)
+            // console.log(this.responseText)
             if (this.responseText == "patient") {
                 mytoast("User Exist", "crimson");
             }
@@ -141,7 +141,7 @@ function userSignUp() {
             //     // localStorage.setItem("mobile", encryptedM);
             //     // localStorage.setItem("name", encryptedN);
             // }
-            console.log(this.responseText)
+            // console.log(this.responseText)
         }
     };
     xhttp.open("POST", ip + "/patient/sign_up", true);
@@ -215,12 +215,12 @@ function userlogin() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                console.log(this.responseText);
+                // console.log(this.responseText);
                 try {
                     var result = JSON.parse(this.responseText);
-                    console.log(result);
+                    // console.log(result);
                 } catch (error) {
-                    console.warn(error)
+                    // console.warn(error)
                 }
 
                 if (result.name != null && result.age != null) {
