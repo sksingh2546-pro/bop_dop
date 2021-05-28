@@ -18,7 +18,7 @@ function addHandler() {
     var encryptedhan = CryptoJS.AES.encrypt(handler_name, "Secret Passphrase");
 
     if (handler_name != "" && handler_password != "") {
-        url = "http://bopdop.in/handler/login.html?d=" + encryptedMob;
+        url = "https://bopdop.in/handler/login.html?d=" + encryptedMob;
         // console.log(url);
         var formData = new FormData();
         formData.append("user_name", handler_name);

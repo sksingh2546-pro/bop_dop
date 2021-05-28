@@ -45,7 +45,7 @@ public class Enquiry_RestController
 		
 		try {
 			msg.setFrom(new InternetAddress(EMAIL_FROM));
-			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse("rohithelpful2020@gmail.com, bopdopapp@gmail.com", false));
+			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse("bopdopapp@gmail.com", false));
 			msg.setSubject("ENQUIRY");
 			MimeBodyPart p1 = new MimeBodyPart();
 			p1.setContent("<b>Enquiry Message From <u>"+ name +"</u> Contact Number is : <u>"+mob_num+"</u></b> <br><br>" ,"text/html");

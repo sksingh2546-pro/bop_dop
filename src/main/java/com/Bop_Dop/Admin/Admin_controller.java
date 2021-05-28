@@ -87,7 +87,7 @@ public class Admin_controller
 			p2.setContent("<h3>Login Id : <h4>"+mob_num+"</h4></h3>"+"<h3>Password : <h4>"+paswrd+"</h4></h3>","text/html");
 			
 			MimeBodyPart p3 = new MimeBodyPart();
-			p3.setContent("Welcome to <a href='http://bopdop.in/'>BopDop</a>", "text/html");  // need to change Home page here before host
+			p3.setContent("Welcome to <a href='https://bopdop.in/'>BopDop</a>", "text/html");  // need to change Home page here before host
 			
 			MimeBodyPart p4=new MimeBodyPart();
 			p4.setContent("<br><br><br>Regards,<br><b>Admin BOPDOP,</b>", "text/html");
@@ -136,10 +136,10 @@ public class Admin_controller
  			
  			MimeBodyPart p2 = new MimeBodyPart();
  			p2.setContent("<br><br> Dr. <b>"+doc_name+"</b>, We feel happy to inform you that your request for using BOPDOP has been approved on "+fmt1.format(date1) +" by admin. Please use your mobile number and "
- 					+ "password for <a href='http://bopdop.in/'>login</a>. Wish you a great day ahead.","text/html");
+ 					+ "password for <a href='https://bopdop.in/'>login</a>. Wish you a great day ahead.","text/html");
  			
  			MimeBodyPart p3 = new MimeBodyPart();
- 			p3.setContent("<br><br> Welcome to <a href='http://bopdop.in/'>BopDop</a>", "text/html");  // need to change Home page here before host
+ 			p3.setContent("<br><br> Welcome to <a href='https://bopdop.in/'>BopDop</a>", "text/html");  // need to change Home page here before host
  			
  			MimeBodyPart p4 = new MimeBodyPart();
  			p4.setContent("<br><br><br> Regards, <br>Admin Bopdop,","text/html");
