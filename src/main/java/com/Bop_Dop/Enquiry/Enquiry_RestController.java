@@ -27,7 +27,7 @@ public class Enquiry_RestController
 {
 
     private static final String PASSWORD = "Bopdop!123";
-    private static final String EMAIL_FROM = "BopDopServices@gmail.com";
+    private static final String EMAIL_FROM = "bopdopservices@gmail.com";
 
      static void enquiryEmail(String mob_num,String name,String message) 
 	{
@@ -45,7 +45,7 @@ public class Enquiry_RestController
 		
 		try {
 			msg.setFrom(new InternetAddress(EMAIL_FROM));
-			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse("bopdopapp@gmail.com", false));
+			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse("suppbopdop@gmail.com", false));
 			msg.setSubject("ENQUIRY");
 			MimeBodyPart p1 = new MimeBodyPart();
 			p1.setContent("<b>Enquiry Message From <u>"+ name +"</u> Contact Number is : <u>"+mob_num+"</u></b> <br><br>" ,"text/html");
