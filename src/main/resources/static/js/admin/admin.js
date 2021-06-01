@@ -207,18 +207,19 @@ function workingdoctorlist() {
 
             if (this.responseText != "") {
                 var result = JSON.parse(this.responseText);
-                // console.log(result);
+                console.log(result);
                 result.forEach(data => {
                     document.getElementById("workingDoctorsTable").innerHTML +=
                         '<tr>' +
                         '<td>' + data.doctor_name + '</td>' +
                         '<td>' + data.degree + '</td>' +
+                        '<td class="hide">' + data.doctor_id + '</td>' +
                         '<td>' + data.patients_seen + '</td>' +
                         '<td>' + data.specialisation + '</td>' +
                         '<td>' + data.applied_date + '</td>' +
                         '<td>' +
                         '<i class="fas fa-money-check text-primary detailBtn" onclick="getWorkingDoctorDetail(this)" data-details="' + data.doctor_id + '">' +
-                        '</i>' +
+                        '</i>' + ' ' +'<button class="btn btn-danger deleteDoctorList">Delete</button>' +
                         '</td>' +
                         '</tr>';
                 });
@@ -233,7 +234,28 @@ function workingdoctorlist() {
     xhttp.open("GET", ip + "/admin/working_doctors", true);
     xhttp.send();
 }
+$("#workingDoctorsTable").on("click",".deleteDoctorList",function(){
+ var doctorId = $(this).parents("tr").find("td:eq(2)").text()
+    console.log(doctorId)
+    var v = confirm("Are You Sure Want To delete This Patient?")
+                if (v == true) {
+                            $.ajax({
+                                url: "/doctor/deleteDoctor?doctor_id="+ doctorId,
+                                type: 'DELETE',
+                                dataType: 'json',
+                                success: function(data) {
+                                   console.log("success");
+                                   location.reload()
+                                },
+                                error: function(error) {
+                                   alert('fail' + status.code);
+                                },
+                            });
+                } else {
+//                    doc = "Cancel was pressed.";
+                }
 
+})
 function getWorkingDoctorDetail(element) {
     var doc_id = element.getAttribute("data-details");
     var xhttp = new XMLHttpRequest();

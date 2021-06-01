@@ -10,14 +10,7 @@ import java.util.Set;
 import javax.print.Doc;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.Bop_Dop.Appointment.Appointment_entity;
 import com.Bop_Dop.Appointment.Appointment_repository;
@@ -51,7 +44,8 @@ public class Patients_rest_controller
 	
 	@Autowired
 	Slot_repository slot_repository;
-	
+
+
 	static char[] OTP() 
     { 
         System.out.println("Generating OTP using random() : "); 
@@ -602,6 +596,16 @@ public class Patients_rest_controller
 		}
 		
 		return"unsuccessfull";
+	}
+	@DeleteMapping("/deletePatient")
+	public String deletePatient(@RequestParam(value = "patient_id")long patient_data){
+		String message = "{\"message\":\"Unsuccessful\"}";
+		int deleteAppointmentData=appointment_repository.deletePatientData(patient_data);
+		int deletePatient=patient_repository.deletePatientData(patient_data);
+		if (deletePatient>0){
+			message = "{\"message\":\"successful\"}";
+		}
+		return message;
 	}
 	
 }

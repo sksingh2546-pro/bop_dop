@@ -55,5 +55,10 @@ public interface Slot_repository extends CrudRepository<Slot_entity, Long>
 	/* For Patient getting close slots as per date */
 	@Query("select s from Slot_entity s where close='slot' and (doctor_id=?1 and date=?2)")
 	public List<Slot_entity>for_pt_closed_slots(long doc_id,String date);
+
+	@Modifying
+	@Query(value = "delete  from slot_data  where doctor_id=?1",nativeQuery = true)
+	@Transactional
+	public int deleteSlotDoctorData(long doctor_id);
 	
 }

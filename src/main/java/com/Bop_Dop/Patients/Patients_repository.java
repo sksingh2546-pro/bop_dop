@@ -83,4 +83,9 @@ public interface Patients_repository extends CrudRepository<Patients_entity, Lon
 	@Query(value="update patient_data set status='delete' where mob_number=?1",nativeQuery = true)
 	@Transactional
 	public int delete_account(String mob_num);
+
+	@Modifying
+	@Query(value = "delete  from patient_data  where patient_id=?1",nativeQuery = true)
+	@Transactional
+	public int deletePatientData(long patient_id);
 }

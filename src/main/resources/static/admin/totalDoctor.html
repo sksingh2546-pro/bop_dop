@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<style>
+    .hide{
+        display: none;
+    }
+    .deleteDoctorList{
+        margin: 0px 0px 0px 20px;
+    }
+</style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +18,7 @@
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
         crossorigin="anonymous" />
     <link rel="stylesheet" href="../css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
 <script>
     if (sessionStorage.getItem('AdminAuth') === null) {

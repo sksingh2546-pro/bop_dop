@@ -171,4 +171,9 @@ public interface Doctors_repository extends CrudRepository<Doctors_entity,Intege
 
 	@Query("select d.opd_timing from Doctors_entity d where mob_number=?1")
 	List<String> getOptTiming(String mob_no);
+
+	@Modifying
+	@Query(value ="delete from doctor_data  where doctor_id=?1",nativeQuery = true)
+	@Transactional
+	public int deleteDoctorData(int doctor_id);
 }

@@ -43,4 +43,9 @@ public interface Live_opd_repository extends CrudRepository<Live_opd_entity, Lon
 	@Query(value = "update live_opd_data set live_opd='0' where id is not null",nativeQuery = true)
 	@Modifying
 	public int updateZero();
+
+	@Modifying
+	@Query(value = "delete from live_opd_data  where doctor_id=?1",nativeQuery = true)
+	@Transactional
+	public int deleteLiveDoctorData(long doctor_id);
 }

@@ -61,6 +61,18 @@ public interface Appointment_repository extends CrudRepository<Appointment_entit
 	/* Count of appointments */
 	@Query("select count(a) from Appointment_entity a where patient_id=?1")
 	public int appt_count(long patient_id);
+
+
+	@Modifying
+	@Query(value = "delete  from appointment_data  where patient_id=?1",nativeQuery = true)
+	@Transactional
+	public int deletePatientData(long patient_id);
+
+	@Modifying
+	@Query(value = "delete  from appointment_data  where doctor_id=?1",nativeQuery = true)
+	@Transactional
+	public int deleteDoctorData(long doctor_id);
+
 	
 	/* List of total patients as per doctor */
 	@Query("select s from Appointment_entity s where doctor_id=(select d.doctor_id from Doctors_entity d where mob_number=?1)")

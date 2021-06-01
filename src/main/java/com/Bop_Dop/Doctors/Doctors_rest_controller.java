@@ -7,16 +7,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
+import com.Bop_Dop.Slots.Slot_repository;
 import org.aspectj.weaver.ast.And;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.StreamingHttpOutputMessage;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.Bop_Dop.Appointment.Appointment_entity;
 import com.Bop_Dop.Appointment.Appointment_repository;
@@ -60,6 +55,9 @@ public class Doctors_rest_controller
 	
 	@Autowired
 	Handlers_repository handlers_repository;
+   @Autowired
+
+	Slot_repository slot_repository;
 	
 	private static final String SMTP_SERVER = "smtp.gmail.com";
     private static final String PASSWORD = "Bopdop!123";
@@ -480,5 +478,17 @@ public class Doctors_rest_controller
 		}
 
 		return opd;
+	}
+	@DeleteMapping("/deleteDoctor")
+	public String deletePatient(@RequestParam(value = "doctor_id")long doctor_id){
+		String message = "{\"message\":\"Unsuccessful\"}";
+		int deleteAppointmentData=appointment_repository.deleteDoctorData(doctor_id);
+		int deleteSlotData=slot_repository.deleteSlotDoctorData(doctor_id);
+		int deleteliveOpdData=live_opd_repository.deleteLiveDoctorData(doctor_id);
+		int deleteDoctor=doctors_repository.deleteDoctorData((int) doctor_id);
+		if (deleteDoctor>0){
+			message = "{\"message\":\"successful\"}";
+		}
+		return message;
 	}
 }
