@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handler Set OPD Time | BOPDOP</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="../css/mainCss.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+</head>
+<script src="../js/auth/handlerAuth.js"></script>
+<body style="background-color: #f1f1f1;" >
+    <nav class="homenav shadow-none">
+        <label for="check" class="checkBtn"><i class="fas fa-bars"></i></label>
+        <input type="checkbox" id="check">
+        <label class="logo">B<span style="color: var(--danger);">OPD</span>OP</label>
+    </nav>
+    <div class="sideNavbar">
+        <ul>
+            <li>
+                <a href="index.html">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span>Live OPD</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="appointed-patients.html">
+                    <i class="fas fa-tachometer-alt mr-2"></i>
+                    <span>Appointed Patients</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="manage-slots.html">
+                    <i class="fas fa-calendar-alt mr-2"></i>
+                    <span>Manage Slots</span>
+                </a>
+            </li>
+            <li class="sideActive">
+                <a href="#">
+                    <i class="fas fa-tachometer-alt mr-2"></i>
+                    <span>Set OPD Timing</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="total-visited-patients.html" id="visited">
+                    <i class="fas fa-hospital-user mr-2"></i>
+                    <span>Total Patients visited</span>
+                </a>
+            </li>
+            <li >
+                <a href="#" onclick="handlerlogout()">
+                    <i class="fas fa-sign-out-alt mr-2"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="sideContent">
+        <div class="row py-2 appointment">
+            <div class="col-12">
+            <div class="card">
+                <div class="card-body px-4" style="height: auto;">
+                    <h5 class="card-title mx-3 mt-3 d-flex justify-content-between">
+                        <span>OPD Timings</span>
+                        <i class="fas fa-edit" onclick="editopd()"></i>
+                    </h5>
+                    
+                    <div class="profile-box">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="addTimingBox">
+                                    <div class="schedule-box">
+                                        <label class="text-muted">Morning</label>
+                                        <div class="card schedule-widget mb-2 p-3 d-block" id="morningTiming">
+                                            <div class="row">
+                                                <div class="col-sm-1">
+                                                    <label class="mylabel"></label>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input time-check position-static" id="morning" type="checkbox" >
+                                                      </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mylabel" >Start Time</label>
+                                                    <select class="form-control from timing" tabindex="-1" aria-hidden="true">
+
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mylabel" >End Time</label>
+                                                    <select class="form-control to timing" tabindex="-1" aria-hidden="true">
+
+                                                    </select>
+                                                    
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <div class="form-group"><label class="mylabel">Slot Duration</label>
+                                                        <select class="form-control duration timing" tabindex="-1" aria-hidden="true">
+                                                            <option value="">-</option>
+                                                            <option value="15">15 mins</option>
+                                                            <option value="30" >30 mins</option>
+                                                           
+                                                            <option value="60"> 1 Hour</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="schedule-box">
+                                        <label class="text-muted">Afternoon</label>
+                                        <div class="card schedule-widget mb-2 p-3 d-block" id="afternoonTiming">
+                                            <div class="row">
+                                                <div class="col-sm-1">
+                                                    <label class="mylabel"></label>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input time-check position-static" id="afternoon" type="checkbox" >
+                                                      </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mylabel" >Start Time</label>
+                                                    <select class="form-control from timing" tabindex="-1" aria-hidden="true">
+
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mylabel" >End Time</label>
+                                                    <select class="form-control to timing" tabindex="-1" aria-hidden="true">
+
+                                                    </select>
+                                                    
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <div class="form-group"><label class="mylabel">Slot Duration</label>
+                                                        <select class="form-control duration timing" tabindex="-1" aria-hidden="true">
+                                                            <option value="">-</option>
+                                                            <option value="15">15 mins</option>
+                                                            <option value="30">30 mins</option>
+                                                           
+                                                            <option value="60"> 1 Hour</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="schedule-box">
+                                        <label class="text-muted">Evening</label>
+                                        <div class="card schedule-widget mb-2 p-3 d-block" id="eveningTiming">
+                                            <div class="row">
+                                                <div class="col-sm-1">
+                                                    <label class="mylabel"></label>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input time-check position-static" id="evening" type="checkbox" >
+                                                      </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mylabel" >Start Time</label>
+                                                    <select class="form-control from timing" tabindex="-1" aria-hidden="true">
+
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mylabel" >End Time</label>
+                                                    <select class="form-control to timing" tabindex="-1" aria-hidden="true">
+
+                                                    </select>
+                                                    
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <div class="form-group"><label class="mylabel">Slot Duration</label>
+                                                        <select class="form-control duration timing" tabindex="-1" aria-hidden="true">
+                                                            <option value="">-</option>
+                                                            <option value="15">15 mins</option>
+                                                            <option value="30">30 mins</option>
+                                                           
+                                                            <option value="60"> 1 Hour</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button class="btn bg-theme text-light" onclick="updateOpdTimeService()">Update</button>
+                                    </div>
+                                </div>
+                                <div class="contentLoader text-center">
+                                    <h6>Loading...</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="../js/variable.js"></script>
+<script src="../js/cdn/moment.min.js"></script>
+<script src="../js/mytoast.js"></script>
+<script src="../js/dash.js"></script>
+<script src="../js/opdtiming.js"></script>
+<script>
+    document.getElementsByClassName("checkBtn")[0].addEventListener("click",()=>{
+        if(document.getElementById("check").checked == true){
+            document.getElementsByClassName("sideNavbar")[0].style.left = "-100%"
+        }
+        else if(document.getElementById("check").checked == false ){
+            document.getElementsByClassName("sideNavbar")[0].style.left = "0px"
+        }
+    });
+    $(document).ready(function(){
+       
+        fillTime('morningTiming',new Date(2018, 11, 24, 5, 30, 0, 0),12, 30);
+        fillTime('afternoonTiming',new Date(2018, 11, 24, 11, 30, 0, 0),16, 30);
+        fillTime('eveningTiming',new Date(2018, 11, 24, 15, 30, 0, 0),23, 30);
+        fetchOpdTime();
+    });
+</script>
+<script src="../js/apis/appointed.js"></script>
+<script src="../js/apis/logout.js"></script>
+</html>
